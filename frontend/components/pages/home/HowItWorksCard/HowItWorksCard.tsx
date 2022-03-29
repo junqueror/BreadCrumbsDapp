@@ -59,7 +59,7 @@ const HowItWorksCard: FC<Props> = ({ className, info }) => {
       </Text>
       <Space h="sm" />
       { info.steps.map(step => (
-        <>
+        <div key={ `step-${step.text}` }>
           <Space h="lg" />
           <Group className={ styles.Step }>
             <Text
@@ -72,7 +72,7 @@ const HowItWorksCard: FC<Props> = ({ className, info }) => {
             </Text>
             <Text>{ step.text }</Text>
           </Group>
-        </>
+        </div>
       ))}
       <Space h="lg" />
       <Space h="md" />
