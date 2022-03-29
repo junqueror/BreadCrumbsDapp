@@ -2,7 +2,7 @@ version: '3.6'
 
 services:
   ganache:
-    container_name: ganache
+    container_name: development-ganache
     build:
       context: ../../../
       dockerfile: ./deploy/docker/images/ganache/Dockerfile
@@ -10,7 +10,8 @@ services:
       - 8545:8545
 
   truffle:
-    container_name: truffle
+    container_name: development-truffle
+    image: europe-west1-docker.pkg.dev/breadcrumbs-345213/breadcrumbs/development/truffle:latest
     build:
       context: ../../../
       dockerfile: ./deploy/docker/images/truffle/Dockerfile
@@ -26,7 +27,7 @@ services:
       - ganache
     
   truffle-test:
-    container_name: truffle-test
+    container_name: development-truffle-test
     build:
       context: ../../../
       dockerfile: ./deploy/docker/images/truffle/Dockerfile
@@ -41,7 +42,7 @@ services:
 
   postgres:
     image: postgres:10.6-alpine
-    container_name: postgres
+    container_name: development-postgres
     env_file:
       - ../../../.env.development
     volumes:
@@ -52,7 +53,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: pgadmin
+    container_name: development-pgadmin
     env_file:
       - ../../../.env.development
     depends_on:
@@ -66,19 +67,14 @@ services:
       dockerfile: ./deploy/docker/images/frontend/Dockerfile
       target: local
     image: europe-west1-docker.pkg.dev/breadcrumbs-345213/breadcrumbs/development/frontend:latest
-    container_name: frontend
+    container_name: development-frontend
     env_file:
       - ../../../.env.development
     volumes:
-      - ${PWD}/frontend:/frontend
-      - ${PWD}/prisma:/prisma
-      - abis-volume:/backend/abis
       - ${PWD}/logs/development/frontend:/logs/
-      # - public-volume:/frontend/public
     depends_on:
       - postgres
       - pgadmin
-      - ganache
       - truffle
     ports: 
       - 80:80
@@ -86,5 +82,3 @@ services:
 volumes:
   postgres-volume:
   abis-volume:
-  prisma-volume:
-  # public-volume:
