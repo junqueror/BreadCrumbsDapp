@@ -1,7 +1,7 @@
 import { InjectedConnector } from '@web3-react/injected-connector';
 import Web3 from 'web3';
 
-const GANACHE_PROTOCOL = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+const GANACHE_PROTOCOL = process.env.NODE_ENV === 'production' ? 'http' : 'http';
 
 const GANACHE_HOST = process.env.NEXT_PUBLIC_GANACHE_HOST || 'localhost';
 const GANACHE_PORT = process.env.NEXT_PUBLIC_GANACHE_PORT || 8545;
