@@ -12,5 +12,6 @@
   &.Accent.Disabled {
     cursor: not-allowed;
     pointer-events: none;
+    color: $dimmed-color;
   }
 }

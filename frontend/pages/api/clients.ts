@@ -54,11 +54,11 @@ const handler = async (
       } else res.status(404);
     } catch (err) {
       console.log(err);
-      res.status(500).json({ error: 'Error creating client' });
+      res.status(500).json({ error: `Error creating client: ${err}` });
     }
   } else {
     res.setHeader('Allow', ['POST']);
-    res.status(405).end(`Method ${method} Not Allowed`);
+    res.status(405).end('Method Not Allowed');
   }
 };
 
