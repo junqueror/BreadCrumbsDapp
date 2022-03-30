@@ -16,8 +16,6 @@ export interface Data {
 const prisma = typeof window === 'undefined' ? new PrismaClient() : undefined;
 
 export const createClient = async (_client: ClientType): Promise<Data | { error: string }> => {
-  console.log('pre createClient', _client);
-
   const res = await fetch(path, {
     method: 'POST',
     headers: {
@@ -28,7 +26,6 @@ export const createClient = async (_client: ClientType): Promise<Data | { error:
   });
 
   const data: { client: ClientType } = await res.json();
-  console.log('createClient', _client, data);
 
   return data;
 };
@@ -46,16 +43,11 @@ const handler = async (
     method,
   } = req;
 
-  console.log('body', body, method);
-
-  console.log('handler', typeof body);
-
   if (method === 'POST') {
     try {
       const _client: ClientType = body;
 
       const client = await _createClient(_client);
-      console.log('handler DB client', _client, client);
 
       if (client) {
         res.status(200).json({ client });

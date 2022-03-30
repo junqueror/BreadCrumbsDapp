@@ -19,5 +19,5 @@ model Link {
 
 model Client {
   id    Int    @id @default(autoincrement())
-  email String
+  email String @unique
 }

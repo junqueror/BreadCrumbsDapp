@@ -15,6 +15,25 @@ ENV = local
 include ./.env.${ENV}
 export
 
+# Clean docker
+
+docker-clean:
+	-docker rm -f $$(docker ps -a -q)
+	-docker rmi -f $$(docker images | grep ${GCLOUD_REPOSITORY})
+	-docker rmi -f $$(docker images | grep '<none>')
+
+docker-prune:
+	@echo This will clean all Docker environment as installation default. All data store in volumes will be lost.
+	@echo "Are you sure you want to reset Docker environment? [y/N] " && read ans && [ $${ans:-N} = y ]
+	-docker rm -f $$(docker ps -a -q)
+	-docker rmi -f $$(docker images -q)
+	-docker system prune -f --volumes
+	-docker volume prune -f
+	-docker image prune -f
+
+docker-rm-volumes:
+	docker volume rm -f $(ENV)_database-volume $(ENV)_elasticsearch-volume $(ENV)_media-volume $(ENV)_redis_volume $(ENV)_static-volume
+
 # Deploy on Docker
 
 docker-build:

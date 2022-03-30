@@ -1,8 +1,9 @@
 import { FC, useCallback, useState } from 'react';
 import { Text } from '@mantine/core';
+import { useNotifications } from '@mantine/notifications';
+import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
 import classnames from 'classnames';
 
-import Link from 'components/elements/Link';
 import { EmailForm } from 'components/forms';
 import theme from 'config/theme';
 import { subscription } from 'content/home';
@@ -22,15 +23,25 @@ const defaultProps = {
 
 const SubscriptionSection: FC<Props> = ({ className, id }) => {
   const [createClientLoading, setCreateClientLoading] = useState(false);
+  const notifications = useNotifications();
   const [error, setError] = useState<string>('');
 
   const createClientHandler = useCallback(async (_client: ClientType) => {
     setCreateClientLoading(true);
     const data = await createClient(_client);
     setCreateClientLoading(false);
-    debugger;
+
     if (!data?.client?.email && data.error) setError(data.error);
-  }, []);
+    else {
+      notifications.showNotification({
+        title: 'Subscription completed',
+        message: `You will receive the latest news and campaigns in the following email: ${data.client.email}`,
+        color: 'green',
+        autoClose: 5000,
+        icon: <EnvelopeClosedIcon />,
+      });
+    }
+  }, [notifications]);
 
   const subscriptionSectionClassNames = classnames(styles.SubscriptionSection, className);
 

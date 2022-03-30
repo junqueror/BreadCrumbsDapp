@@ -18,7 +18,7 @@ import styles from './Market.module.scss';
 const MAX_SSR_BASKETS = 9;
 
 export const getServerSideProps = async (_context: any) => {
-  const baskets: BasketType[] = (await basketServiceOnServer.getBaskets())
+  const baskets: BasketType[] = (await basketServiceOnServer.getBaskets() || [])
     .slice(0, MAX_SSR_BASKETS)
     .map((basket: BasketType): BasketType => ({
       account: basket.account,

@@ -54,6 +54,7 @@ const BasketsPage: NextPage = () => {
           title: 'Basket was not created',
           message: `Error creating the basket. '${domain}' basket is not available`,
           color: 'red',
+          autoClose: 5000,
         });
       });
   }, [basketsContext, notifications]);

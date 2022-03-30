@@ -48,14 +48,12 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
                     rel="preload"
                     type="font/ttf"
                   />
-                  { /*
                   <link
                     as="image"
                     href="/static/images/home/page-background.jpg"
                     imagesrcset="/_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=640&q=75 640w, /_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=750&q=75 750w, /_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=828&q=75 828w, /_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=3840&q=75 3840w"
                     rel="preload"
                   />
-                  */ }
                 </Head>
                 <MantineProvider
                   theme={ theme.mantine }
