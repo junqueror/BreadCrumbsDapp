@@ -40,8 +40,8 @@ docker-build:
 	docker-compose -f ./deploy/docker/${ENV}/docker-compose.yml build
 
 docker-up-dev:
-	docker-compose -f ./deploy/docker/${ENV}/docker-compose.yml rm -s -v -f frontend
-	docker-compose -f ./deploy/docker/${ENV}/docker-compose.yml up frontend
+	docker-compose -f ./deploy/docker/${ENV}/docker-compose.yml rm -s -v -f
+	docker-compose -f ./deploy/docker/${ENV}/docker-compose.yml up truffle pgadmin
 
 docker-up:
 	docker-compose -f ./deploy/docker/${ENV}/docker-compose.yml up -d

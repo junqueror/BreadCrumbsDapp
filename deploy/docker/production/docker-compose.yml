@@ -37,6 +37,17 @@ services:
       - 5432:5432
     restart: always
 
+  prisma:
+    container_name: production-prisma
+    image: europe-west1-docker.pkg.dev/breadcrumbs-345213/breadcrumbs/production/prisma:latest
+    build:
+      context: ../../../
+      dockerfile: ./deploy/docker/images/prisma/Dockerfile
+    env_file:
+      - ../../../.env.production
+    depends_on:
+      - ganache
+
 volumes:
   postgres-volume:
   abis-volume:

@@ -21,7 +21,7 @@ const PlayersSection: FC<Props> = ({ className, id }) => {
   const playersSectionClassNames = classnames(styles.PlayersSection, className);
 
   return (
-    <div
+    <section
       className={ playersSectionClassNames }
       id={ id }
     >
@@ -32,7 +32,7 @@ const PlayersSection: FC<Props> = ({ className, id }) => {
         >
           <div className={ styles.Title }>
             <Text size="xl">
-              { 'BreadCrumbs for ' }
+              { 'breadCrumbs for ' }
             </Text>
             <Text size="xl">
               { player.title }
@@ -82,7 +82,7 @@ const PlayersSection: FC<Props> = ({ className, id }) => {
           ) }
         </div>
       ))}
-    </div>
+    </section>
   );
 };
 

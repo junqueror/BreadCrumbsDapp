@@ -11,27 +11,17 @@
 }
 
 .HeaderSection {
-  min-height: 100vh;
-  padding: 40px;
-  box-shadow: 0 0 25rem 25rem rgba(1, 9, 10, 0.25);
-  background: rgba(1, 9, 10, 0.25);
+  min-height: calc(100vh - 80px - 200px); // - header - margin-section
+  padding: 40px 100px;
+  box-shadow: 0 0 25rem 25rem rgba(1, 9, 10, 0.5);
+  background: rgba(1, 9, 10, 0.5);
 
-  @include md {
-    padding: 20px;
+  @include lg {
+    padding: 40px 40px;
   }
 
-  .Path {
-    position: fixed;
-    top: 720px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    stroke-dasharray: 300 300;
-    opacity: 1;
-    transition: opacity 1.5s ease-in-out;
-
-    filter: drop-shadow(0 0 2px white) drop-shadow(0 0 5px $primary-color)
-      drop-shadow(0 0 10px $primary-color) drop-shadow(0 0 20px $primary-color);
-    animation: rotate 20s infinite linear;
+  @include sm {
+    padding: 20px;
   }
 
   .HiddenEffect {
@@ -39,16 +29,32 @@
   }
 
   .Content {
-    margin: 40px;
-    padding: 20px;
-    font-family: "Blessed Light";
-    text-align: center;
+    padding: 40px;
+    max-width: 70%;
+
+    @include lg {
+      padding: 0px;
+      max-width: 80%;
+    }
+
+    @include md {
+      max-width: 100%;
+    }
 
     .Title {
-      display: inline-block;
-      font-size: 58px;
-      font-weight: bold;
-      text-shadow: 0 0 20px $primary-color;
+      display: block;
+      font-family: "Blessed Light";
+      line-height: 1;
+      font-weight: 900;
+      font-size: 80px;
+      color: $reverse-color;
+      text-transform: lowercase;
+      text-align: left;
+      text-shadow: 0 0 8px $reverse-color;
+
+      @include sm {
+        font-size: 60px;
+      }
     }
 
     .Space {
@@ -57,16 +63,57 @@
     .Subtitle {
       display: block;
       margin: 0 auto;
-      text-align: center;
+      text-align: left;
 
       span {
-        font-size: 32px;
+        font-size: 24px;
         font-weight: bold;
-        text-shadow: 0 0 15px $dark-color;
+        font-family: "Blessed Light";
+        color: $reverse-color;
+        text-shadow: 0 0 5px $dark-color;
+
+        @include sm {
+          font-size: 20px;
+        }
 
         &:nth-of-type(even) {
-          color: $accent-color;
-          text-shadow: 0 0 10px $accent-color;
+          color: $primary-color;
+        }
+      }
+    }
+
+    .Description {
+      margin-top: 40px;
+      text-align: left;
+      text-shadow: 0 0 5px $dark-color;
+
+      @include sm {
+        margin-top: 20px;
+        font-size: 16px;
+      }
+    }
+
+    .Buttons {
+      margin: 40px 0px;
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 20px;
+
+      .Button {
+        background-color: transparent;
+        box-shadow: 0 0 0.1rem $primary-color, 0 0 0.1rem #fff,
+          0 0 0.2rem $primary-color, 0 0 0.2rem $primary-color,
+          0 0 0.2rem $primary-color, inset 0 0 0.3rem $primary-color;
+        @include focus;
+
+        &:last-of-type {
+          color: $dark-color;
+          background-color: $primary-color;
+          border-color: $primary-color;
+          box-shadow: 0 0 0.1rem $primary-color, 0 0 0.1rem $reverse-color,
+            0 0 0.2rem $primary-color, 0 0 0.2rem $primary-color,
+            0 0 0.2rem $primary-color, inset 0 0 0.1rem $primary-color;
         }
       }
     }

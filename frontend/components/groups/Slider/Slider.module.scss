@@ -2,8 +2,6 @@
 @import "styles/variables.scss";
 
 .Slider {
-  width: calc(100% + 20px);
-
   :global(.slick-list) {
     max-height: 100%;
     display: flex;
@@ -13,7 +11,7 @@
     :global(.slick-track) {
       display: flex;
       flex-direction: row;
-      align-items: center;
+      align-items: stretch;
 
       :global(.slick-slide) {
         display: flex;

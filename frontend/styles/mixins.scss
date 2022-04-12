@@ -124,3 +124,20 @@ $max-width-xl: 1400px;
     }
   }
 }
+
+@mixin scrollVisible(
+  $selector,
+  $delay: 0s,
+  $duration: 1.5s,
+  $translatePixels: 200px
+) {
+  opacity: 0;
+  transition: transform $duration ease-in-out $delay,
+    opacity $duration ease-in-out 0.5s + $delay;
+  transform: translateY($translatePixels);
+
+  &#{$selector} {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}

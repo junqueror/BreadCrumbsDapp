@@ -2,7 +2,6 @@ import Web3 from 'web3';
 import { Contract } from 'web3-eth-contract';
 
 import web3config from 'config/web3';
-import WEB3 from 'config/web3';
 import BasketType from 'types/basketType';
 
 import Baskets from '../../backend/abis/Baskets.json';
@@ -24,11 +23,11 @@ class BasketsService {
     };
 
     constructor(
-      web3Provider: any = web3config.DEFAULT_PROVIDER,
-      chainId: number = web3config.DEFAULT_CHAIN_ID,
+      web3: Web3 = new Web3(web3config.DEFAULT_PROVIDER, undefined, BasketsService.web3Options),
+      chainId: number = Number(web3config.DEFAULT_CHAIN_ID),
       account: { address: string } = { address: ' ' },
     ) {
-      this.web3 = new Web3(web3Provider, undefined, BasketsService.web3Options);
+      this.web3 = web3;
 
       const breadNetworkData = Bread.networks[chainId];
       const basketsNetworkData = Baskets.networks[chainId];
@@ -93,7 +92,7 @@ class BasketsService {
 }
 
 export default new BasketsService();
-export const basketServiceOnServer = new BasketsService(WEB3.DEFAULT_SERVER_PROVIDER);
+export const basketServiceOnServer = new BasketsService();
 
 export {
   BasketsService,

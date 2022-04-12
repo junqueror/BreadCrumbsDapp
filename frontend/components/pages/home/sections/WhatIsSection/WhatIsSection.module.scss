@@ -1,37 +1,200 @@
 @import "styles/mixins.scss";
 @import "styles/variables.scss";
 
+$num-tiles: 24;
+
 .WhatIsSection {
-  .Diamond {
-    width: 0;
-    height: 0;
-    border: 50px solid transparent;
-    border-bottom-color: $primary-color;
-    position: relative;
-    top: -50px;
+  padding: 80px 200px;
+  background-color: $dark-color;
+  box-shadow: 0 0 0.2rem 0.1rem $dark-color;
 
-    &:after {
-      content: "";
-      position: absolute;
-      left: -50px;
-      top: 50px;
-      width: 0;
-      height: 0;
-      border: 50px solid transparent;
-      border-top-color: $primary-color;
+  @include lg {
+    padding: 80px 100px;
+  }
+
+  @include sm {
+    padding: 40px 40px;
+  }
+
+  @include xs {
+    padding: 40px 20px;
+  }
+
+  .Card {
+    margin: 160px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 80px;
+    align-items: stretch;
+
+    @include sm {
+      margin: 20px 0px;
+      gap: 20px;
     }
 
-    &:first-of-type {
-      transform: translate(-100px, -100px);
-    }
     &:nth-of-type(2) {
-      transform: translate(100px, -100px);
+      flex-direction: row-reverse;
     }
-    &:nth-of-type(2) {
-      transform: translate(-100px, 100px);
+
+    .Content {
+      flex: 0 0 calc(50% - 40px);
+
+      @include sm {
+        flex: 1 0 calc(50% - 40px);
+      }
+
+      .TopTitle {
+        width: fit-content;
+        font-weight: 700;
+        font-family: "Blessed light";
+
+        @include scrollVisible(".Visible", 0s, 0.7s, 100px);
+      }
+
+      .Title {
+        font-weight: 900;
+        font-family: "Blessed light";
+        font-size: 34px;
+        line-height: 1.2;
+        @include scrollVisible(".Visible", 0.5s, 0.7s, 200px);
+      }
+
+      .Text {
+        @include scrollVisible(".Visible", 1s, 0.7s, 400px);
+      }
+
+      ul.KeyPoints {
+        list-style-type: none;
+        @include scrollVisible(".Visible", 2s, 0.7s, 600px);
+
+        li > div > span {
+          display: flex;
+          gap: 10px;
+
+          & > div {
+            &:first-of-type {
+              width: 20px;
+              height: 20px;
+            }
+
+            &:last-of-type {
+              font-weight: 900;
+              display: inline;
+            }
+          }
+        }
+      }
     }
-    &:last-of-type {
-      transform: translate(100px, 100px);
+
+    &:first-of-type .Tiles {
+      display: none;
+    }
+
+    &:nth-of-type(2) .Image {
+      display: none;
+    }
+
+    &:nth-of-type(3) .Image {
+      display: none;
+    }
+
+    .Tiles {
+      margin: 0 auto;
+      min-width: 200px;
+      min-height: 400px;
+      max-width: 300px;
+      max-height: 500px;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      gap: 10px;
+      transform-style: preserve-3d;
+      transform: rotateX(65deg) rotateZ(-45deg) scale(1.4);
+
+      @include sm {
+        padding: 40px;
+      }
+
+      & > div {
+        flex: 1 0 calc(25% - 10px);
+        background-color: $primary-color;
+        border-radius: 4px;
+        transform: translate3d(0, 0, -400px);
+        opacity: 0;
+        transition: all 1s ease-in-out;
+        box-shadow: -2px 2px 0 1px $reverse-color;
+
+        &:hover {
+          transform: translate3d(40px, -40px, 20px) !important;
+        }
+
+        @for $i from 1 through $num-tiles {
+          &:nth-of-type(4n + #{$i}) {
+            z-index: 8 + $i;
+          }
+
+          &:nth-of-type(4n) {
+            z-index: $i;
+          }
+        }
+      }
+    }
+
+    &.Visible .Tiles {
+      @for $i from 1 through $num-tiles {
+        & > .Tile:nth-of-type(n + #{$i}) {
+          transform: translate3d(0, 0, 0);
+          transition-delay: 1 + $i * 0.1s;
+          opacity: 1;
+        }
+      }
+    }
+
+    .ShareClip,
+    .BreadClip {
+      position: relative;
+      flex: 1;
+
+      @include sm {
+        padding: 40px;
+      }
+
+      div {
+        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+        min-width: 300px;
+        min-height: 300px;
+        max-width: 400px;
+        max-height: 400px;
+        background-image: url("/static/images/home/page-background.jpg");
+        background-size: 100vw 100vh;
+        background-attachment: fixed;
+        filter: contrast(1.7) hue-rotate(10deg) brightness(1.1);
+
+        &:after {
+          content: "";
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          width: 100%;
+          height: 100%;
+          background-color: $primary-color;
+          opacity: 0.3;
+        }
+      }
+    }
+
+    .ShareClip div {
+      clip-path: url(#shareClip);
+    }
+
+    .BreadClip div {
+      clip-path: url(#breadClip);
     }
   }
+}
+
+:export {
+  numTiles: $num-tiles;
 }

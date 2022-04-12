@@ -14,7 +14,7 @@ import { CardStackIcon } from '@radix-ui/react-icons';
 import Link from 'components/elements/Link';
 import { Account, Address } from 'components/entities';
 import config from 'config';
-import { paths } from 'config/routing';
+import { paths, sections } from 'config/routing';
 import theme from 'config/theme';
 import useAccountContext from 'contexts/account';
 import { useToggleOpened } from 'hooks';
@@ -51,17 +51,18 @@ const Header: FC<Props> = ({ isBurgerOpened, onBurgerClick }: Props) => {
   const buttonHandler = isLogged ? openAccountDrawer : loginButtonClickHandler;
 
   return (
-    <MantineHeader height={ 80 } padding="xl">
+    <MantineHeader height={ 80 } padding="lg">
       <Grid
         align="center"
         className={ styles.Header }
         columns={ 24 }
-        gutter="md"
+        gutter="xs"
         justify="space-between"
       >
         <MediaQuery largerThan="sm" styles={ { display: 'none' } }>
           <Grid.Col span={ 1 }>
             <Burger
+              className={ styles.Burger }
               mr="xl"
               opened={ isBurgerOpened }
               size="sm"
@@ -69,37 +70,39 @@ const Header: FC<Props> = ({ isBurgerOpened, onBurgerClick }: Props) => {
             />
           </Grid.Col>
         </MediaQuery>
-        <Grid.Col sm={ 3 } span={ 4 }>
+        <Grid.Col md={ 4 } sm={ 4 } span={ 7 }>
           <Link to={ paths.home }>
             <Group
               align="baseline"
               direction="row"
               spacing={ 0 }
             >
-              <Text
-                align="center"
-                className={ styles.Title }
-                component="span"
-                gradient={ theme.accentGradient }
-                size="xl"
-                style={ { fontFamily: 'Anurati' } }
-                transform="uppercase"
-                variant="gradient"
-              >
-                { config.site.NAME.split(' ')[0] }
-              </Text>
-              <Text
-                align="center"
-                className={ styles.Title }
-                component="span"
-                gradient={ theme.accentGradient }
-                size="xs"
-                style={ { fontFamily: 'Anurati' } }
-                transform="uppercase"
-                variant="gradient"
-              >
-                { config.site.NAME.split(' ')[1] }
-              </Text>
+              <div className={ styles.Title }>
+                <Text
+                  align="center"
+                  className={ styles.Text }
+                  component="span"
+                  gradient={ theme.accentGradient }
+                  size="xl"
+                  style={ { fontFamily: 'Blessed Light' } }
+                  transform="lowercase"
+                  variant="gradient"
+                >
+                  { config.site.NAME.split(' ')[0] }
+                </Text>
+                <Text
+                  align="center"
+                  className={ styles.Text }
+                  component="span"
+                  gradient={ theme.accentGradient }
+                  size="xs"
+                  style={ { fontFamily: 'Blessed Light' } }
+                  transform="lowercase"
+                  variant="gradient"
+                >
+                  { config.site.NAME.split(' ')[1] }
+                </Text>
+              </div>
             </Group>
           </Link>
         </Grid.Col>
@@ -110,12 +113,23 @@ const Header: FC<Props> = ({ isBurgerOpened, onBurgerClick }: Props) => {
             </div>
           </Grid.Col>
         </MediaQuery>
-        <Grid.Col sm={ 3 } span={ 6 }>
+        <Grid.Col className={ styles.Buttons } lg={ 6 } sm={ 6 } span={ 11 }>
+          <Link
+            className={ styles.SubscriptionButton }
+            isButton
+            to={ `#${sections.home.subscription}` }
+            variant="outline"
+          >
+            { isLogged
+              ? (
+                <MediaQuery smallerThan="sm" styles={ { display: 'none' } }>
+                  <Address>{account?.address}</Address>
+                </MediaQuery>
+              ) : 'Subscribe'}
+          </Link>
           <Button
             className={ styles.LoginButton }
-            color="orange"
             disabled={ disabled }
-            gradient={ theme.accentGradient }
             leftIcon={ isLogged && <CardStackIcon /> }
             loading={ isLoading }
             variant="outline"

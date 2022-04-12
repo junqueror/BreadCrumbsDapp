@@ -68,9 +68,9 @@ const theme: {
   // Extended
   accentColor: 'orange',
 
-  primaryGradient: { from: 'white', to: 'cyan', deg: 35 },
-  accentGradient: { from: 'yellow', to: 'orange', deg: 45 },
-  deleteGradient: { from: 'pink', to: 'red', deg: 45 },
+  primaryGradient: { from: 'cyan', to: 'dark', deg: 10 },
+  accentGradient: { from: 'orange', to: 'dark', deg: 10 },
+  deleteGradient: { from: 'red', to: 'dark', deg: 10 },
   darkGradient: { from: 'dark', to: 'cyan', deg: 35 },
   whiteGradient: { from: 'white', to: 'gray', deg: 25 },
 

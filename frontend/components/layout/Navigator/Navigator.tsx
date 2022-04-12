@@ -20,6 +20,7 @@ const Navigator: FC<Props> = () => {
           { navigatorRoutes.map(route => (
             <div key={ `nav-${route.path}` }>
               <Link
+                className={ styles.NavLink }
                 isButton
                 isDisabled={ route.isPrivate && !account?.address }
                 to={ String(route.path) }

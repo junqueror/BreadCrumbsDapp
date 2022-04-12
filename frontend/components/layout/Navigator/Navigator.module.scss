@@ -1,4 +1,11 @@
 @import "styles/variables.scss";
 
 .Navigator {
+  .NavLink {
+    span {
+      color: $reverse-color;
+      font-family: "Blessed Light";
+      text-transform: lowercase;
+    }
+  }
 }

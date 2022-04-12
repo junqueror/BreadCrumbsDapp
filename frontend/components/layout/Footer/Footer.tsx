@@ -18,10 +18,10 @@ const Footer: FC = () => (
         >
           <Space h="xl" />
           <Text
+            className={ styles.Title }
             gradient={ theme.primaryGradient }
             size="xl"
             variant="gradient"
-            weight={ 700 }
           >
             { section.title }
           </Text>

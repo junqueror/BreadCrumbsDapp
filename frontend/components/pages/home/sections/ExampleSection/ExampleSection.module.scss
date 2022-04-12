@@ -13,6 +13,11 @@
 
   .Title {
     text-align: center;
+
+    & > div {
+      font-family: "Blessed Light";
+      font-size: 28px;
+    }
   }
 
   .Description {
@@ -25,12 +30,36 @@
     text-align: center;
 
     & > div {
+      font-family: "Blessed Light";
       width: fit-content;
-      font-size: 24px;
+      font-size: 28px;
       display: inline;
     }
   }
 
-  .Crumb {
+  .CrumbContainer {
+    max-width: 100%;
+    position: relative;
+
+    .Crumb {
+      position: absolute;
+      display: block;
+      min-width: 740px;
+      top: 0px;
+      left: 50%;
+      transform: translate(-50%);
+
+      @include md {
+        transform: translate(-50%) scale(0.9);
+      }
+
+      @include sm {
+        transform: translate(-50%) scale(0.6);
+      }
+
+      @include xs {
+        transform: translate(-50%) scale(0.45);
+      }
+    }
   }
 }

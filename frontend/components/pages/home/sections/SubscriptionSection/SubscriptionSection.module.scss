@@ -2,7 +2,7 @@
 @import "styles/variables.scss";
 
 .SubscriptionSection {
-  padding: 0px 400px;
+  padding: 0px 200px;
 
   @include lg {
     padding: 0px 100px;
@@ -16,51 +16,194 @@
     padding: 0px 20px;
   }
 
-  .Border {
+  .Card {
     position: relative;
-    height: 3px;
-    border-radius: 50%;
-    width: 100%;
-    background-color: $reverse-color;
+    padding: 40px;
+    border-radius: 14px 100px 14px 100px;
+    border-bottom: 0.1rem solid $reverse-color;
+    box-shadow: 0 8px 12px -8px $primary-color,
+      inset 0px -4px 8px -8px $primary-color;
+    background: linear-gradient(24deg, #0f373f 15%, #040e10 58%);
 
-    &:after {
-      content: "";
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      width: 100%;
-      height: 0.5px;
+    @include sm {
+      padding: 40px 20px;
+    }
+
+    .Content {
+      width: 65%;
+      padding: 40px;
+      border-radius: 14px;
+
+      @include sm {
+        width: 100%;
+        padding: 20px;
+      }
+
+      .Title {
+        @include sectionTitle;
+        text-shadow: 0 0 5px $dark-color;
+      }
+
+      .Subtitle {
+        display: block;
+        font-size: 20px;
+        font-weight: 900;
+        text-align: left;
+        text-shadow: 0 0 5px $dark-color;
+
+        @include sm {
+          font-size: 16px;
+        }
+      }
+    }
+
+    .Border {
+      position: relative;
+      height: 3px;
       border-radius: 50%;
-      box-shadow: 0 0rem 1rem 0.5rem $primary-color;
-      z-index: -1;
-    }
-  }
+      width: 100%;
+      background-color: $reverse-color;
 
-  .Content {
-    padding: 40px 40px;
-    border-radius: 14px;
-    background-image: linear-gradient(
-      90deg,
-      #040e1000 100%,
-      red 20%,
-      #040e10cc 80%,
-      #040e1000 100%
-    );
-
-    .Title {
-      @include sectionTitle;
-      text-shadow: 0 0 5px $dark-color;
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 0.5px;
+        border-radius: 50%;
+        box-shadow: 0 0rem 1rem 0.5rem $primary-color;
+        z-index: -1;
+      }
     }
 
-    .Subtitle {
-      display: block;
-      font-size: 20px;
-      font-weight: 900;
-      text-align: left;
-      text-shadow: 0 0 5px $dark-color;
+    .CommunityShape {
+      position: absolute;
+      top: 50%;
+      right: 80px;
+      width: 200px;
+      height: 180px;
+      background: transparent;
+      text-align: center;
+      padding: 7%;
+      transform: translate(0, -85%);
 
-      @include xs {
-        font-size: 16px;
+      @include sm {
+        display: none;
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 30%;
+        height: 40%;
+        width: 40%;
+        background: #081c20;
+        border-radius: 50%;
+        border-top: 0.05rem solid white;
+        border-right: 0.05rem solid white;
+        box-shadow: 0 -0.05rem 0.02rem #fff, 0 -0.05rem 0.02rem #fff,
+          0.05rem -0.15rem 0.1rem white, inset 0 0.2rem 0.2rem -0.2rem white,
+          inset 0 2rem 1rem -2.25rem white;
+        z-index: 2;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 25%;
+        height: 70%;
+        width: 55%;
+        background: #081c20;
+        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        border-left: 0.1rem solid white;
+        border-right: 0.1rem solid white;
+        border-bottom: 0.1rem solid white;
+        box-shadow: 0 0.1rem 0.05rem #fff, 0 0.1rem 0.05rem #fff,
+          0 0.3rem 0.25rem 0 white, inset -0.2rem -0.2rem 0.2rem -0.2rem white,
+          inset -2rem -1.5rem 1.5rem -2.25rem white,
+          inset 0.2rem -0.2rem 0.2rem -0.2rem white,
+          inset 2rem -1.5rem 1rem -2.25rem white;
+        z-index: 1;
+      }
+
+      & > div:first-of-type {
+        position: absolute;
+        top: 25%;
+        right: 30%;
+        width: 90%;
+        height: 90%;
+        background: transparent;
+        text-align: center;
+        padding: 12px;
+        z-index: 3;
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 30%;
+          height: 40%;
+          width: 40%;
+          background: #081c20;
+          border-radius: 50%;
+          border-top: 0.05rem solid white;
+          border-right: 0.05rem solid white;
+          box-shadow: 0 -0.05rem 0.02rem #fff, 0 -0.05rem 0.02rem #fff,
+            0.05rem -0.15rem 0.1rem white, inset 0 0.2rem 0.2rem -0.2rem white,
+            inset 0 2rem 1rem -2.25rem white;
+          z-index: 2;
+        }
+        &:after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 25%;
+          height: 70%;
+          width: 55%;
+          background: #081c20;
+          border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+          border-left: 0.1rem solid white;
+          border-right: 0.1rem solid white;
+          border-bottom: 0.1rem solid white;
+          box-shadow: 0 0.1rem 0.05rem #fff, 0 0.1rem 0.05rem #fff,
+            0 0.3rem 0.25rem 0 white, inset -0.2rem -0.2rem 0.2rem -0.2rem white,
+            inset -2rem -1.5rem 1.5rem -2.25rem white,
+            inset 0.2rem -0.2rem 0.2rem -0.2rem white,
+            inset 2rem -1.5rem 1rem -2.25rem white;
+          z-index: 1;
+        }
+
+        & > div:first-of-type {
+          position: absolute;
+          top: 135%;
+          left: 7%;
+          height: 55%;
+          width: 75%;
+          background: #081c20;
+          border-radius: 0.5rem 0.5rem 1rem 1rem;
+          border-right: 0.1rem solid white;
+          border-bottom: 0.1rem solid white;
+          box-shadow: 0 0.1rem 0.05rem #fff, 0 0.1rem 0.05rem #fff,
+            0 0.3rem 0.25rem 0 white, inset -0.2rem -0.2rem 0.2rem -0.2rem white,
+            inset -2rem -1.5rem 1.5rem -2.25rem white,
+            inset 0.2rem -0.2rem 0.2rem -0.2rem white,
+            inset 2rem -1.5rem 1rem -2.25rem white;
+          z-index: 1;
+        }
+      }
+
+      & > div:last-of-type {
+        position: relative;
+        top: 25%;
+        left: 25%;
+        height: 80%;
+        width: 45%;
+        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        box-shadow: 0rem 0rem 4rem 0.6rem white;
+        z-index: 0;
+        transform: inherit;
       }
     }
   }

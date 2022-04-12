@@ -22,7 +22,7 @@ const ExampleSection: FC<Props> = ({ className, id }) => {
   const exampleSectionClassNames = classnames(styles.ExampleSection, className);
 
   return (
-    <div
+    <section
       className={ exampleSectionClassNames }
       id={ id }
     >
@@ -35,7 +35,7 @@ const ExampleSection: FC<Props> = ({ className, id }) => {
           { example.title }
         </Text>
       </div>
-      <div className={ styles.Title }>
+      <div className={ styles.Description }>
         <Text
           color="white"
           size="md"
@@ -45,9 +45,7 @@ const ExampleSection: FC<Props> = ({ className, id }) => {
       </div>
       <div className={ styles.Example }>
         <Text
-          gradient={ theme.primaryGradient }
           size="xl"
-          variant="gradient"
           weight={ 700 }
         >
           { example.exampleTitle[0] }
@@ -60,21 +58,21 @@ const ExampleSection: FC<Props> = ({ className, id }) => {
           { example.exampleTitle[1] }
         </Text>
         <Text
-          gradient={ theme.primaryGradient }
           size="xl"
-          variant="gradient"
           weight={ 700 }
         >
           { example.exampleTitle[2] }
         </Text>
       </div>
-      <Crumb
-        className={ styles.Crumb }
-        data={ example.crumb }
-        originDomain="picker-domain.com"
-        useAnimations
-      />
-    </div>
+      <div className={ styles.CrumbContainer }>
+        <Crumb
+          className={ styles.Crumb }
+          data={ example.crumb }
+          originDomain="picker-domain.com"
+          useAnimations
+        />
+      </div>
+    </section>
   );
 };
 

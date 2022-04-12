@@ -24,10 +24,10 @@ class CrumbsService {
     };
 
     constructor(
-      web3Provider: any = web3config.DEFAULT_PROVIDER,
+      web3: Web3 = new Web3(web3config.DEFAULT_PROVIDER, undefined, CrumbsService.web3Options),
       chainId: number = web3config.DEFAULT_CHAIN_ID,
     ) {
-      this.web3 = new Web3(web3Provider, undefined, CrumbsService.web3Options);
+      this.web3 = web3;
 
       const breadNetworkData = Bread.networks[chainId];
       const crumbsNetworkData = Crumbs.networks[chainId];

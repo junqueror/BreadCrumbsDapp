@@ -1,20 +1,77 @@
 @import "styles/variables.scss";
+@import "styles/mixins.scss";
 
 .Header {
   background: transparent;
+  padding: 0px 120px;
 
-  .Title {
-    color: $accent-color;
-    text-shadow: 0 0 1px $accent-color, 0 0 1px $accent-color,
-      0 0 1px $accent-color, 0 0 10px $accent-color, 0 0 1px $accent-color,
-      0 0 10px $accent-color, 0 0 1px $accent-color, 0 0 1px $accent-color;
+  @include lg {
+    padding: 0px 20px;
   }
 
-  .LoginButton {
-    background: transparent;
-    border-color: orange;
-    box-shadow: 0 0 0.1rem #fff, 0 0 0.1rem #fff, 0 0 0.2rem $accent-color,
-      0 0 0.2rem $accent-color, 0 0 0.2rem $accent-color,
-      inset 0 0 0.1rem $accent-color;
+  @include sm {
+    padding: 4px;
+  }
+
+  .Burger {
+    padding: 0px;
+    max-width: 20px;
+    margin: 0px;
+  }
+
+  .Title {
+    position: relative;
+
+    .Text {
+      width: fit-content;
+      color: $accent-color;
+      text-shadow: 0 0 1px $accent-color, 0 0 1px $accent-color,
+        0 0 1px $accent-color, 0 0 10px $accent-color, 0 0 1px $accent-color,
+        0 0 10px $accent-color, 0 0 1px $accent-color, 0 0 1px $accent-color;
+
+      &:first-of-type {
+        font-size: 24px;
+      }
+
+      &:last-of-type {
+        position: absolute;
+        bottom: -8px;
+        right: 0px;
+      }
+    }
+  }
+
+  .Buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    & > a,
+    button {
+      @include xs {
+        margin: auto;
+        height: 30px;
+        font-size: 12px;
+        padding: 0px 10px;
+      }
+
+      &.SubscriptionButton {
+        color: $dark-color;
+        background-color: $primary-color;
+        border-color: $primary-color;
+        box-shadow: 0 0 0.1rem $primary-color, 0 0 0.1rem $reverse-color,
+          0 0 0.2rem $primary-color, 0 0 0.2rem $primary-color,
+          0 0 0.2rem $primary-color, inset 0 0 0.1rem $primary-color;
+      }
+
+      &.LoginButton {
+        color: $accent-color;
+        background: transparent;
+        border-color: $accent-color;
+        box-shadow: 0 0 0.1rem $accent-color, 0 0 0.1rem $reverse-color,
+          0 0 0.2rem $accent-color, 0 0 0.2rem $accent-color,
+          0 0 0.2rem $accent-color, inset 0 0 0.1rem $accent-color;
+      }
+    }
   }
 }

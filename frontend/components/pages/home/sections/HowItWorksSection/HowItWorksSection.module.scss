@@ -8,7 +8,7 @@
   padding-top: 100%;
 
   @include md {
-    min-height: 2000px;
+    min-height: 1600px;
   }
 
   .HowItWorksCard {
@@ -103,7 +103,7 @@
     @include xs {
       width: 1600px;
       height: 1600px;
-      left: -250%;
+      left: -325%;
     }
   }
 }

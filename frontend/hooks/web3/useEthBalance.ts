@@ -13,6 +13,9 @@ const useEthBalance = (address?: string): number => {
     shouldFetch ? [address, 'EthBalance'] : null,
     getEthBalance,
   );
+
+  console.log('ETH', address, result);
+
   const ethBalance = fromWei(result.data || 0);
 
   return ethBalance;

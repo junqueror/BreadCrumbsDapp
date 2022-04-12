@@ -46,51 +46,52 @@ const SubscriptionSection: FC<Props> = ({ className, id }) => {
   const subscriptionSectionClassNames = classnames(styles.SubscriptionSection, className);
 
   return (
-    <div
+    <section
       className={ subscriptionSectionClassNames }
       id={ id }
     >
-      <div className={ styles.Content }>
-        <div className={ styles.Title }>
+      <div className={ styles.Card }>
+        <div className={ styles.Content }>
+          <div className={ styles.Title }>
+            <Text
+              color={ theme.mantine.primaryColor }
+              size="xl"
+            >
+              { subscription.title.slice(0, -8) }
+            </Text>
+            <Text
+              color={ theme.mantine.primaryColor }
+              size="xl"
+            >
+              { subscription.title.slice(-8) }
+            </Text>
+          </div>
           <Text
-            color={ theme.mantine.primaryColor }
+            align="center"
+            className={ styles.Subtitle }
+            color="white"
+            component="span"
             size="xl"
           >
-            { subscription.title.slice(0, -8) }
-          </Text>
-          <Text
-            color={ theme.mantine.primaryColor }
-            size="xl"
-          >
-            { subscription.title.slice(-8) }
+            { subscription.subtitle }
           </Text>
         </div>
-
-        <Text
-          align="center"
-          className={ styles.Subtitle }
-          color="white"
-          component="span"
-          size="xl"
-        >
-          { subscription.subtitle }
-        </Text>
+        <div className={ styles.Border } />
+        <div className={ styles.CommunityShape }>
+          <div />
+          <div />
+        </div>
+        <div className={ styles.Content }>
+          <EmailForm
+            buttonText={ subscription.form.button }
+            error={ error }
+            isLoading={ createClientLoading }
+            placeholder={ subscription.form.placeholder }
+            onSubmit={ createClientHandler }
+          />
+        </div>
       </div>
-      <div className={ styles.Border } />
-      <div className={ styles.Content }>
-        <EmailForm
-          buttonText={ subscription.form.button }
-          error={ error }
-          isLoading={ createClientLoading }
-          placeholder={ subscription.form.placeholder }
-          onSubmit={ createClientHandler }
-        />
-      </div>
-      <div className={ styles.CommunityShape }>
-        <div />
-        <div />
-      </div>
-    </div>
+    </section>
   );
 };
 

@@ -21,7 +21,7 @@ const RoadMapSection: FC<Props> = ({ className, id }) => {
   const roadMapClassNames = classnames(styles.RoadMapSection, className);
 
   return (
-    <div
+    <section
       className={ roadMapClassNames }
       id={ id }
     >
@@ -32,7 +32,7 @@ const RoadMapSection: FC<Props> = ({ className, id }) => {
           road={ road }
         />
       ))}
-    </div>
+    </section>
   );
 };
 

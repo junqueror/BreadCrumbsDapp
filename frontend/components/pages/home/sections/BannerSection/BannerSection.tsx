@@ -22,7 +22,7 @@ const BannerSection: FC<Props> = ({ className, id }) => {
   const bannerSectionClassNames = classnames(styles.BannerSection, className);
 
   return (
-    <div
+    <section
       className={ bannerSectionClassNames }
       id={ id }
     >
@@ -77,7 +77,7 @@ const BannerSection: FC<Props> = ({ className, id }) => {
         <div />
         <div />
       </div>
-    </div>
+    </section>
   );
 };
 

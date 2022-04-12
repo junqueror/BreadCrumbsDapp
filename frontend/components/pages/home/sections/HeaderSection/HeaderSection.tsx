@@ -3,6 +3,7 @@ import { Space, Text } from '@mantine/core';
 import { useIntersection } from '@mantine/hooks';
 import classnames from 'classnames';
 
+import { Link } from 'components/elements';
 import theme from 'config/theme';
 import { header } from 'content/home';
 
@@ -24,55 +25,59 @@ const HeaderSection: FC<Props> = ({ className, id }) => {
   const pathClassNames = classnames(styles.Path, { [styles.HiddenEffect]: !headerObserver?.isIntersecting });
 
   return (
-    <div
+    <section
       ref={ headerRef }
       className={ headerSectionClassNames }
       id={ id }
     >
       <div className={ styles.Content }>
-        <Text
-          align="center"
-          className={ styles.Title }
-          color={ theme.mantine.primaryColor }
-          component="span"
-          size="xl"
-          style={ { fontFamily: 'Blessed Light' } }
-        >
-          { header.title }
-        </Text>
+        { header.title.map(text => (
+          <Text
+            key={ `title-${text}` }
+            className={ styles.Title }
+            color={ theme.mantine.primaryColor }
+            component="span"
+            transform="uppercase"
+          >
+            { text }
+          </Text>
+        )) }
         <Space className={ styles.Space } h="xs" />
         <div className={ styles.Subtitle }>
           { header.subtitle.map(text => (
             <Text
               key={ `text-${text}` }
-              align="center"
-              color="white"
               component="span"
               size="xl"
-              style={ { fontFamily: 'Blessed Light' } }
             >
               { text }
             </Text>
           )) }
         </div>
+        <Text
+          align="center"
+          className={ styles.Description }
+          size="xl"
+        >
+          { header.description }
+        </Text>
+        <div className={ styles.Buttons }>
+          { header.buttons.map(button => (
+            <Link
+              key={ `button-${button.text}` }
+              className={ styles.Button }
+              color={ theme.mantine.primaryColor }
+              isButton
+              size="lg"
+              to={ button.href }
+              variant="outline"
+            >
+              { button.text }
+            </Link>
+          )) }
+        </div>
       </div>
-      { /*
-      <
-        className={ pathClassNames }
-        height="640"
-        preserveAspectRatio="none"
-        viewbox="0 0 100 100"
-        width="640"
-      >
-        <path
-          d="M34,10 Q80,10 30,30 T260,100"
-          fill="none"
-          stroke="white"
-          strokeWidth="1"
-        />
-      </svg>
-      */ }
-    </div>
+    </section>
   );
 };
 

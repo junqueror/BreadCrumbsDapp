@@ -1,8 +1,13 @@
-$accent-color: #ffa94d;
-$primary-color: #22b8cf;
+$primary-color: #00c9db;
+$accent-color: #ffa900;
 $dark-color: #020708;
 $reverse-color: #ffffff;
-$dimmed-color: #254950;
+$dimmed-color: #0e585f;
+
+$primary-background-color: #003035;
+$accent-background-color: #947100;
+$dark-background-color: #020708;
+$reverse-background-color: #bdd9dd;
 
 :export {
   primaryColor: $primary-color;

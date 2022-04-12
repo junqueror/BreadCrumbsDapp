@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useWeb3React } from '@web3-react/core';
 
-import { connector } from 'config/web3';
+import { injectedConector } from 'config/web3';
 
 interface Account {
   address?: string,
@@ -18,12 +18,13 @@ const useAccount = (): Account => {
     account, active, activate, deactivate, chainId, error,
   } = useWeb3React();
 
+  console.log('ACCOUNT', account, active);
+
   const address = account || undefined;
   const isLoading = false;
 
   const login = useCallback(async () => {
-    console.log('LOGIN');
-    if (connector) activate(connector);
+    activate(injectedConector);
   }, [activate]);
 
   const logout = useCallback(async () => {

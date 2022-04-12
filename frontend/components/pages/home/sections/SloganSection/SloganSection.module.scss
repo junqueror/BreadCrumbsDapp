@@ -1,0 +1,50 @@
+@import "styles/mixins.scss";
+@import "styles/variables.scss";
+
+.SloganSection {
+  padding: 0px 200px;
+
+  @include lg {
+    padding: 0px 40px;
+  }
+
+  @include sm {
+    padding: 0px 20px;
+  }
+
+  .SloganBox {
+    position: relative;
+    margin: 40px auto;
+    padding: 200px;
+
+    @include lg {
+      padding: 100px;
+    }
+
+    @include sm {
+      padding: 40px;
+    }
+
+    .Slogan {
+      font-family: "Blessed Light";
+      line-height: 1;
+      font-weight: 900;
+      font-size: 60px;
+      text-align: center;
+      text-shadow: 0 0 15px $dark-color;
+      color: $reverse-color;
+
+      @include sm {
+        font-size: 48px;
+      }
+
+      .Highlight {
+        color: $accent-color;
+      }
+
+      &:last-of-type .Highlight {
+        color: $primary-color;
+      }
+    }
+  }
+}

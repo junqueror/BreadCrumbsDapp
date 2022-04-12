@@ -16,27 +16,27 @@ const routes: {
   },
   market: {
     path: paths.market,
-    label: 'Market',
+    label: 'Meeting point',
   },
   baskets: {
     path: paths.baskets,
     label: 'Bakers',
-    isPrivate: true,
+    isPrivate: false,
   },
   basket: {
     path: paths.basket,
     label: 'Basket',
-    isPrivate: true,
+    isPrivate: false,
   },
   crumbs: {
     path: paths.crumbs,
     label: 'Pickers',
-    isPrivate: true,
+    isPrivate: false,
   },
   crumb: {
     path: paths.crumb,
     label: 'Crumbs',
-    isPrivate: true,
+    isPrivate: false,
   },
 };
 

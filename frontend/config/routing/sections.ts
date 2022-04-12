@@ -2,6 +2,8 @@ const sections = {
   home: {
     header: 'header',
     whatIs: 'what-is',
+    slogan: 'slogan',
+    benefits: 'benefits',
     banner: 'banner',
     example: 'example',
     howItWorks: 'how-it-works',

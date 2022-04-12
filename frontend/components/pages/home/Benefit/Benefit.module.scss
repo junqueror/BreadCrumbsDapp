@@ -1,0 +1,77 @@
+@import "styles/mixins.scss";
+@import "styles/variables.scss";
+
+.Benefit {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  transition: 0.6s ease-in-out transform, 0.6s ease-in-out box-shadow;
+
+  &:hover {
+    transform: translate3d(40px, -40px, 20px) !important;
+    box-shadow: -170px 170px 170px -60px $primary-color;
+  }
+
+  .Tile {
+    position: relative;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    box-shadow: -2px 2px 0 1px $reverse-color;
+
+    .Icon {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: transparent;
+      z-index: 1;
+      border-radius: inherit;
+
+      svg {
+        width: 40%;
+        height: 40%;
+      }
+    }
+
+    .Title {
+      position: absolute;
+      width: 300px;
+      height: 200px;
+      top: 0px;
+      left: -130px;
+      font-family: "Blessed Light";
+      font-size: 40px;
+      transform-style: preserve-3d;
+      transform: translate(-100px, 80px) rotateX(45deg) rotateY(-55deg)
+        rotateZ(90deg);
+      font-weight: bold;
+      text-shadow: 0 0 5px $dark-color;
+      text-align: center;
+      z-index: 2;
+
+      &.Second {
+        top: 0px;
+        left: -130px;
+        font-size: 48px;
+        transform: translate(-10px, 186px) rotateX(70deg) rotateY(-36deg)
+          rotateZ(10deg) rotateZ(48deg);
+      }
+    }
+  }
+
+  &.Upper {
+    .Title {
+      transform: translate(190px, 10px) rotateX(45deg) rotateY(-55deg)
+        rotateZ(90deg);
+
+      &.Second {
+        transform: translate(80px, -100px) rotateX(70deg) rotateY(-36deg)
+          rotateZ(10deg) rotateZ(48deg);
+      }
+    }
+  }
+}

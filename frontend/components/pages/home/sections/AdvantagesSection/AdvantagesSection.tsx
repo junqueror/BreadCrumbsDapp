@@ -2,11 +2,11 @@ import { FC } from 'react';
 import {
   List, ThemeIcon,
 } from '@mantine/core';
+import { useIntersection } from '@mantine/hooks';
 import { StarFilledIcon } from '@radix-ui/react-icons';
 import classnames from 'classnames';
 
 import HighlightText from 'components/elements/HighlightText';
-import theme from 'config/theme';
 import players, { Player } from 'content/home/players';
 
 import styles from './AdvantagesSection.module.scss';
@@ -21,14 +21,10 @@ const defaultProps = {
   id: undefined,
 };
 
-const ICON_GRADIENTS = [
-  theme.darkGradient,
-  theme.accentGradient,
-  theme.whiteGradient,
-];
-
 const AdvantagesSection: FC<Props> = ({ className, id }) => {
+  const [layoutRef, layoutObserver] = useIntersection({ rootMargin: '400px', threshold: 0.1 });
   const advantagesSectionClassNames = classnames(styles.AdvantagesSection, className);
+  const cardClassNames = classnames(styles.Card, { [styles.Visible]: layoutObserver?.isIntersecting });
 
   const getIcon = (player: Player, index: number) => {
     const Icon = (player?.icons?.length > index) ? player?.icons[index] : StarFilledIcon;
@@ -36,15 +32,16 @@ const AdvantagesSection: FC<Props> = ({ className, id }) => {
   };
 
   return (
-    <div
+    <section
       className={ advantagesSectionClassNames }
       id={ id }
     >
-      <div className={ styles.Layout }>
+      <div ref={ layoutRef } className={ styles.Layout }>
         { [players[2], players[0], players[1]]
-          .map((player: Player, playerIndex: number) => (
+          .map((player: Player) => (
             <div
               key={ `player-${player.title}` }
+              className={ cardClassNames }
             >
               <div
                 className={ styles.Content }
@@ -60,11 +57,9 @@ const AdvantagesSection: FC<Props> = ({ className, id }) => {
                     >
                       <ThemeIcon
                         className={ styles.Icon }
-                        color="white"
-                        gradient={ ICON_GRADIENTS[playerIndex] }
                         radius="xl"
-                        size={ 70 }
-                        variant="gradient"
+                        size="md"
+                        variant="light"
                       >
                         { getIcon(player, index) }
                       </ThemeIcon>
@@ -73,7 +68,7 @@ const AdvantagesSection: FC<Props> = ({ className, id }) => {
                         highlightWords={
                         (player?.highlights?.length > index) ? player?.highlights[index] : []
                       }
-                        size="xl"
+                        size="md"
                       >
                         { advantage }
                       </HighlightText>
@@ -84,7 +79,7 @@ const AdvantagesSection: FC<Props> = ({ className, id }) => {
             </div>
           )) }
       </div>
-    </div>
+    </section>
   );
 };
 

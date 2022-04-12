@@ -4,42 +4,7 @@ export type PartnerImage = {
 }
 
 const footer: PartnerImage[] = [
-  {
-    src: '/static/images/home/partners/DAO maker.svg',
-    alt: 'DAO Maker',
-  },
-  {
-    src: '/static/images/home/partners/DAO maker.svg',
-    alt: 'DAO Maker',
-  },
-  {
-    src: '/static/images/home/partners/DAO maker.svg',
-    alt: 'DAO Maker',
-  },
-  {
-    src: '/static/images/home/partners/DAO maker.svg',
-    alt: 'DAO Maker',
-  },
-  {
-    src: '/static/images/home/partners/DAO maker.svg',
-    alt: 'DAO Maker',
-  },
-  {
-    src: '/static/images/home/partners/DAO maker.svg',
-    alt: 'DAO Maker',
-  },
-  {
-    src: '/static/images/home/partners/DAO maker.svg',
-    alt: 'DAO Maker',
-  },
-  {
-    src: '/static/images/home/partners/DAO maker.svg',
-    alt: 'DAO Maker',
-  },
-  {
-    src: '/static/images/home/partners/DAO maker.svg',
-    alt: 'DAO Maker',
-  },
+
 ];
 
 export default footer;

@@ -14,9 +14,9 @@ export type Player = {
   title: string,
   subtitle: string,
   className: string,
-  advantages?: string[],
-  highlights?: string[][],
-  icons?: any[],
+  advantages: string[],
+  highlights: string[][],
+  icons: any[],
   buttonText?: string,
   buttonLink?: string,
 }

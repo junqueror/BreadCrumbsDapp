@@ -21,7 +21,7 @@ const HowItWorksSection: FC<Props> = ({ className, id }) => {
   const howItWorksClassnames = classnames(styles.HowItWorksSection, className);
 
   return (
-    <div
+    <section
       className={ howItWorksClassnames }
       id={ id }
     >
@@ -33,7 +33,7 @@ const HowItWorksSection: FC<Props> = ({ className, id }) => {
         />
       ))}
       <div className={ styles.Circle } />
-    </div>
+    </section>
   );
 };
 

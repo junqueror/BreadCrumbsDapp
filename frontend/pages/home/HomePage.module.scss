@@ -2,15 +2,16 @@
 @import "styles/variables.scss";
 
 .HomePage {
-  > span {
-    z-index: -10;
+  overflow: hidden;
+
+  & > span {
     pointer-events: none;
 
     .BackgroundImage {
       position: fixed !important;
       z-index: -10;
       pointer-events: none;
-      filter: contrast(1.1);
+      filter: contrast(1.1) hue-rotate(15deg);
     }
   }
 
@@ -18,19 +19,32 @@
   }
 
   .BannerSection,
-  .WhatIsSection,
   .AdvantagesSection,
   .PlayersSection,
   .SubscriptionSection {
     margin: 400px auto;
+    max-width: 100%;
+  }
+
+  .SloganSection,
+  .WhatIsSection,
+  .BenefitsSection {
+    margin: 200px auto;
+    max-width: 100%;
   }
 
   .ExampleSection {
     margin: 400px auto 0px auto;
+    max-width: 100%;
   }
 
   .HowItWorksSection {
-    margin: 0px auto 400px auto;
+    margin: 200px auto 400px auto;
+    max-width: 100%;
+
+    @include sm {
+      margin: 0px auto 200px auto;
+    }
   }
 
   .RoadMapSection {
@@ -53,12 +67,10 @@
     border: 0;
     border-color: rgba(1, 9, 10, 0.9);
     flex-direction: row-reverse;
-    transform: translateY(200px);
     opacity: 0;
-    transition: all 1.5s ease-in-out;
+    transition: opacity 2s ease-in-out;
 
     &.PartnersEffect {
-      transform: translateY(0px);
       opacity: 1;
     }
   }

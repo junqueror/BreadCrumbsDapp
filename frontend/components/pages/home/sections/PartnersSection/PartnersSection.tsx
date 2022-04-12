@@ -21,7 +21,7 @@ const PartnersSection: FC<Props> = ({ className, id }) => {
   const partnersClassnames = classnames(styles.PartnersSection, className);
 
   return (
-    <div
+    <section
       className={ partnersClassnames }
       id={ id }
     >
@@ -44,7 +44,7 @@ const PartnersSection: FC<Props> = ({ className, id }) => {
           />
         ))}
       </Slider>
-    </div>
+    </section>
   );
 };
 

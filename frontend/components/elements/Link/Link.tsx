@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { ElementType, FC, MouseEventHandler, ReactNode } from 'react';
 import NextLink from 'next/link';
 import { Button, ButtonProps } from '@mantine/core';
@@ -64,7 +65,6 @@ const Link: FC<Props> = ({
       <NextLink
         href={ href }
         passHref
-        prefetch={ isOnPageLink }
         target={ target }
         title={ linkTitle }
       >
@@ -88,7 +88,6 @@ const Link: FC<Props> = ({
     <NextLink
       href={ href }
       passHref
-      prefetch={ isOnPageLink }
       target={ target }
       title={ linkTitle }
     >

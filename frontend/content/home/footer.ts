@@ -1,4 +1,4 @@
-import { sections } from 'config/routing';
+import { paths, sections } from 'config/routing';
 
 export type FooterLink = {
   label: string,
@@ -13,8 +13,12 @@ export type FooterSection = {
 
 const footer: FooterSection[] = [
   {
-    title: 'Project',
+    title: 'the project',
     links: [
+      {
+        label: 'What is',
+        to: `#${sections.home.whatIs}`,
+      },
       {
         label: 'How It Works',
         to: `#${sections.home.example}`,
@@ -27,11 +31,13 @@ const footer: FooterSection[] = [
         label: 'Partners',
         to: `#${sections.home.partners}`,
       },
+      /*
       {
         label: 'FAQs',
         to: `#${sections.home.faqs}`,
         isDisabled: true,
       },
+      */
       {
         label: 'Whitepaper',
         to: '/whitepaper',
@@ -40,7 +46,7 @@ const footer: FooterSection[] = [
     ],
   },
   {
-    title: 'Community',
+    title: 'the community',
     links: [
       {
         label: 'Contact',
@@ -60,8 +66,13 @@ const footer: FooterSection[] = [
     ],
   },
   {
-    title: 'Market',
+    title: 'In the market',
     links: [
+      {
+        label: 'BreadCrumbs ISO',
+        to: paths.market,
+        isDisabled: false,
+      },
       {
         label: 'CoinMarketCap',
         to: 'https://coinmarketcap.com/',
@@ -75,7 +86,7 @@ const footer: FooterSection[] = [
     ],
   },
   {
-    title: 'BREAD token',
+    title: 'the BREAD token',
     links: [
       {
         label: 'Binance',

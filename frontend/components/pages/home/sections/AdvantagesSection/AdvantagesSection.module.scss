@@ -2,93 +2,86 @@
 @import "styles/variables.scss";
 
 .AdvantagesSection {
-  overflow-x: hidden;
-  min-height: calc(100vh + 100px);
   max-width: 100%;
+  padding: 20px 200px;
+
+  @include lg {
+    padding: 20px 100px;
+  }
+
+  @include sm {
+    padding: 20px;
+  }
 
   .Layout {
-    width: 120%;
+    width: 100%;
     max-height: calc(100% - 100px);
-    margin-left: -10%;
     display: flex;
+    gap: 20px;
     flex-wrap: wrap;
 
-    @include md {
-      width: 100%;
-      margin-left: 0%;
+    @include sm {
+      min-width: 100%;
     }
 
-    & > div {
-      min-height: 100vh;
-      transform: skew(-10deg);
+    & > .Card {
       z-index: 1;
-      flex: 1;
+      flex: 1 0 calc(33% - 40px);
       display: flex;
       align-items: center;
       justify-items: center;
-      padding: 400px 80px;
-
-      @include md {
-        padding: 200px 80px;
-        transform: skew(0deg);
-      }
-
-      &:first-of-type {
-        padding-left: 180px;
-
-        @include md {
-          padding-left: 80px;
-        }
-      }
-
-      &:last-of-type {
-        padding-right: 180px;
-
-        @include md {
-          padding-right: 80px;
-        }
-      }
+      padding: 40px;
+      border-radius: 3px 2px 14px 14px;
+      border-top: 3px solid transparent;
 
       &:first-child {
-        background: linear-gradient(
-          5deg,
-          #2c2e3300 5%,
-          #2c2e33cc 35%,
-          #2c2e33cc 65%,
-          #2c2e3300 95%
-        );
+        background-color: #{$dark-background-color}FF;
+        border-color: $reverse-color;
+        box-shadow: 0 -4px 6px -4px $reverse-color,
+          inset 0px 2px 4px -4px $reverse-color;
+        @include scrollVisible(".Visible", 0s, 1.5s, 200px);
+
+        span {
+          color: $dimmed-color;
+        }
 
         .Highlight {
-          color: $primary-color;
+          color: $reverse-color;
+        }
+        .Icon {
+          color: $reverse-color;
         }
       }
 
       &:nth-of-type(2) {
-        position: relative;
-        background: linear-gradient(
-          5deg,
-          #081c2000 5%,
-          #081c20cc 35%,
-          #081c20cc 65%,
-          #081c2000 95%
-        );
+        background-color: #{$dark-background-color}FF;
+        border-color: $primary-color;
+        box-shadow: 0 -4px 6px -4px $primary-color,
+          inset 0px 2px 4px -4px $primary-color;
+        @include scrollVisible(".Visible", 0.25s, 1.5s, 200px);
 
         .Highlight {
-          color: $accent-color;
+          color: $primary-color;
+        }
+        .Icon {
+          color: $reverse-color;
+          background-color: $primary-color;
         }
       }
 
       &:last-child {
-        background: linear-gradient(
-          5deg,
-          #f08c0000 5%,
-          #f08c0077 35%,
-          #f08c0077 65%,
-          #f08c0000 95%
-        );
+        background-color: #{$dark-background-color}FF;
+        border-color: $accent-color;
+        box-shadow: 0 -4px 6px -4px $accent-color,
+          inset 0px 2px 4px -4px $accent-color;
+        @include scrollVisible(".Visible", 0.5s, 1.5s, 200px);
 
         .Highlight {
+          color: $accent-color;
+        }
+        .Icon {
           color: $reverse-color;
+          background-color: $accent-color;
         }
       }
 
@@ -97,25 +90,23 @@
       }
 
       .Content {
-        transform: skew(10deg);
-
         @include md {
-          transform: skew(0deg);
         }
 
         ul {
           list-style-type: none;
 
-          li {
-            text-align: center;
+          li > div > span {
+            text-align: left;
+            display: flex;
+            flex-direction: row;
 
             .Icon {
-              margin: 40px auto 20px auto;
+              margin-right: 10px;
+            }
 
-              svg {
-                width: 30px;
-                height: 30px;
-              }
+            div:not(.Icon) {
+              flex: 1;
             }
           }
         }

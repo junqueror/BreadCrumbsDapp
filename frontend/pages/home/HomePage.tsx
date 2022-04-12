@@ -32,9 +32,17 @@ const HomePage: NextPage = () => {
         className={ styles.HeaderSection }
         id={ sections.home.header }
       />
+      <Sections.SloganSection
+        className={ styles.SloganSection }
+        id={ sections.home.slogan }
+      />
       <Sections.WhatIsSection
         className={ styles.WhatIsSection }
         id={ sections.home.whatIs }
+      />
+      <Sections.BenefitsSection
+        className={ styles.BenefitsSection }
+        id={ sections.home.benefits }
       />
       <Sections.BannerSection
         className={ styles.BannerSection }
@@ -48,6 +56,10 @@ const HomePage: NextPage = () => {
         className={ styles.HowItWorksSection }
         id={ sections.home.howItWorks }
       />
+      <Sections.SubscriptionSection
+        className={ styles.SubscriptionSection }
+        id={ sections.home.subscription }
+      />
       <Sections.AdvantagesSection
         className={ styles.AdvantagesSection }
         id={ sections.home.header }
@@ -55,10 +67,6 @@ const HomePage: NextPage = () => {
       <Sections.PlayersSection
         className={ styles.PlayersSection }
         id={ sections.home.players }
-      />
-      <Sections.SubscriptionSection
-        className={ styles.SubscriptionSection }
-        id={ sections.home.subscription }
       />
       <div ref={ roadMapRef }>
         <Sections.RoadMapSection

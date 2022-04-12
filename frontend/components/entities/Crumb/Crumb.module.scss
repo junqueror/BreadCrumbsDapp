@@ -3,6 +3,7 @@
 
 .Crumb {
   .UserTravelChart {
+    min-width: inherit;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,6 +46,7 @@
   }
 
   .Payments {
+    min-width: inherit;
     width: calc(100% - 24px);
     margin: 0 auto;
 
