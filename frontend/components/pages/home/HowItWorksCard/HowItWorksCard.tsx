@@ -20,9 +20,9 @@ const defaultProps = {
 };
 
 const GRADIENT_TO_COLOR = {
-  [theme.primaryGradient.from]: 'cyan',
-  [theme.accentGradient.from]: 'orange',
-  [theme.whiteGradient.from]: 'cyan',
+  [theme.primaryGradient.from]: theme.mantine.primaryColor,
+  [theme.accentGradient.from]: theme.accentColor,
+  [theme.whiteGradient.from]: theme.mantine.primaryColor,
 };
 
 const GRADIENT_TO_BUTTON_CLASSNAME = {
@@ -52,6 +52,7 @@ const HowItWorksCard: FC<Props> = ({ className, info }) => {
         </Text>
       </div>
       <Text
+        className={ styles.Subtitle }
         color="dimmed"
         weight={ 700 }
       >

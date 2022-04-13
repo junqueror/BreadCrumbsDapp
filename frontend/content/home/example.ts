@@ -13,7 +13,7 @@ const currentDate = new Date();
 
 const example: Example = {
   title: 'How It Works',
-  description: 'The BreadCrumbs network is the first blockchain service that creates a market and a decentralized economy to provide affiliation/referal programs without limits',
+  description: 'The BreadCrumbs network is the first blockchain service that creates a meetingPoint and a decentralized economy to provide affiliation/referal programs without limits',
   exampleTitle: [
     '1 new user',
     ' = ',

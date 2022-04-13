@@ -28,7 +28,7 @@ const roadMap: RoadMap = {
           features: [
             'User tracking system (crumbs creation)',
             'Pickers dashboard: Crumbs checking',
-            'Market: Baskets listing',
+            'Meeting Point: Baskets listing',
             'Crumb rewards system',
             'Affiliation to web domains',
           ],
@@ -40,7 +40,7 @@ const roadMap: RoadMap = {
             'Security improvements',
             'Payments receipt assuarance',
             'Penalties for bakers or baskets with non-payments',
-            'Market update: Baskets filtering and comparison info/stats',
+            'Meeting Point update: Baskets filtering and comparison info/stats',
           ],
         },
         {

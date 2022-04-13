@@ -17,7 +17,7 @@ const header: Header = {
   description: 'Breadcrumbs is a new affiliate/referral marketing service that tracks user events and actions on the blockchain. We provide a marketplace for brands and publishers where they can directly negotiate their collaboration. You can check out the meeting point or subscribe to learn about new campaigns.',
   buttons: [{
     text: 'Go to the meeting point',
-    href: paths.market,
+    href: paths.meetingPoint,
   },
   {
     text: 'Subscribe to new campaigns',

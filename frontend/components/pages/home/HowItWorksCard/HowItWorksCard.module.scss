@@ -1,5 +1,5 @@
 @import "styles/mixins.scss";
-@import "styles/variables.scss";
+@import "styles/theme.scss";
 
 .HowItWorksCard {
   position: relative;
@@ -11,6 +11,10 @@
   .Title {
     @include sectionTitle;
     margin-bottom: 4px;
+  }
+
+  .Subtitle {
+    color: $dimmed-color;
   }
 
   .Step {

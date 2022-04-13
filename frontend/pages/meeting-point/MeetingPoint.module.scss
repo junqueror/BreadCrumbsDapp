@@ -1,0 +1,10 @@
+@import "styles/mixins.scss";
+@import "styles/theme.scss";
+
+.MeetingPoint {
+  @include page;
+
+  .BasketsSection {
+    margin-top: 40px;
+  }
+}

@@ -2,7 +2,7 @@ import { BasketType } from 'types';
 
 const paths = {
   home: '/',
-  market: '/market',
+  meetingPoint: '/meeting-point',
   baskets: '/baskets',
   basket: (basket: BasketType) => `/baskets/${basket.domain}`,
   crumbs: '/crumbs',

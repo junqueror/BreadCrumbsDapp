@@ -1,6 +1,6 @@
 const site = {
   NAME: 'Bread Crumbs',
-  DOMAIN: 'breadcrumbs.com',
+  DOMAIN: 'breadcrumbs.tech',
   BASE_URL: 'http://localhost:3000',
 };
 

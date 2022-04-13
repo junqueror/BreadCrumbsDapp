@@ -21,6 +21,7 @@ const WEB3 = {
     1: 'Ethereum',
     [GANACHE_CHAIN_ID]: 'Ganache Local',
   },
+  BREADCRUMBS_TOKEN_NAME: 'BREAD',
 };
 
 const injectedConector = new InjectedConnector({

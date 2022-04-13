@@ -37,13 +37,6 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
                   <link
                     as="font"
                     crossOrigin=""
-                    href="/static/fonts/Anurati/Anurati-Regular.otf"
-                    rel="preload"
-                    type="font/otf"
-                  />
-                  <link
-                    as="font"
-                    crossOrigin=""
                     href="/static/fonts/Blessed/Blessed-Light.ttf"
                     rel="preload"
                     type="font/ttf"

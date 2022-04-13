@@ -120,12 +120,7 @@ const Header: FC<Props> = ({ isBurgerOpened, onBurgerClick }: Props) => {
             to={ `#${sections.home.subscription}` }
             variant="outline"
           >
-            { isLogged
-              ? (
-                <MediaQuery smallerThan="sm" styles={ { display: 'none' } }>
-                  <Address>{account?.address}</Address>
-                </MediaQuery>
-              ) : 'Subscribe'}
+            Subscribe
           </Link>
           <Button
             className={ styles.LoginButton }

@@ -14,6 +14,7 @@ import Payment from '../Payment';
 
 import styles from './Crumb.module.scss';
 import { paths } from 'config/routing';
+import theme from 'config/theme';
 
 type Props = {
   data: CrumbType,
@@ -42,7 +43,7 @@ const Crumb: FC<Props> = ({ data: crumb, originDomain, className, useAnimations 
   });
   const { account } = useAccountContext();
 
-  const crumbLink = useAnimations ? paths.market : config.routing.paths.crumb(crumb?.domain, account?.address);
+  const crumbLink = useAnimations ? paths.meetingPoint : config.routing.paths.crumb(crumb?.domain, account?.address);
 
   return (
     <Link
@@ -66,7 +67,7 @@ const Crumb: FC<Props> = ({ data: crumb, originDomain, className, useAnimations 
           color={ config.theme.mantine.primaryColor }
           label={ (
             <Group align="center" spacing="xs">
-              <Avatar color="cyan" radius="xl" />
+              <Avatar color={ theme.mantine.primaryColor } radius="xl" />
               <Group align="center" direction="column" spacing={ 0 }>
                 <Group spacing="xs">
                   <Text size="xs">User ID: </Text>

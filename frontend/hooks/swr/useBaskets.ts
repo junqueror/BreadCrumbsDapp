@@ -49,6 +49,7 @@ const useBaskets = (suspense = false): SWRResponse & {
         price: fromWei(basket.price),
         image: site?.image,
         title: site?.title || basket.domain,
+        description: site?.description,
       });
     });
   }

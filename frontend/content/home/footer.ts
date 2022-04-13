@@ -66,11 +66,11 @@ const footer: FooterSection[] = [
     ],
   },
   {
-    title: 'In the market',
+    title: 'the meeting point',
     links: [
       {
         label: 'BreadCrumbs ISO',
-        to: paths.market,
+        to: paths.meetingPoint,
         isDisabled: false,
       },
       {

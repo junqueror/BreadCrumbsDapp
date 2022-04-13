@@ -42,7 +42,7 @@ const players: Player[] = [
       BarChartIcon,
     ],
     buttonText: 'Earn BREAD token by sharing links',
-    buttonLink: paths.market,
+    buttonLink: paths.meetingPoint,
   },
   {
     title: 'bakers',
@@ -86,7 +86,7 @@ const players: Player[] = [
       PieChartIcon,
     ],
     buttonText: 'Check BradCrumbs ISO',
-    buttonLink: paths.market,
+    buttonLink: paths.meetingPoint,
   },
 ];
 

@@ -9,7 +9,7 @@ import styles from './Footer.module.scss';
 
 const Footer: FC = () => (
   <footer className={ styles.Footer }>
-    <Grid gutter="xl" justify="center">
+    <Grid gutter="xl" justify="space-between">
       { footerData.map(section => (
         <Grid.Col
           key={ `section-${section.title}` }

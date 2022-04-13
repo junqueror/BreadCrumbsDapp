@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import parse from 'html-metadata-parser';
+import parse, { Metadata } from 'html-metadata-parser';
 
 import { api } from 'config/routing';
 import { domainToUrl } from 'utils/string';
@@ -20,9 +20,10 @@ export const path = api.basket;
 export const manyPath = api.basket('sites'); // Only used as SWR key
 
 export const getSiteData = async (domain:string): Promise<SiteType> => {
-  let website = {
+  let website: Metadata = {
     meta: {},
     og: {},
+    images: [],
   };
 
   try {
@@ -34,8 +35,8 @@ export const getSiteData = async (domain:string): Promise<SiteType> => {
   let image = website?.og?.image?.startsWith('/') ? `${domainToUrl(domain)}${website.og?.image}` : website.og?.image;
   if (!image) image = website.meta?.image;
   if (!image) {
-    image = (website?.images?.find(({ src }: { src:string}) => ['.jpg', '.jpeg', '.png']
-      .some(ext => src.endsWith(ext))) || {}).src;
+    image = (website?.images?.find(src => ['.jpg', '.jpeg', '.png']
+      .some(ext => src.endsWith(ext))));
   }
 
   const site: SiteType = {
@@ -43,7 +44,7 @@ export const getSiteData = async (domain:string): Promise<SiteType> => {
     title: domain,
     ...website.meta,
     ...website.og,
-    image: image || null,
+    image: image || undefined,
   };
 
   return site;

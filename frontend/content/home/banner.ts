@@ -22,7 +22,7 @@ const banner: Banner = {
   },
   accentButton: {
     text: 'Get my sharing link',
-    to: paths.market,
+    to: paths.meetingPoint,
   },
 };
 

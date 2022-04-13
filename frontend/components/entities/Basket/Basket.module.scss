@@ -1,32 +1,115 @@
 @import "styles/mixins.scss";
-@import "styles/variables.scss";
+@import "styles/theme.scss";
 
 .Basket {
   height: 100%;
 
   & > div {
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     /*
     box-shadow: 0 0 0.1rem #fff, 0 0 0.1rem #fff, 0 0 1rem $primary-color,
       0 0 1.4rem $primary-color, 0 0 1.4rem $primary-color,
       inset 0 0 1rem $primary-color;
-      */
 
     border-bottom: 0.1rem solid white;
     box-shadow: 0 1rem 3rem -1.5rem $primary-color,
       inset 0px -3rem 2rem -3rem $primary-color;
     background: linear-gradient(24deg, #0f373f 15%, #040e10 58%);
-  }
+          */
 
-  .Title {
-    @include ellipsis;
-  }
+    .Image img {
+      max-height: 200px;
+    }
 
-  span {
-    @include ellipsis;
-  }
+    .Title {
+      @include ellipsis;
+    }
 
-  .LinkButton {
+    .Description {
+      @include ellipsisOnRows(3);
+      font-size: 14px;
+    }
+
+    .Badges {
+    }
+
+    .DataTable {
+      tr {
+        & > td:first-of-type {
+          text-align: left;
+          min-width: 100px;
+        }
+        & > td:last-of-type {
+          color: $primary-color;
+          text-align: right;
+          font-size: 14px;
+          overflow-wrap: anywhere;
+        }
+      }
+    }
+
+    span {
+      @include ellipsis;
+    }
+
+    .Kpis {
+      padding: 20px 0px;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      gap: 0px;
+
+      .Kpi {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 0;
+
+        &:last-of-type {
+          flex: 1;
+        }
+
+        .Label {
+          text-align: center;
+          font-size: 12px;
+        }
+
+        .RingProgress {
+          margin: 0px auto;
+        }
+
+        .Price {
+          flex: 1;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+
+          .Value {
+            font-size: 28px;
+            font-weight: 900;
+            color: $primary-color;
+            margin-right: 4px;
+          }
+          .Currency {
+            font-size: 12px;
+            font-weight: 900;
+            color: $primary-color;
+            margin-bottom: -12px;
+
+            &.WithBadge {
+              margin-bottom: -4px;
+            }
+          }
+        }
+      }
+    }
+
+    .LinkButton {
+    }
   }
 }

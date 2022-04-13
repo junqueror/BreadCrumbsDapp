@@ -14,8 +14,6 @@ const useEthBalance = (address?: string): number => {
     getEthBalance,
   );
 
-  console.log('ETH', address, result);
-
   const ethBalance = fromWei(result.data || 0);
 
   return ethBalance;

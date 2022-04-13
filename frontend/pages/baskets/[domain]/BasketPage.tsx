@@ -142,18 +142,18 @@ const BasketPage: NextPage = () => {
                   <Text size="sm">Domain</Text>
                   <Link isBlank to={ `https://${domain}` }>
                     <Group>
-                      <Text color="cyan" size="xl">{ basket?.domain }</Text>
+                      <Text color={ theme.mantine.primaryColor } size="xl">{ basket?.domain }</Text>
                       <ExternalLinkIcon />
                     </Group>
                   </Link>
                   <Space h="xl" />
                   <Text size="sm">Amount</Text>
                   <Text color="dimmed" size="xs">Total BREAD amount that can be spent on this referal campaign</Text>
-                  <Text color="cyan" size="xl">{ basket?.amount }</Text>
+                  <Text color={ theme.mantine.primaryColor } size="xl">{ basket?.amount }</Text>
                   <Space h="xl" />
                   <Text size="sm">Price</Text>
                   <Text color="dimmed" size="xs">BREAD units payed per crumb created to publishers</Text>
-                  <Text color="cyan" size="xl">{ basket?.price }</Text>
+                  <Text color={ theme.mantine.primaryColor } size="xl">{ basket?.price }</Text>
                   <Space h="sm" />
                   <Grid align="center" justify="space-between" mt="md">
                     <Grid.Col grow>

@@ -18,8 +18,6 @@ const useAccount = (): Account => {
     account, active, activate, deactivate, chainId, error,
   } = useWeb3React();
 
-  console.log('ACCOUNT', account, active);
-
   const address = account || undefined;
   const isLoading = false;
 

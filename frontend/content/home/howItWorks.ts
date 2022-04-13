@@ -49,7 +49,7 @@ const howItWorks: HowItWorksCardInfo[] = [
     steps: [
       {
         step: 3,
-        text: 'Pickers go to the market and create a crumb link to basket domain',
+        text: 'Pickers go to the meetingPoint and create a crumb link to basket domain',
       },
       {
         step: 4,
@@ -57,8 +57,8 @@ const howItWorks: HowItWorksCardInfo[] = [
       },
     ],
     linkButton: {
-      label: 'Go to market',
-      to: paths.market,
+      label: 'Go to meetingPoint',
+      to: paths.meetingPoint,
     },
   },
   {

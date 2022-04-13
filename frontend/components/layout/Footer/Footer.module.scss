@@ -1,5 +1,5 @@
 @import "styles/mixins.scss";
-@import "styles/variables.scss";
+@import "styles/theme.scss";
 
 .Footer {
   position: relative;
@@ -11,20 +11,18 @@
   border-top: 0.1rem solid $reverse-color;
   box-shadow: 0 -8px 14px -10px $primary-color,
     inset 0px 8px 8px -8px $primary-color;
-  padding: 100px;
+  padding: 140px;
   margin-top: 40px;
 
   @include md {
-    padding: 80px 20px;
+    padding: 80px 40px;
   }
 
   @include xs {
-    padding: 40px 0px;
+    padding: 40px 20px;
   }
 
   & > div {
-    padding: 20px;
-
     .Title {
       text-align: center;
       font-weight: 700;

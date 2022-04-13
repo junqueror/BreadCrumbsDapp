@@ -3,6 +3,14 @@ module.exports = {
       browser: true,
       es6: true,
     },
+    plugins: [
+      'babel',
+      'standard',
+      'prettier',
+      'react',
+      'simple-import-sort',
+      'import'
+    ],
     extends: [
       'standard', 
       'prettier/standard', 
@@ -32,14 +40,6 @@ module.exports = {
       ecmaVersion: 2018,
       sourceType: 'module',
     },
-    plugins: [
-      'babel',
-      'standard',
-      'prettier',
-      'react',
-      'simple-import-sort',
-      'import'
-    ],
     rules: {
       'no-underscore-dangle': 0,
       "no-unused-vars": [2, { "argsIgnorePattern": "^_" }],

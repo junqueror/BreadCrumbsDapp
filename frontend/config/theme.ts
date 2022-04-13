@@ -3,6 +3,8 @@ import { MantineGradient, MantineThemeOverride } from '@mantine/core';
 const theme: {
     mantine: MantineThemeOverride,
     accentColor: string,
+    errorColor: string,
+    warningColor: string,
     primaryGradient: MantineGradient,
     accentGradient: MantineGradient,
     deleteGradient: MantineGradient,
@@ -38,6 +40,18 @@ const theme: {
         '#0C8599',
         '#0B7285',
       ],
+      teal: [
+        '#E6FCF5',
+        '#C3FAE8',
+        '#96F2D7',
+        '#63E6BE',
+        '#38D9A9',
+        '#20C997',
+        '#12B886',
+        '#0CA678',
+        '#099268',
+        '#087F5B',
+      ],
       dark: [
         '#ffffff',
         '#395A60',
@@ -51,7 +65,7 @@ const theme: {
         '#000000',
       ],
     },
-    primaryColor: 'cyan',
+    primaryColor: 'teal',
     loader: 'bars',
     breakpoints: {
       xs: 500,
@@ -61,17 +75,19 @@ const theme: {
       xl: 1400,
     },
     fontFamily: 'Verdana, sans-serif',
-    fontFamilyMonospace: 'Blessed Light, monospace',
+    fontFamilyMonospace: 'monospace',
     headings: { fontFamily: 'Blessed Light, monospace' },
   },
 
   // Extended
   accentColor: 'orange',
+  errorColor: 'red',
+  warningColor: 'red',
 
-  primaryGradient: { from: 'cyan', to: 'dark', deg: 10 },
+  primaryGradient: { from: 'teal', to: 'dark', deg: 10 },
   accentGradient: { from: 'orange', to: 'dark', deg: 10 },
   deleteGradient: { from: 'red', to: 'dark', deg: 10 },
-  darkGradient: { from: 'dark', to: 'cyan', deg: 35 },
+  darkGradient: { from: 'dark', to: 'teal', deg: 35 },
   whiteGradient: { from: 'white', to: 'gray', deg: 25 },
 
   transitionDuration: 700,

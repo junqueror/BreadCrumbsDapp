@@ -4,7 +4,7 @@ import paths from './paths';
 
 const routes: {
     home: RouteType,
-    market: RouteType,
+    meetingPoint: RouteType,
     baskets: RouteType,
     basket: RouteType,
     crumbs: RouteType,
@@ -14,8 +14,8 @@ const routes: {
     path: paths.home,
     label: 'Home',
   },
-  market: {
-    path: paths.market,
+  meetingPoint: {
+    path: paths.meetingPoint,
     label: 'Meeting point',
   },
   baskets: {
@@ -41,7 +41,7 @@ const routes: {
 };
 
 const navigatorRoutes = [
-  routes.market,
+  routes.meetingPoint,
   routes.baskets,
   routes.crumbs,
 ];

@@ -6,6 +6,7 @@ import {
   Timeline,
 } from '@mantine/core';
 
+import theme from 'config/theme';
 import { useScreenSize } from 'hooks';
 
 type Props = {
@@ -46,7 +47,7 @@ const TimeLineGroup: FC<Props> = ({
       <Timeline
         active={ data.length }
         bulletSize={ 24 }
-        color="cyan"
+        color={ theme.mantine.primaryColor }
         lineWidth={ 2 }
         reverseActive
       >
