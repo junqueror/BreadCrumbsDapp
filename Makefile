@@ -59,13 +59,15 @@ docker-pull:
 	docker-compose -f ./deploy/docker/${ENV}/docker-compose.yml pull
 
 
+# Google Cloud platform
+
 gcloud-set-config:
 	gcloud config set project ${GCLOUD_PROJECT}
 	gcloud config set artifacts/repository ${GCLOUD_REPOSITORY}
 	gcloud config set artifacts/location europe-west1
 	$(MAKE) gcloud-set-auth-docker
 
-gcloud-set-auth-docker:
+gcloud-set-auth:
 	gcloud auth configure-docker europe-west1-docker.pkg.dev
 
 gcloud-list-artifacts:
