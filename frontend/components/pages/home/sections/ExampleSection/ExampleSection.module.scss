@@ -11,17 +11,20 @@
     padding: 20px;
   }
 
-  .Title {
-    text-align: center;
+  .Content {
+    .Title {
+      text-align: left;
 
-    & > div {
-      font-family: "Blessed Light";
-      font-size: 28px;
+      & > div {
+        font-family: "Blessed Light";
+        font-size: 28px;
+      }
     }
-  }
 
-  .Description {
-    text-align: center;
+    .Description {
+      text-align: left;
+      white-space: pre-line;
+    }
   }
 
   .Example {
@@ -58,7 +61,7 @@
       }
 
       @include xs {
-        transform: translate(-50%) scale(0.45);
+        transform: translate(-50%) scale(0.65);
       }
     }
   }

@@ -112,6 +112,7 @@ $num-tiles: 24;
       transform: rotateX(65deg) rotateZ(-45deg) scale(1.4);
 
       @include sm {
+        margin-left: 60px;
         padding: 40px;
       }
 

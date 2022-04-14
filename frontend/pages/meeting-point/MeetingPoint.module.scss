@@ -4,7 +4,21 @@
 .MeetingPoint {
   @include page;
 
-  .BasketsSection {
-    margin-top: 40px;
+  .Warning {
+    border-radius: 16px;
+    padding: 40px;
+    background-color: $primary-background-color;
+    box-shadow: 0 0 0.2rem 0.1rem $primary-background-color;
+  }
+
+  .Tabs {
+    margin: 40px 0px;
+    & > div > div > button {
+      font-family: "Blessed Light";
+      font-size: 16px;
+    }
+    .BasketsSection {
+      margin: 20px 0px;
+    }
   }
 }

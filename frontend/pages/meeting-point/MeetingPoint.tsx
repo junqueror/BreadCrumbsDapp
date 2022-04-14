@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import type { NextPage } from 'next';
-import { Title } from '@mantine/core';
+import { Space, Tabs, Text, Title } from '@mantine/core';
 import useSWR, { SWRConfig } from 'swr';
 
 import BasketsSection from 'components/pages/meetingPoint/sections/BasketsSection';
@@ -69,11 +69,11 @@ const MeetingPoint: NextPage<Props> = ({ fallback, onSetSWRfallback }) => {
 
   const allbaskets = [
     ...activeBaskets,
-     ...fixtureBaskets.map(basket => ({
+    ...fixtureBaskets.map(basket => ({
       ...basket,
       startDate: new Date(basket.startDate),
       endDate: basket.endDate ? new Date(basket.endDate) : undefined,
-    }))
+    })),
   ];
 
   const isUpcomingBasketsLoading = (!fixtureBaskets && !fixtureBasketsError);
@@ -82,19 +82,38 @@ const MeetingPoint: NextPage<Props> = ({ fallback, onSetSWRfallback }) => {
   return (
     <div className={ styles.MeetingPoint }>
       <SWRConfig value={ { fallback } }>
+
+        { !!meetingPoint.warning && (
+          <Text className={ styles.Warning }>
+            { meetingPoint.warning }
+          </Text>
+        ) }
+        <Space h="xl" />
         <Title order={ 1 }>
           { meetingPoint.title }
         </Title>
-        { meetingPoint.sections.map(section => (
-          <BasketsSection
-            key={ `baskets-section-${section.title}` }
-            baskets={ allbaskets.filter(basket => basket.type === section.basketType) }
-            className={ styles.BasketsSection }
-            description={ section.description }
-            isLoading={ isLoading }
-            title={ section.title }
-          />
-        ))}
+        <Tabs
+          className={ styles.Tabs }
+          grow
+          position="apart"
+        >
+          { meetingPoint.sections.map(section => (
+            <Tabs.Tab
+              key={ `tab-section-${section.title}` }
+              label={ section.title }
+            >
+              <BasketsSection
+                baskets={ section.basketType
+                  ? allbaskets.filter(basket => basket.type === section.basketType)
+                  : allbaskets }
+                className={ styles.BasketsSection }
+                description={ section.description }
+                isLoading={ isLoading }
+                title={ section.title }
+              />
+            </Tabs.Tab>
+          ))}
+        </Tabs>
       </SWRConfig>
     </div>
   );

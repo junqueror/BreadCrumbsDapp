@@ -38,7 +38,8 @@ const BasketsSection: FC<Props> = ({
       <Space h="xl" />
       <Title order={ 2 }>{ title }</Title>
       <Space h="xs" />
-      <Text>{ description }</Text>
+      <Text className={ styles.Description }>{ description }</Text>
+      <Space h="xl" />
       <Space h="xl" />
       <GridGroup
         data={ baskets || [] }

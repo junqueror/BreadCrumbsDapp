@@ -57,20 +57,20 @@
 
       &.SubscriptionButton {
         color: $dark-color;
-        background-color: $primary-color;
-        border-color: $primary-color;
-        box-shadow: 0 0 0.1rem $primary-color, 0 0 0.1rem $reverse-color,
-          0 0 0.2rem $primary-color, 0 0 0.2rem $primary-color,
-          0 0 0.2rem $primary-color, inset 0 0 0.1rem $primary-color;
+        background-color: $accent-color;
+        border-color: $accent-color;
+        box-shadow: 0 0 0.1rem $accent-color, 0 0 0.1rem $accent-color,
+          0 0 0.2rem $accent-color, 0 0 0.2rem $accent-color,
+          0 0 0.2rem $accent-color, inset 0 0 0.1rem $accent-color;
+        @include focus;
       }
 
       &.LoginButton {
-        color: $accent-color;
-        background: transparent;
-        border-color: $accent-color;
-        box-shadow: 0 0 0.1rem $accent-color, 0 0 0.1rem $reverse-color,
-          0 0 0.2rem $accent-color, 0 0 0.2rem $accent-color,
-          0 0 0.2rem $accent-color, inset 0 0 0.1rem $accent-color;
+        background-color: transparent;
+        box-shadow: 0 0 0.1rem $primary-color, 0 0 0.1rem #fff,
+          0 0 0.2rem $primary-color, 0 0 0.2rem $primary-color,
+          0 0 0.2rem $primary-color, inset 0 0 0.3rem $primary-color;
+        @include focus;
       }
     }
   }

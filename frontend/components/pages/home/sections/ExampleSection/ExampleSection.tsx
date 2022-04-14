@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Text } from '@mantine/core';
+import { Space, Text } from '@mantine/core';
 import classnames from 'classnames';
 
 import Crumb from 'components/entities/Crumb';
@@ -26,22 +26,25 @@ const ExampleSection: FC<Props> = ({ className, id }) => {
       className={ exampleSectionClassNames }
       id={ id }
     >
-      <div className={ styles.Title }>
-        <Text
-          color="white"
-          size="xl"
-          weight={ 700 }
-        >
-          { example.title }
-        </Text>
-      </div>
-      <div className={ styles.Description }>
-        <Text
-          color="white"
-          size="md"
-        >
-          { example.description }
-        </Text>
+      <div className={ styles.Content }>
+        <div className={ styles.Title }>
+          <Text
+            color="white"
+            size="xl"
+            weight={ 700 }
+          >
+            { example.title }
+          </Text>
+        </div>
+        <Space h="sm" />
+        <div className={ styles.Description }>
+          <Text
+            color="white"
+            size="md"
+          >
+            { example.description }
+          </Text>
+        </div>
       </div>
       <div className={ styles.Example }>
         <Text

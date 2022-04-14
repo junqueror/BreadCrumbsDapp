@@ -13,7 +13,11 @@ const currentDate = new Date();
 
 const example: Example = {
   title: 'How It Works',
-  description: 'The BreadCrumbs network is the first blockchain service that creates a meetingPoint and a decentralized economy to provide affiliation/referal programs without limits',
+  description: `A company creates a marketing campaign to attract qualified traffic to its service or product. Publishers redirect traffic to the brand's site through the use of links in exchange for tokens. When the user reaches the target or completes a certain action, a transaction is triggered with the corresponding payment, thus compensating the acquisition of a new potential customer.
+
+  The Breadcrumbs meeting point allows you to negotiate user acquisition targets and rewards.
+  
+  Let's take an example:`,
   exampleTitle: [
     '1 new user',
     ' = ',
