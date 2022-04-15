@@ -19,7 +19,7 @@ const routes: {
     label: 'Meeting point',
   },
   baskets: {
-    path: paths.baskets,
+    path: paths.bakers,
     label: 'Bakers',
     isPrivate: false,
   },
@@ -29,7 +29,7 @@ const routes: {
     isPrivate: false,
   },
   crumbs: {
-    path: paths.crumbs,
+    path: paths.pickers,
     label: 'Pickers',
     isPrivate: false,
   },

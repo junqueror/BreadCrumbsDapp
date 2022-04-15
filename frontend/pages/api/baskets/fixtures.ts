@@ -37,7 +37,7 @@ export const initialData: BasketDataType[] = [{
 {
   title: 'gamium',
   account: '0xFeefEa490f9075E2eC50A82a6FE52bB7D9e842Df',
-  domain: 'https://pancakeswap.finance/info/token/0x5b6bf0c7f989de824677cfbd507d9635965e9cd3',
+  domain: 'pancakeswap.finance',
   image: 'https://gamium.world/images/carousel_1.jpg',
   description: 'Gamium is the first Decentralized Social Metaverse that interconnects all Metaverses. Thanks to web3, Gamium unites different virtual worlds where your Avatar\'s dreams come true: the only limit is your imagination.',
   type: BasketTypeEnum.ISO,
@@ -69,7 +69,7 @@ export const initialData: BasketDataType[] = [{
 {
   title: 'breadcrumbs telegram',
   account: '0xFfCf63a23b3aD0365fd9248360682a8D550d70Ee',
-  domain: 'https://t.me/breadcrumbs-esp',
+  domain: 't.me',
   image: BREADCRUMBS_IMAGE,
   description: 'The Breadcrumbs community in Spanish, on the Telegram platform. News, events, polls, discussion and much more.',
   type: BasketTypeEnum.ISO,

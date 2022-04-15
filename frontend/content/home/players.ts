@@ -64,7 +64,7 @@ const players: Player[] = [
       PersonIcon,
     ],
     buttonText: 'Start promoting your brand',
-    buttonLink: paths.baskets,
+    buttonLink: paths.bakers,
   },
   {
     title: 'investors',

@@ -1,16 +1,10 @@
-import HowItWorksCard from './HowItWorksCard';
-import RoadMap from './RoadMap';
-import {
-  ExampleSection, HeaderSection, HowItWorksSection, PartnersSection, PlayersSection, RoadMapSection,
-} from './sections';
+import * as sections from './sections'
+import * as components from './components'
+import HomePage from './HomePage';
+
+export default HomePage;
 
 export {
-  HowItWorksSection,
-  PartnersSection,
-  RoadMapSection,
-  HeaderSection,
-  HowItWorksCard,
-  ExampleSection,
-  PlayersSection,
-  RoadMap,
+  components,
+  sections,
 };

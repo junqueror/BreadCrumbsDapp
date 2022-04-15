@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 import roadMap from 'content/home/roadMap';
 
-import RoadMap from '../../RoadMap';
+import RoadMap from '../../components/RoadMap';
 
 import styles from './RoadMapSection.module.scss';
 

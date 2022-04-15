@@ -3,11 +3,11 @@ import { BasketType } from 'types';
 const paths = {
   home: '/',
   meetingPoint: '/meeting-point',
-  baskets: '/baskets',
-  basket: (basket: BasketType) => `/baskets/${basket.domain}`,
-  crumbs: '/crumbs',
-  crumb: (domain: string, account: string) => `/crumbs/${domain}/${account}`,
-  shortLink: (shortId: string) => `/crumbs/${shortId}`,
+  bakers: '/bakers',
+  basket: (basket: BasketType) => `bakers/baskets/${basket.domain}`,
+  pickers: '/pickers',
+  crumb: (domain: string, account: string) => `pickers/crumbs/${domain}/${account}`,
+  shortLink: (shortId: string) => `pickers/crumbs/${shortId}`,
 };
 
 export default paths;

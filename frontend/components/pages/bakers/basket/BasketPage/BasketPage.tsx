@@ -89,7 +89,7 @@ const BasketPage: NextPage = () => {
 
   const deleteBasket = () => basketContext.deleteBasket(String(domain))
     .then(() => {
-      router.push(paths.baskets);
+      router.push(paths.bakers);
       setDeleteError(undefined);
       closeDelete();
       notifications.showNotification({

@@ -9,9 +9,9 @@ import {
 import CrumbsTimeLine from 'components/groups/CrumbsTimeLine';
 import useCrumbsContext from 'contexts/crumbs/crumbsContext';
 
-import styles from './CrumbsPage.module.scss';
+import styles from './PickersPage.module.scss';
 
-const CrumbsPage: NextPage = () => {
+const PickersPage: NextPage = () => {
   const router = useRouter();
   const crumbsContext = useCrumbsContext();
   const { accountCrumbs, isLoading: isGetCrumbsLoading, error: getCrumbsError } = crumbsContext;
@@ -27,7 +27,7 @@ const CrumbsPage: NextPage = () => {
   }, [domain]);
 
   return (
-    <div className={ styles.CrumbsPage }>
+    <div className={ styles.PickersPage }>
       <Title order={ 1 }>CRUMBS</Title>
       <Space h="xl" />
       <div className={ styles.Content }>
@@ -41,4 +41,4 @@ const CrumbsPage: NextPage = () => {
   );
 };
 
-export default CrumbsPage;
+export default PickersPage;

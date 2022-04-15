@@ -38,7 +38,7 @@ const howItWorks: HowItWorksCardInfo[] = [
     ],
     linkButton: {
       label: 'Create a basket',
-      to: paths.baskets,
+      to: paths.bakers,
     },
   },
   {

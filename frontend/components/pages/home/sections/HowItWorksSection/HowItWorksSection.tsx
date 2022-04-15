@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 import { howItWorks } from 'content/home';
 
-import HowItWorksCard from '../../HowItWorksCard';
+import HowItWorksCard from '../../components/HowItWorksCard';
 
 import styles from './HowItWorksSection.module.scss';
 

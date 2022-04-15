@@ -8,9 +8,7 @@ import { benefits } from 'content/home';
 import { Improvement } from 'content/home/benefits';
 import { useScreenSize } from 'hooks';
 
-import BenefitDetail from '../../BenefitDetail';
-import BenefitsPath from '../../BenefitsPath';
-import KeyPoint from '../../KeyPoint';
+import { BenefitDetail, BenefitsPath, KeyPoint } from '../../components';
 
 import styles from './BenefitsSection.module.scss';
 
@@ -34,8 +32,6 @@ const BenefitsSection: FC<Props> = ({ className, id }) => {
 
   const [benefitDetail, setBenefitDetail] = useState<Improvement | undefined>(benefits.improvements[4]);
   const { isSM } = useScreenSize();
-
-  console.log(keyPointIntersections.map(o => o.observer?.isIntersecting));
 
   const showBenefitDetail = (benefit: Improvement) => setBenefitDetail(benefit);
   const hideBenefitDetail = () => setBenefitDetail(benefits.improvements[4]);

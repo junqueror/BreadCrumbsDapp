@@ -3,7 +3,6 @@ import type { NextPage } from 'next';
 import { Space, Tabs, Text, Title } from '@mantine/core';
 import useSWR, { SWRConfig } from 'swr';
 
-import BasketsSection from 'components/pages/meetingPoint/sections/BasketsSection';
 import { api, contracts } from 'config/routing';
 import { meetingPoint } from 'content';
 import useBasketsContext from 'contexts/baskets/basketsContext';
@@ -13,7 +12,9 @@ import * as upcomingBasketsRequest from 'pages/api/baskets/fixtures';
 import { basketServiceOnServer } from 'services/basketsService';
 import { BasketType } from 'types';
 
-import styles from './MeetingPoint.module.scss';
+import { BasketsSection } from '../sections';
+
+import styles from './MeetingPointPage.module.scss';
 
 const MAX_SSR_BASKETS = 9;
 
@@ -54,7 +55,7 @@ const defaultProps = {
   onSetSWRfallback: () => {},
 };
 
-const MeetingPoint: NextPage<Props> = ({ fallback, onSetSWRfallback }) => {
+const MeetingPointPage: NextPage<Props> = ({ fallback, onSetSWRfallback }) => {
   const { activeBaskets, isLoading: isActiveBasketsLoading, getBaskets } = useBasketsContext();
   useFunctionAtInterval(getBaskets);
 
@@ -80,7 +81,7 @@ const MeetingPoint: NextPage<Props> = ({ fallback, onSetSWRfallback }) => {
   const isLoading = isActiveBasketsLoading || isUpcomingBasketsLoading;
 
   return (
-    <div className={ styles.MeetingPoint }>
+    <div className={ styles.MeetingPointPage }>
       <SWRConfig value={ { fallback } }>
 
         { !!meetingPoint.warning && (
@@ -119,6 +120,6 @@ const MeetingPoint: NextPage<Props> = ({ fallback, onSetSWRfallback }) => {
   );
 };
 
-MeetingPoint.defaultProps = defaultProps;
+MeetingPointPage.defaultProps = defaultProps;
 
-export default MeetingPoint;
+export default MeetingPointPage;

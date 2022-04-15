@@ -32,8 +32,6 @@ const KeyPoint = ({
   const number = useIncrementalCounter(initialValue, incrementalValue);
   const keyPointClassNames = classnames(styles.KeyPoint, className);
 
-  if (initialValue === 0) console.log(value);
-
   return (
     <Card
       ref={ keyPointRef }

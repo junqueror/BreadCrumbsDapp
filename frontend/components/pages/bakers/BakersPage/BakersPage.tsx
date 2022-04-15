@@ -13,9 +13,9 @@ import useAccountContext from 'contexts/account/accountContext';
 import useBasketsContext from 'contexts/baskets/basketsContext';
 import { useFunctionAtInterval, useScreenSize } from 'hooks';
 
-import styles from './BasketsPage.module.scss';
+import styles from './BakersPage.module.scss';
 
-const BasketsPage: NextPage = () => {
+const BakersPage: NextPage = () => {
   const { account } = useAccountContext();
   const basketsContext = useBasketsContext();
   const [createOpened, setCreateOpened] = useState(false);
@@ -62,7 +62,7 @@ const BasketsPage: NextPage = () => {
   useFunctionAtInterval(basketsContext.getBaskets);
 
   return (
-    <div className={ styles.BasketsPage }>
+    <div className={ styles.BakersPage }>
       <Title order={ 1 }>BASKETS</Title>
       <Space h="xl" />
       <GridGroup
@@ -100,4 +100,4 @@ const BasketsPage: NextPage = () => {
     </div>
   );
 };
-export default BasketsPage;
+export default BakersPage;
