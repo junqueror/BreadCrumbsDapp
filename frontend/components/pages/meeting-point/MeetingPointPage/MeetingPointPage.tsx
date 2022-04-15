@@ -78,7 +78,8 @@ const MeetingPointPage: NextPage<Props> = ({ fallback, onSetSWRfallback }) => {
   ];
 
   const isUpcomingBasketsLoading = (!fixtureBaskets && !fixtureBasketsError);
-  const isLoading = isActiveBasketsLoading || isUpcomingBasketsLoading;
+  const isLoading = false; // TODO: Remove false when data is availabel in production
+  // const isLoading = isActiveBasketsLoading || isUpcomingBasketsLoading;
 
   return (
     <div className={ styles.MeetingPointPage }>
