@@ -3,22 +3,27 @@ import { useCallback, useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import {
-  Button, Grid, Group, Image,
-  LoadingOverlay, Modal, Space, Text, Title,
-  Transition,
+  Button,
+  Group,
+  LoadingOverlay, Modal, Space, Tabs,
+  Text, Title, Transition,
 } from '@mantine/core';
 import { useNotifications } from '@mantine/notifications';
-import { ExternalLinkIcon } from '@radix-ui/react-icons';
+import useSWR from 'swr';
 
-import Link from 'components/elements/Link';
+import { WarningMsg } from 'components/elements';
+import { Basket, CrumbsTable } from 'components/entities';
 import BasketForm from 'components/forms/BasketForm';
 import CrumbsTimeLine from 'components/groups/CrumbsTimeLine';
 import { paths } from 'config/routing';
 import theme from 'config/theme';
+import { basket as content } from 'content';
 import useAccountContext from 'contexts/account';
 import useBasketContext from 'contexts/basket/basketContext';
 import useCrumbsContext from 'contexts/crumbs/crumbsContext';
 import { useToggleOpened } from 'hooks';
+import * as crumbsFixturesRequest from 'pages/api/crumbs/fixtures';
+import { BasketType } from 'types';
 
 import styles from './BasketPage.module.scss';
 
@@ -28,9 +33,22 @@ const BasketPage: NextPage = () => {
   const { account } = useAccountContext();
   const basketContext = useBasketContext();
   const crumbsContext = useCrumbsContext();
-  const { crumbs, isLoading: isGetCrumbsLoading, error: getCrumbsError } = crumbsContext;
-  const { basket, error: getBasketError } = basketContext;
+  const { crumbs, isLoading: isGetCrumbsLoading } = crumbsContext;
+  const { basket, error: getBasketError }: { basket: BasketType, error: string } = basketContext;
   const notifications = useNotifications();
+
+  const {
+    data: fixtureCrumbs = [],
+    error: fixtureCrumbsError,
+  } = useSWR(crumbsFixturesRequest.path, crumbsFixturesRequest.get);
+
+  const allCrumbs = [
+    ...fixtureCrumbs,
+    ...crumbs,
+  ];
+
+  const isFixtureCrumbsLoading = !fixtureCrumbs && !fixtureCrumbsError;
+  const isCrumbsLoading = isGetCrumbsLoading || isFixtureCrumbsLoading;
 
   const {
     opened: editOpened,
@@ -111,24 +129,20 @@ const BasketPage: NextPage = () => {
   useEffect(() => {
     crumbsContext.setDomain(domain);
     basketContext.setDomain(domain);
-  }, [domain]);
+  }, [crumbsContext, basketContext, domain]);
+
+  const showCrumbs = (!!basket && !!crumbs);
 
   return (
     <div className={ styles.BasketPage }>
-      <Title order={ 1 }>BASKET</Title>
+      { !!content.warning && (
+        <WarningMsg msg={ content.warning } />
+      ) }
+      <Space h="xl" />
+      <Title order={ 1 }>{ content.title }</Title>
       <Space h="xl" />
       <div className={ styles.Content }>
-        <div className={ styles.Basket }>
-          { basket?.image && basket?.title && (
-          <Image
-            alt={ basket.title }
-            height={ basket.image ? undefined : 300 }
-            radius="md"
-            src={ basket.image }
-            width="100%"
-            withPlaceholder
-          />
-        ) }
+        <section className={ styles.Basket }>
           <Space h="xl" />
           <div className={ styles.BasketData }>
             <LoadingOverlay visible={ basketContext.isLoading } />
@@ -139,49 +153,33 @@ const BasketPage: NextPage = () => {
             >
               { style => (
                 <div style={ style }>
-                  <Text size="sm">Domain</Text>
-                  <Link isBlank to={ `https://${domain}` }>
-                    <Group>
-                      <Text color={ theme.mantine.primaryColor } size="xl">{ basket?.domain }</Text>
-                      <ExternalLinkIcon />
-                    </Group>
-                  </Link>
-                  <Space h="xl" />
-                  <Text size="sm">Amount</Text>
-                  <Text color="dimmed" size="xs">Total BREAD amount that can be spent on this referal campaign</Text>
-                  <Text color={ theme.mantine.primaryColor } size="xl">{ basket?.amount }</Text>
-                  <Space h="xl" />
-                  <Text size="sm">Price</Text>
-                  <Text color="dimmed" size="xs">BREAD units payed per crumb created to publishers</Text>
-                  <Text color={ theme.mantine.primaryColor } size="xl">{ basket?.price }</Text>
+                  { basket && (
+                    <Basket
+                      className={ styles.Basket }
+                      data={ basket }
+                    />
+                  ) }
                   <Space h="sm" />
-                  <Grid align="center" justify="space-between" mt="md">
-                    <Grid.Col grow>
-                      <Text color="red" mt="sm" size="sm">
-                        { deleteError }
-                      </Text>
-                    </Grid.Col>
-                    <Grid.Col span={ 4 }>
-                      <Group>
-                        <Button
-                          disabled={ deleteDisabled }
-                          gradient={ theme.deleteGradient }
-                          variant="gradient"
-                          onClick={ openDelete }
-                        >
-                          Delete
-                        </Button>
-                        <Button
-                          disabled={ updateDisabled }
-                          gradient={ theme.primaryGradient }
-                          variant="gradient"
-                          onClick={ openEdit }
-                        >
-                          Edit
-                        </Button>
-                      </Group>
-                    </Grid.Col>
-                  </Grid>
+                  <div className={ styles.Controller }>
+                    <Text color="red" mt="sm" size="sm">
+                      { deleteError }
+                    </Text>
+                    <Button
+                      color={ theme.deleteColor }
+                      disabled={ deleteDisabled }
+                      variant="outline"
+                      onClick={ openDelete }
+                    >
+                      { content.deleteButton }
+                    </Button>
+                    <Button
+                      disabled={ updateDisabled }
+                      variant="outline"
+                      onClick={ openEdit }
+                    >
+                      { content.editButton }
+                    </Button>
+                  </div>
                 </div>
               ) }
             </Transition>
@@ -214,25 +212,46 @@ const BasketPage: NextPage = () => {
                   variant="outline"
                   onClick={ closeDelete }
                 >
-                  Cancel
+                  { content.cancelButton }
                 </Button>
                 <Button
                   gradient={ theme.deleteGradient }
                   variant="gradient"
                   onClick={ deleteBasket }
                 >
-                  Delete
+                  { content.deleteButton }
                 </Button>
               </Group>
             </Modal>
           </div>
-        </div>
-        <div className={ styles.Crumbs }>
-          <CrumbsTimeLine
-            crumbs={ crumbs }
-            isLoading={ isGetCrumbsLoading }
-          />
-        </div>
+        </section>
+        <section>
+          { showCrumbs && (
+          <Tabs
+            className={ styles.CrumbTabs }
+            position="center"
+          >
+            <Tabs.Tab
+              label={ content.tableTab }
+            >
+              <CrumbsTable
+                className={ styles.Crumbs }
+                crumbs={ allCrumbs }
+                isLoading={ isCrumbsLoading }
+              />
+            </Tabs.Tab>
+            <Tabs.Tab
+              label={ content.schemaTab }
+            >
+              <CrumbsTimeLine
+                className={ styles.CrumbsTimeLine }
+                crumbs={ allCrumbs }
+                isLoading={ isCrumbsLoading }
+              />
+            </Tabs.Tab>
+          </Tabs>
+          ) }
+        </section>
         { /* !!getCrumbsError && <Text color="red">{ String(getCrumbsError) }</Text> */}
       </div>
     </div>

@@ -27,11 +27,11 @@ const defaultProps = {
 const GridGroup: FC<Props> = ({
   data, Item, Skeleton, className, isLoading, itemClassName, itempProps, span,
 }) => {
-  const { isSM, isXS } = useScreenSize();
+  const { isMD, isXS } = useScreenSize();
 
-  let finalSpan = span;
-  if (span === undefined) finalSpan = isSM ? 6 : 4;
-  if (!span === undefined) finalSpan = isXS ? 12 : span;
+  let finalSpan = span || 4;
+  if (isMD) finalSpan = 6;
+  if (isXS) finalSpan = 12;
 
   return (
     <div className={ className }>

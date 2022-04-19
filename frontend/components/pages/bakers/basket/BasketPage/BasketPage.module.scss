@@ -1,13 +1,21 @@
+@import "styles/mixins.scss";
+@import "styles/theme.scss";
+
 .BasketPage {
-  padding: 24px;
+  @include page;
 
   .Content {
     display: flex;
-    gap: 48px;
+    gap: 64px;
+    justify-content: space-between;
+
+    @include lg {
+      flex-wrap: wrap;
+    }
 
     .Basket {
       position: relative;
-      flex: 1 0 300px;
+      flex: 1 0 320px;
 
       .BasketData {
         position: relative;
@@ -16,10 +24,43 @@
           width: 100%;
         }
       }
+
+      & > div {
+        background-color: transparent;
+      }
+
+      .Controller {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        padding: 0px 20px;
+
+        & > div {
+          flex: 1;
+        }
+
+        & > button {
+          flex: 0;
+        }
+      }
     }
 
-    .Crumbs {
+    .CrumbTabs {
       flex: 1 0 680px;
+
+      .CrumbsTimeLine {
+        margin: 20px 0px;
+
+        @include sm {
+          transform: scale(0.8);
+          transform-origin: top left;
+        }
+
+        @include xs {
+          transform: scale(0.5);
+          transform-origin: top left;
+        }
+      }
     }
   }
 }

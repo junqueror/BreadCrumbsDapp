@@ -25,7 +25,7 @@ const footer: FooterSection[] = [
       },
       {
         label: 'Benefits',
-        to: `#${sections.home.advantages}`,
+        to: `#${sections.home.benefits}`,
       },
       {
         label: 'Partners',

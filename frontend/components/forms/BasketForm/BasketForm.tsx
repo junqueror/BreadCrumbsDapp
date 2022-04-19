@@ -5,6 +5,7 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/hooks';
 
+import ErrorMsg from 'components/elements/ErrorMsg';
 import theme from 'config/theme';
 import { BasketType } from 'types';
 
@@ -82,9 +83,7 @@ const BasketForm: FC<Props> = ({
       />
       <Grid align="center" justify="space-between" mt="md">
         <Grid.Col grow span={ 10 }>
-          <Text color="red" mt="sm" size="sm">
-            {error}
-          </Text>
+          <ErrorMsg msg={ error } />
         </Grid.Col>
         <Grid.Col grow span={ 2 }>
           <Button

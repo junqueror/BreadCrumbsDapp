@@ -1,10 +1,12 @@
-import { MantineGradient, MantineThemeOverride } from '@mantine/core';
+import { MantineColor, MantineGradient, MantineThemeOverride } from '@mantine/core';
 
 const theme: {
     mantine: MantineThemeOverride,
-    accentColor: string,
-    errorColor: string,
-    warningColor: string,
+    primaryColor: MantineColor,
+    accentColor: MantineColor,
+    errorColor: MantineColor,
+    warningColor: MantineColor,
+    deleteColor: MantineColor,
     primaryGradient: MantineGradient,
     accentGradient: MantineGradient,
     deleteGradient: MantineGradient,
@@ -80,9 +82,11 @@ const theme: {
   },
 
   // Extended
+  primaryColor: 'teal',
   accentColor: 'orange',
   errorColor: 'red',
   warningColor: 'red',
+  deleteColor: 'red',
 
   primaryGradient: { from: 'teal', to: 'dark', deg: 10 },
   accentGradient: { from: 'orange', to: 'dark', deg: 10 },

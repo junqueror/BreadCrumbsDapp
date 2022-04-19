@@ -4,18 +4,17 @@
 .MeetingPointPage {
   @include page;
 
-  .Warning {
-    border-radius: 16px;
-    padding: 40px;
-    background-color: $primary-background-color;
-    box-shadow: 0 0 0.2rem 0.1rem $primary-background-color;
-  }
-
   .Tabs {
     margin: 40px 0px;
+
     & > div > div > button {
       font-family: "Blessed Light";
       font-size: 16px;
+      padding: 28px 20px;
+
+      @include xs {
+        font-size: 12px;
+      }
     }
     .BasketsSection {
       margin: 20px 0px;

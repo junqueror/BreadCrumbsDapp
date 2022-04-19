@@ -117,6 +117,7 @@ const Basket: FC<Props> = ({ data: basket, className }) => {
   ];
 
   const currencyClassName = classnames(styles.Currency, { [styles.WithBadge]: basket.currency === WEB3.BREADCRUMBS_TOKEN_NAME });
+  const showLinkButton = basket.account !== account.address;
 
   return (
     <>
@@ -211,15 +212,17 @@ const Basket: FC<Props> = ({ data: basket, className }) => {
             </div>
           </div>
           <Group align="stretch" grow>
-            <Button
-              className={ styles.LinkButton }
-              disabled={ !account?.address }
-              fullWidth
-              variant="outline"
-              onClick={ toggleLinkModalOpened }
-            >
-              Get link
-            </Button>
+            { showLinkButton && (
+              <Button
+                className={ styles.LinkButton }
+                disabled={ !account?.address }
+                fullWidth
+                variant="outline"
+                onClick={ toggleLinkModalOpened }
+              >
+                Get link
+              </Button>
+            ) }
           </Group>
         </Card>
       </Link>

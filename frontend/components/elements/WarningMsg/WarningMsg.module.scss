@@ -1,0 +1,13 @@
+@import "styles/mixins.scss";
+@import "styles/theme.scss";
+
+.WarningMsg {
+  border-radius: 16px;
+  padding: 40px;
+  background-color: $primary-background-color;
+  border: 2px solid $primary-color;
+
+  @include sm {
+    padding: 20px;
+  }
+}

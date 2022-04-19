@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import {
-  Button, Card, Group, Skeleton, Space, Text, Title,
+  Card,
+  Skeleton,
+  Space,
 } from '@mantine/core';
-
-import Address from '../Address';
 
 import styles from './Basket.module.scss';
 
@@ -15,45 +15,31 @@ const defaultProps = {
 
 const BasketSkeleton: FC<Props> = () => (
   <Card className={ styles.Basket }>
-    <Skeleton visible>
-      <Title order={ 3 }>empty</Title>
-    </Skeleton>
-    <Space h="xl" />
-    <Skeleton visible>
-      <Group>
-        <Text>Domain: </Text>
-        <Address>empty</Address>
-      </Group>
-    </Skeleton>
-    <Space h="xs" />
-    <Skeleton visible>
-      <Group>
-        <Text>Account: </Text>
-        <Address>empty</Address>
-      </Group>
-    </Skeleton>
-    <Space h="xs" />
-    <Skeleton visible width="75%">
-      <Group>
-        <Text>Amount: </Text>
-        <Text weight={ 700 }>50</Text>
-      </Group>
-    </Skeleton>
-    <Space h="xs" />
-    <Skeleton visible width="50%">
-      <Group>
-        <Text>Price: </Text>
-        <Text weight={ 700 }>0</Text>
-      </Group>
-    </Skeleton>
-    <Space h="md" />
-    <Skeleton>
-      <Group grow>
-        <Button fullWidth>
-          Get link
-        </Button>
-      </Group>
-    </Skeleton>
+    <div>
+      <Skeleton height={ 200 } visible width="100%" />
+      <Space h="md" />
+      <Skeleton height={ 40 } visible width="100%" />
+      <Space h="md" />
+      <Skeleton height={ 80 } visible width="100%" />
+      <Space h="md" />
+      <Skeleton height={ 300 } visible width="100%" />
+      <Space h="md" />
+      <div className={ styles.SkeletonKpis }>
+        <div>
+          <Skeleton circle height={ 60 } visible width={ 60 } />
+        </div>
+        <div>
+          <Skeleton circle height={ 60 } visible width={ 60 } />
+        </div>
+        <div>
+          <Skeleton height={ 60 } visible width={ 80 } />
+        </div>
+      </div>
+      <Space h="md" />
+      <Space h="md" />
+      <Skeleton height={ 40 } visible width="100%" />
+      <Space h="md" />
+    </div>
   </Card>
 );
 

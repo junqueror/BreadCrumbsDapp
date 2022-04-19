@@ -59,15 +59,15 @@ const Account: FC<Props> = ({ className, onLogout }) => {
         <Text weight={ 700 }>{ bread }</Text>
       </Group>
       <Space h="lg" />
-      <Button
-        disabled={ !account.active }
-        gradient={ theme.accentGradient }
-        variant="gradient"
-        onClick={ logoutButtonClickHandler }
-      >
-        LOGOUT
-      </Button>
-      <Space h="lg" />
+      <div className={ styles.Buttons }>
+        <Button
+          disabled={ !account.active }
+          variant="outline"
+          onClick={ logoutButtonClickHandler }
+        >
+          Logout
+        </Button>
+      </div>
     </div>
   );
 };

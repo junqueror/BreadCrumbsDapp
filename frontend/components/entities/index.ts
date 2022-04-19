@@ -4,6 +4,7 @@ import Basket from './Basket';
 import BreadBadge from './BreadBadge';
 import Crumb from './Crumb';
 import CrumbLinks from './CrumbLinks';
+import CrumbsTable from './CrumbsTable';
 import EtherBadge from './EtherBadge';
 import Payment from './Payment';
 
@@ -14,6 +15,7 @@ export {
   BreadBadge,
   Crumb,
   CrumbLinks,
+  CrumbsTable,
   EtherBadge,
   Payment,
 };

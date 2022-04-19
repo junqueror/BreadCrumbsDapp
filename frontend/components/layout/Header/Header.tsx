@@ -9,7 +9,7 @@ import {
   MediaQuery,
   Text,
 } from '@mantine/core';
-import { CardStackIcon } from '@radix-ui/react-icons';
+import { IdCardIcon } from '@radix-ui/react-icons';
 
 import Link from 'components/elements/Link';
 import { Account, Address } from 'components/entities';
@@ -125,7 +125,7 @@ const Header: FC<Props> = ({ isBurgerOpened, onBurgerClick }: Props) => {
           <Button
             className={ styles.LoginButton }
             disabled={ disabled }
-            leftIcon={ isLogged && <CardStackIcon /> }
+            leftIcon={ isLogged && <IdCardIcon /> }
             loading={ isLoading }
             variant="outline"
             onClick={ buttonHandler }
@@ -141,7 +141,7 @@ const Header: FC<Props> = ({ isBurgerOpened, onBurgerClick }: Props) => {
       </Grid>
       <Drawer
         opened={ accountDrawerOpened }
-        padding="xs"
+        padding="xl"
         size="md"
         onClose={ closeAccountDrawer }
       >

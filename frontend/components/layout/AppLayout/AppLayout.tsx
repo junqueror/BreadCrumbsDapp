@@ -15,6 +15,7 @@ const AppLayout: FC<Props> = ({ children }) => {
   const [isNavbarOpened, setNavbarOpened] = useState(false);
 
   const toggleNavbar: MouseEventHandler = () => setNavbarOpened(!isNavbarOpened);
+  const closeNavbar = () => setNavbarOpened(false);
 
   return (
     <>
@@ -30,7 +31,10 @@ const AppLayout: FC<Props> = ({ children }) => {
           />
       ) }
         navbar={ (
-          <Navbar isOpened={ isNavbarOpened } />
+          <Navbar
+            isOpened={ isNavbarOpened }
+            onClose={ closeNavbar }
+          />
       ) }
         navbarOffsetBreakpoint="xs"
       >

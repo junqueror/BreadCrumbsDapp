@@ -7,7 +7,8 @@ import {
 } from '@mantine/core';
 
 import theme from 'config/theme';
-import { useScreenSize } from 'hooks';
+
+import styles from './TimeLineGroup.module.scss';
 
 type Props = {
     data: any[],
@@ -39,52 +40,48 @@ const defaultProps = {
 const TimeLineGroup: FC<Props> = ({
   data, Item, Skeleton, className, isLoading, itemClassName, itempProps,
   getItemColor, getItemIcon, getItemIconGradient, getItemTitle,
-}) => {
-  const { isSM, isXS } = useScreenSize();
-
-  return (
-    <div className={ className }>
-      <Timeline
-        active={ data.length }
-        bulletSize={ 24 }
-        color={ theme.mantine.primaryColor }
-        lineWidth={ 2 }
-        reverseActive
-      >
-        { !isLoading && data.map((item: any, index: number) => (
-          <Timeline.Item
-            key={ `item-${index}` }
-            bullet={ (
-              <ThemeIcon
-                gradient={ getItemIconGradient(item) }
-                radius="xl"
-                size="sm"
-                variant="gradient"
-              >
-                { getItemIcon(item) }
-              </ThemeIcon>
+}) => (
+  <div className={ className }>
+    <Timeline
+      active={ data.length }
+      bulletSize={ 24 }
+      color={ theme.mantine.primaryColor }
+      lineWidth={ 2 }
+      reverseActive
+    >
+      { !isLoading && data.map((item: any, index: number) => (
+        <Timeline.Item
+          key={ `item-${index}` }
+          bullet={ (
+            <ThemeIcon
+              gradient={ getItemIconGradient(item) }
+              radius="xl"
+              size="sm"
+              variant="gradient"
+            >
+              { getItemIcon(item) }
+            </ThemeIcon>
               ) }
-            color={ getItemColor(item) }
-            lineVariant="dotted"
-            title={ getItemTitle ? getItemTitle(item) : index }
-          >
-            <Space h="xl" />
-            <Item
-              className={ itemClassName }
-              data={ item }
-              { ...itempProps }
-            />
-            <Space h="xl" />
-            <Space h="xl" />
-          </Timeline.Item>
-        ))}
-        { isLoading && (<Timeline.Item><Skeleton /></Timeline.Item>)}
-        { isLoading && (<Timeline.Item><Skeleton /></Timeline.Item>)}
-        { isLoading && (<Timeline.Item><Skeleton /></Timeline.Item>)}
-      </Timeline>
-    </div>
-  );
-};
+          color={ getItemColor(item) }
+          lineVariant="dotted"
+          title={ getItemTitle ? getItemTitle(item) : index }
+        >
+          <Space h="xl" />
+          <Item
+            className={ itemClassName }
+            data={ item }
+            { ...itempProps }
+          />
+          <Space h="xl" />
+          <Space h="xl" />
+        </Timeline.Item>
+      ))}
+      { isLoading && (<Timeline.Item><Skeleton /></Timeline.Item>)}
+      { isLoading && (<Timeline.Item><Skeleton /></Timeline.Item>)}
+      { isLoading && (<Timeline.Item><Skeleton /></Timeline.Item>)}
+    </Timeline>
+  </div>
+);
 
 TimeLineGroup.defaultProps = defaultProps;
 

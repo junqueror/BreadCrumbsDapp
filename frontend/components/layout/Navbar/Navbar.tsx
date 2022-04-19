@@ -1,62 +1,42 @@
 import { FC } from 'react';
-import { Divider, Group, Navbar as MantineNavbar, ScrollArea } from '@mantine/core';
+import { Divider, Drawer, Space } from '@mantine/core';
 
-import Link from 'components/elements/Link';
 import { Account } from 'components/entities';
-import { navigatorRoutes } from 'config/routing/routes';
 import useAccountContext from 'contexts/account/accountContext';
+
+import Navigator from '../Navigator';
 
 import styles from './Navbar.module.scss';
 
 interface Props {
   isOpened: boolean,
+  onClose(): void,
 }
 
 const defaultProps = {
   isOpened: false,
 };
 
-const Navbar: FC<Props> = ({ isOpened }) => {
+const Navbar: FC<Props> = ({ isOpened, onClose }) => {
   const { account } = useAccountContext();
 
   return (
-    <MantineNavbar
+    <Drawer
       className={ styles.Navbar }
-      fixed
-      hidden={ !isOpened }
-      hiddenBreakpoint={ 4096 } // Hides navbar when viewport size is less than value specified in hiddenBreakpoint (always)
-      padding="xs" // Breakpoint at which navbar will be hidden if hidden prop is true
-      position={ { top: 80, left: 0 } }
-      width={ { base: 400, sm: 200 } }
+      opened={ isOpened }
+      padding="xl"
+      size="md"
+      onClose={ onClose }
     >
       { account.address && (
-        <>
-          <MantineNavbar.Section>
-            <Account />
-          </MantineNavbar.Section>
-          <Divider />
-        </>
+      <>
+        <Account />
+        <Divider />
+      </>
       ) }
-      <MantineNavbar.Section
-        component={ ScrollArea }
-        grow
-        mt="lg"
-      >
-        <Group direction="column">
-          { navigatorRoutes.map(route => (
-            <Link
-              key={ `nav-${route.path}` }
-              isButton
-              isDisabled={ route.isPrivate && !account?.address }
-              to={ route.path }
-            >
-              { route.label }
-            </Link>
-          ))}
-        </Group>
-      </MantineNavbar.Section>
-
-    </MantineNavbar>
+      <Space h="xl" />
+      <Navigator className={ styles.Navigator } />
+    </Drawer>
   );
 };
 

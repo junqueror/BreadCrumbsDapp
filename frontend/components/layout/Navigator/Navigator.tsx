@@ -8,31 +8,36 @@ import useAccountContext from 'contexts/account/accountContext';
 import styles from './Navigator.module.scss';
 
 type Props = {
+  className?: string,
 };
 
-const Navigator: FC<Props> = () => {
+const defaultProps = {
+  className: '',
+};
+
+const Navigator: FC<Props> = ({ className }) => {
   const { account } = useAccountContext();
 
   return (
     <nav key="navLinks" className={ styles.Navigator }>
-      <div>
-        <Group position="right" spacing="xl">
-          { navigatorRoutes.map(route => (
-            <div key={ `nav-${route.path}` }>
-              <Link
-                className={ styles.NavLink }
-                isButton
-                isDisabled={ route.isPrivate && !account?.address }
-                to={ String(route.path) }
-              >
-                { route.label }
-              </Link>
-            </div>
-          ))}
-        </Group>
-      </div>
+      <Group className={  className } position="right" spacing="xl">
+        { navigatorRoutes.map(route => (
+          <div key={ `nav-${route.path}` }>
+            <Link
+              className={ styles.NavLink }
+              isButton
+              isDisabled={ route.isPrivate && !account?.address }
+              to={ String(route.path) }
+            >
+              { route.label }
+            </Link>
+          </div>
+        ))}
+      </Group>
     </nav>
   );
 };
+
+Navigator.defaultProps = defaultProps;
 
 export default Navigator;

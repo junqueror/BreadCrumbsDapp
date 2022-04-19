@@ -33,7 +33,7 @@ const useBaskets = (suspense = false): SWRResponse & {
   };
 
   const sitesResult: SWRResponse = useSWR(
-    domains.length ? basketSite.manyPath : [basketSite.manyPath, domains],
+    [basketSite.manyPath, domains],
     fetchBasketSites,
   );
 

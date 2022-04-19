@@ -6,4 +6,11 @@
   .Badge {
     min-width: 80px;
   }
+
+  .Buttons {
+    padding: 20px 0px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
 }

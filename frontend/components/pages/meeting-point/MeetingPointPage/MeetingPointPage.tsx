@@ -1,14 +1,17 @@
 import { useEffect } from 'react';
 import type { NextPage } from 'next';
-import { Space, Tabs, Text, Title } from '@mantine/core';
+import { Space, Tabs, Title } from '@mantine/core';
 import useSWR, { SWRConfig } from 'swr';
 
+import { WarningMsg } from 'components/elements';
 import { api, contracts } from 'config/routing';
-import { meetingPoint } from 'content';
+import { meetingPoint as content } from 'content';
+import { MeetingPointSection } from 'content/meetingPoint';
 import useBasketsContext from 'contexts/baskets/basketsContext';
+import { useScreenSize } from 'hooks';
 import useFunctionAtInterval from 'hooks/useFunctionAtInterval';
 import * as basketSite from 'pages/api/baskets/[domain]';
-import * as upcomingBasketsRequest from 'pages/api/baskets/fixtures';
+import * as baketFixturesRequest from 'pages/api/baskets/fixtures';
 import { basketServiceOnServer } from 'services/basketsService';
 import { BasketType } from 'types';
 
@@ -37,7 +40,7 @@ export const getServerSideProps = async (_context: any) => {
       fallback: {
         [contracts.baskets.getAllBaskets]: baskets,
         [basketSite.manyPath]: sites,
-        [upcomingBasketsRequest.path]: upcomingBasketsRequest.initialData,
+        [baketFixturesRequest.path]: baketFixturesRequest.initialData,
       },
     },
   };
@@ -56,13 +59,14 @@ const defaultProps = {
 };
 
 const MeetingPointPage: NextPage<Props> = ({ fallback, onSetSWRfallback }) => {
+  const { isXS } = useScreenSize();
   const { activeBaskets, isLoading: isActiveBasketsLoading, getBaskets } = useBasketsContext();
   useFunctionAtInterval(getBaskets);
 
   const {
     data: fixtureBaskets = [],
     error: fixtureBasketsError,
-  } = useSWR(upcomingBasketsRequest.path, upcomingBasketsRequest.get);
+  } = useSWR(baketFixturesRequest.path, baketFixturesRequest.get);
 
   useEffect(() => {
     onSetSWRfallback(fallback);
@@ -77,6 +81,8 @@ const MeetingPointPage: NextPage<Props> = ({ fallback, onSetSWRfallback }) => {
     })),
   ];
 
+  const getTabLabel = (_section: MeetingPointSection) => ((isXS && _section.titleXS) ? _section.titleXS : _section.title);
+
   const isUpcomingBasketsLoading = (!fixtureBaskets && !fixtureBasketsError);
   const isLoading = false; // TODO: Remove false when data is availabel in production
   // const isLoading = isActiveBasketsLoading || isUpcomingBasketsLoading;
@@ -84,25 +90,22 @@ const MeetingPointPage: NextPage<Props> = ({ fallback, onSetSWRfallback }) => {
   return (
     <div className={ styles.MeetingPointPage }>
       <SWRConfig value={ { fallback } }>
-
-        { !!meetingPoint.warning && (
-          <Text className={ styles.Warning }>
-            { meetingPoint.warning }
-          </Text>
+        { !!content.warning && (
+          <WarningMsg msg={ content.warning } />
         ) }
         <Space h="xl" />
         <Title order={ 1 }>
-          { meetingPoint.title }
+          { content.title }
         </Title>
         <Tabs
           className={ styles.Tabs }
           grow
           position="apart"
         >
-          { meetingPoint.sections.map(section => (
+          { content.sections.map((section: MeetingPointSection) => (
             <Tabs.Tab
               key={ `tab-section-${section.title}` }
-              label={ section.title }
+              label={ getTabLabel(section) }
             >
               <BasketsSection
                 baskets={ section.basketType

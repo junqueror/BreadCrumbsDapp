@@ -1,6 +1,36 @@
+@import "styles/mixins.scss";
+@import "styles/theme.scss";
+
 .PickersPage {
-  padding: 24px;
+  @include page;
 
   .Content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 64px;
+    justify-content: space-between;
+
+    section {
+      flex: 1;
+
+      .ResumeRing {
+        margin: 0px auto;
+        text-align: center;
+      }
+
+      .CrumbsTimeLine {
+        margin: 20px 0px;
+
+        @include sm {
+          transform: scale(0.8);
+          transform-origin: top left;
+        }
+
+        @include xs {
+          transform: scale(0.5);
+          transform-origin: top left;
+        }
+      }
+    }
   }
 }

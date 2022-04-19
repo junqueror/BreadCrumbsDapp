@@ -3,6 +3,7 @@ import { BasketTypeEnum } from 'types/basketType';
 export type MeetingPointSection = {
     id: string,
     title: string,
+    titleXS: string,
     description: string,
     basketType?: BasketTypeEnum,
 }
@@ -20,6 +21,7 @@ const meetingPoint: MeetingPoint = {
     {
       id: 'affiliate',
       title: 'baskets for affiliates',
+      titleXS: 'affiliates',
       description: `
       With affiliate marketing you can bring people closer to a project or a brand. Share the link to a domain or URL and redirect qualified users. You can make a profit every time a user completes the action specified by the baker. Actions can be a visit to a website, time on page, click on an element, an event trigger...
 
@@ -30,6 +32,7 @@ const meetingPoint: MeetingPoint = {
     {
       id: 'referral',
       title: 'baskets for referrals',
+      titleXS: 'referrals',
       description: `Referral marketing allows customers or users to recommend the product or service. It is the most traditional form of word of mouth in the digital world. 
 
       Pickers are required to be customers or stakeholders of the project, either by verifying that they are token holders, by staking the tokens or by having their account or wallet registered with the project.`,
@@ -38,6 +41,7 @@ const meetingPoint: MeetingPoint = {
     {
       id: 'iso',
       title: 'Initial Share Offerings (ISO)',
+      titleXS: 'ISO',
       description: `Marketing campaigns that work through an initial public coin offering. Share and spread the word about a brand or project through links to earn tokens before a cryptocurrency is released.
 
       Unlike ICOs, it is not necessary to reach a tier by accumulating tokens. Any user can participate and earn tokens or allocation for the purchase of tokens in early stage projects.`,
@@ -46,6 +50,7 @@ const meetingPoint: MeetingPoint = {
     {
       id: 'all',
       title: 'all campaigns',
+      titleXS: 'all',
       description: 'All paths to achieve the #shareToEarn! Marketing campaigns for affiliation, referrals, influencers, coin offering, token allocations...',
       basketType: undefined,
     },

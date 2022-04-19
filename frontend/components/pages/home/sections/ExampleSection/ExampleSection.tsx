@@ -3,7 +3,6 @@ import { Space, Text } from '@mantine/core';
 import classnames from 'classnames';
 
 import Crumb from 'components/entities/Crumb';
-import theme from 'config/theme';
 import { example } from 'content/home';
 
 import styles from './ExampleSection.module.scss';

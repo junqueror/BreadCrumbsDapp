@@ -16,7 +16,7 @@ export type Data = {
   baskets: BasketDataType[]
 }
 
-export const path = api.fixtureBaskets;
+export const path = api.basketsFixtures;
 
 export const initialData: BasketDataType[] = [{
   title: 'gamium - the center of the metaverse',
@@ -116,7 +116,7 @@ export const initialData: BasketDataType[] = [{
 }];
 
 export const get = async (): Promise<BasketDataType[]> => {
-  const res = await fetch(api.fixtureBaskets);
+  const res = await fetch(api.basketsFixtures);
   const data: { baskets: BasketDataType[] } = await res.json();
 
   return data.baskets || [];

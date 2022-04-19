@@ -1,0 +1,14 @@
+@import "styles/mixins.scss";
+@import "styles/theme.scss";
+
+.CrumbsTable {
+  .Table {
+    thead > tr > td {
+      font-family: "Blessed Light";
+      font-size: 14px;
+    }
+    tr.Warning {
+      color: $warning-color;
+    }
+  }
+}

@@ -1,6 +1,9 @@
+@import "styles/mixins.scss";
+@import "styles/theme.scss";
+
 .AppLayout {
   nav {
-    background: transparent;
+    background: rgba(1, 9, 10, 0.5);
   }
 
   main {
