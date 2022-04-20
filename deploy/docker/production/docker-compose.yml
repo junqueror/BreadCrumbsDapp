@@ -1,13 +1,6 @@
 version: '3.6'
 
 services:
-  ganache:
-    container_name: production-ganache
-    build:
-      context: ../../../
-      dockerfile: ./deploy/docker/images/ganache/Dockerfile
-    ports:
-      - 8545:8545
 
   truffle:
     container_name: production-truffle
@@ -21,10 +14,9 @@ services:
       timeout: 5s
       retries: 5
     tty: true
-    volumes:
-      - abis-volume:/backend/abis
-    depends_on:
-      - ganache
+    env_file:
+      - ../../../.env.production
+    entrypoint: ./truffle-prod.sh
 
   postgres:
     image: postgres:10.6-alpine
@@ -45,9 +37,6 @@ services:
       dockerfile: ./deploy/docker/images/prisma/Dockerfile
     env_file:
       - ../../../.env.production
-    depends_on:
-      - ganache
 
 volumes:
   postgres-volume:
-  abis-volume:

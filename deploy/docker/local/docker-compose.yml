@@ -20,6 +20,9 @@ services:
       timeout: 5s
       retries: 5
     tty: true
+    env_file:
+      - ../../../.env.local
+    entrypoint: ./truffle.sh
     volumes:
       - ${PWD}/backend/abis:/backend/abis
     depends_on:

@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 
-sh -c "cd ./backend && 
-        truffle compile &&
-        truffle migrate"
+echo "Migrating contracts to Local Ganache...":
+sh -c "yarn truffle:migrate:ganache";

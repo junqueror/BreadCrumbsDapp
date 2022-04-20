@@ -1,14 +1,32 @@
 require('babel-register');
 require('babel-polyfill');
+require('dotenv').config();
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+
+const { GANACHE_HOST, GANACHE_PORT, MNEMONIC } = process.env;
 
 module.exports = {
   networks: {
     development: {
-      host: 'ganache',
-      port: 8545,
+      host: GANACHE_HOST,
+      port: GANACHE_PORT,
       network_id: '*', // Match any network id
       // gasPrice: 100000000000,
       // gas: 6721975, // gas limit,
+    },
+    testnet: {
+      provider: () => new HDWalletProvider(MNEMONIC, 'https://data-seed-prebsc-1-s1.binance.org:8545'),
+      network_id: 97,
+      confirmations: 10,
+      timeoutBlocks: 200,
+      skipDryRun: true,
+    },
+    bsc: {
+      provider: () => new HDWalletProvider(MNEMONIC, 'https://bsc-dataseed1.binance.org'),
+      network_id: 56,
+      confirmations: 10,
+      timeoutBlocks: 200,
+      skipDryRun: true,
     },
   },
   contracts_directory: './contracts/',

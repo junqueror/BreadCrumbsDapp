@@ -15,6 +15,20 @@ ENV = local
 include ./.env.${ENV}
 export
 
+# Local
+
+truffle-compile:
+	cd backend && truffle compile
+
+truffle-migrate-ganache:
+	cd backend && truffle migrate
+
+truffle-migrate-testnet:
+	cd backend && truffle migrate --network testnet
+
+truffle-migrate-mainnet:
+	cd backend && truffle migrate --network mainnet
+
 # Clean docker
 
 docker-clean:

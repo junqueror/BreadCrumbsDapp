@@ -1,5 +1,6 @@
 import Web3 from 'web3';
 import { Contract } from 'web3-eth-contract';
+import { AbiItem } from 'web3-utils';
 
 import web3config from 'config/web3';
 import BasketType from 'types/basketType';
@@ -29,11 +30,11 @@ class BasketsService {
     ) {
       this.web3 = web3;
 
-      const breadNetworkData = Bread.networks[chainId];
-      const basketsNetworkData = Baskets.networks[chainId];
+      const breadNetworkData = Bread.networks[String(chainId)];
+      const basketsNetworkData = Baskets.networks[String(chainId)];
 
-      this.breadContract = new this.web3.eth.Contract(Bread.abi, breadNetworkData?.address);
-      this.basketsContract = new this.web3.eth.Contract(Baskets.abi, basketsNetworkData?.address);
+      this.breadContract = new this.web3.eth.Contract(Bread.abi as AbiItem[], breadNetworkData?.address);
+      this.basketsContract = new this.web3.eth.Contract(Baskets.abi as AbiItem[], basketsNetworkData?.address);
       this.account = account;
     }
 
