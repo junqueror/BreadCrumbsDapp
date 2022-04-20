@@ -2,4 +2,11 @@
 
 .BasketForm {
   position: relative;
+
+  .Buttons {
+    padding: 20px 10px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
 }

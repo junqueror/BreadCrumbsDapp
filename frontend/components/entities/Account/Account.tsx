@@ -4,7 +4,6 @@ import {
 } from '@mantine/core';
 import classnames from 'classnames';
 
-import theme from 'config/theme';
 import WEB3 from 'config/web3';
 import useAccountContext from 'contexts/account/accountContext';
 import { round } from 'utils/number';

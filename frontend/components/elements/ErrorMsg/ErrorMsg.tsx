@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import styles from './ErrorMsg.module.scss';
 
 type Props = {
-  msg: string,
+  msg?: string,
   className?: string,
   id?: string,
 };

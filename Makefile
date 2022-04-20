@@ -8,26 +8,35 @@ GCLOUD_REPOSITORY = breadcrumbs
 GCLOUD_HOST = 34.78.61.132
 GCLOUD_VM = production
 
-# Arument vars
+# Argument vars
 ENV = local
 
 # Environment vars
 include ./.env.${ENV}
 export
 
+# Other vars
+
+ifeq ($(ENV), local)
+BLOCKCHAIN_NETWORK = development
+else ifeq ($(ENV), development)
+BLOCKCHAIN_NETWORK = testnet
+else ifeq ($(ENV), production)
+BLOCKCHAIN_NETWORK = bsc
+else
+BLOCKCHAIN_NETWORK = development
+endif
+
 # Local
 
 truffle-compile:
 	cd backend && truffle compile
 
-truffle-migrate-ganache:
-	cd backend && truffle migrate
+truffle-migrate:
+	cd backend && truffle migrate --network $(BLOCKCHAIN_NETWORK)
 
-truffle-migrate-testnet:
-	cd backend && truffle migrate --network testnet
-
-truffle-migrate-mainnet:
-	cd backend && truffle migrate --network mainnet
+truffle-console:
+	cd backend && truffle console --network $(BLOCKCHAIN_NETWORK)
 
 # Clean docker
 

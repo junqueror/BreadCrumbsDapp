@@ -19,6 +19,13 @@ const meetingPoint: MeetingPoint = {
   warning: 'The Breadcrumbs services and the meeting point shown on this page are currently under development. The campaigns and projects shown in this marketplace are not active, and are only shown for the purpose of showing future behavior and testing.',
   sections: [
     {
+      id: 'all',
+      title: 'all campaigns',
+      titleXS: 'all',
+      description: 'All paths to achieve the #shareToEarn! Marketing campaigns for affiliation, referrals, influencers, coin offering, token allocations...',
+      basketType: undefined,
+    },
+    {
       id: 'affiliate',
       title: 'baskets for affiliates',
       titleXS: 'affiliates',
@@ -46,13 +53,6 @@ const meetingPoint: MeetingPoint = {
 
       Unlike ICOs, it is not necessary to reach a tier by accumulating tokens. Any user can participate and earn tokens or allocation for the purchase of tokens in early stage projects.`,
       basketType: BasketTypeEnum.ISO,
-    },
-    {
-      id: 'all',
-      title: 'all campaigns',
-      titleXS: 'all',
-      description: 'All paths to achieve the #shareToEarn! Marketing campaigns for affiliation, referrals, influencers, coin offering, token allocations...',
-      basketType: undefined,
     },
   ],
 };

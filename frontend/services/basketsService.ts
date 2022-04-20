@@ -15,6 +15,8 @@ class BasketsService {
 
     web3: Web3;
 
+    chainId: number;
+
     breadContract: Contract;
 
     basketsContract: Contract;
@@ -29,6 +31,7 @@ class BasketsService {
       account: { address: string } = { address: ' ' },
     ) {
       this.web3 = web3;
+      this.chainId = chainId;
 
       const breadNetworkData = Bread.networks[String(chainId)];
       const basketsNetworkData = Baskets.networks[String(chainId)];
@@ -49,11 +52,12 @@ class BasketsService {
 
       return new Promise<BasketType>((resolve, reject) => this.breadContract.methods.approve(this.basketsContract.address, amount)
         .send({ from: this.account.address })
-        .on('confirmation', () => this.basketsContract.methods
+        .on('transactionHash', () => this.basketsContract.methods
           .createBasket(domain, amount, price)
           .send({ from: this.account.address })
           .on('confirmation', resolve)
-          .on('error', reject))
+          .on('error', reject)
+        )
         .on('error', reject));
     };
 

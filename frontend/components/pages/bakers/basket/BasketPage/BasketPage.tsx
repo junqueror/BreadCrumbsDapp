@@ -142,7 +142,7 @@ const BasketPage: NextPage = () => {
       <Title order={ 1 }>{ content.title }</Title>
       <Space h="xl" />
       <div className={ styles.Content }>
-        <section className={ styles.Basket }>
+        <section className={ styles.BasketSection }>
           <Space h="xl" />
           <div className={ styles.BasketData }>
             <LoadingOverlay visible={ basketContext.isLoading } />
@@ -225,7 +225,7 @@ const BasketPage: NextPage = () => {
             </Modal>
           </div>
         </section>
-        <section>
+        <section className={ styles.CrumbsSection }>
           { showCrumbs && (
           <Tabs
             className={ styles.CrumbTabs }

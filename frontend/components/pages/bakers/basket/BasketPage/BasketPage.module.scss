@@ -13,15 +13,26 @@
       flex-wrap: wrap;
     }
 
-    .Basket {
+    .BasketSection {
       position: relative;
-      flex: 1 0 320px;
+      flex: 1 1 320px;
+      max-width: calc(100% - 800px);
+
+      @include lg {
+        max-width: 480px;
+      }
+
+      @include md {
+        max-width: 100%;
+      }
 
       .BasketData {
         position: relative;
 
-        & > div {
-          width: 100%;
+        .Basket > div {
+          @include sm {
+            padding: 20px 0px;
+          }
         }
       }
 
@@ -45,20 +56,34 @@
       }
     }
 
-    .CrumbTabs {
+    .CrumbsSection {
       flex: 1 0 680px;
 
-      .CrumbsTimeLine {
-        margin: 20px 0px;
+      @include md {
+        max-width: 100%;
+      }
+
+      .CrumbTabs {
+        padding: 20px;
 
         @include sm {
-          transform: scale(0.8);
-          transform-origin: top left;
+          padding: 20px 0px;
         }
 
-        @include xs {
-          transform: scale(0.5);
-          transform-origin: top left;
+        .CrumbsTimeLine {
+          margin: 20px 0px;
+
+          @include md {
+            transform: scale(0.8);
+            transform-origin: 0 0;
+            width: calc(100% / 0.8);
+          }
+
+          @include xs {
+            transform: scale(0.5);
+            transform-origin: 0 0;
+            width: calc(100% / 0.5);
+          }
         }
       }
     }

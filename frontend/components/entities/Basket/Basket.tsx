@@ -116,7 +116,9 @@ const Basket: FC<Props> = ({ data: basket, className }) => {
     },
   ];
 
-  const currencyClassName = classnames(styles.Currency, { [styles.WithBadge]: basket.currency === WEB3.BREADCRUMBS_TOKEN_NAME });
+  const currencyClassName = classnames(styles.Currency, {
+    [styles.WithBadge]: !basket.currency || basket.currency === WEB3.BREADCRUMBS_TOKEN_NAME,
+  });
   const showLinkButton = basket.account !== account.address;
 
   return (
@@ -204,7 +206,7 @@ const Basket: FC<Props> = ({ data: basket, className }) => {
                   { basket.price }
                 </Text>
                 <Text className={ currencyClassName }>
-                  { basket.currency === WEB3.BREADCRUMBS_TOKEN_NAME
+                  { !basket.currency || basket.currency === WEB3.BREADCRUMBS_TOKEN_NAME
                     ? <BreadBadge />
                     : basket.currency }
                 </Text>

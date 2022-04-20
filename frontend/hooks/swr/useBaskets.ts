@@ -1,7 +1,8 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import useSWR, { SWRResponse } from 'swr';
 
 import { contracts } from 'config/routing';
+import useAccountContext from 'contexts/account/accountContext';
 import useBasketsService from 'hooks/services/useBasketsService';
 import * as basketSite from 'pages/api/baskets/[domain]';
 import { BasketType } from 'types';
@@ -12,6 +13,7 @@ const BASKET_REFRESH_INTERVAL = 60000;
 const useBaskets = (suspense = false): SWRResponse & {
     baskets: BasketType[],
 } => {
+  const { account } = useAccountContext();
   const basketsService = useBasketsService();
 
   const result: SWRResponse = useSWR(
@@ -53,6 +55,10 @@ const useBaskets = (suspense = false): SWRResponse & {
       });
     });
   }
+
+  useEffect(() => {
+    result.mutate(); // revalidate baskets
+  }, [account]);
 
   return {
     ...result,

@@ -85,7 +85,7 @@ const BasketForm: FC<Props> = ({
         <Grid.Col grow span={ 10 }>
           <ErrorMsg msg={ error } />
         </Grid.Col>
-        <Grid.Col grow span={ 2 }>
+        <div className={ styles.Buttons }>
           <Button
             color={ theme.mantine.primaryColor }
             disabled={ isDisabled }
@@ -95,7 +95,7 @@ const BasketForm: FC<Props> = ({
           >
             Save
           </Button>
-        </Grid.Col>
+        </div>
       </Grid>
     </form>
   );
