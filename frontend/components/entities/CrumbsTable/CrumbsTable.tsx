@@ -37,7 +37,7 @@ const CrumbsTable: FC<Props> = ({ crumbs = defaultProps.crumbs, className, id, i
   const dataTableRows = useMemo(() => {
     const crumbPayments: CrumbPayment[] = crumbs.reduce((payments: CrumbPayment[], crumb: CrumbType) => [
       ...payments,
-      ...crumb.payments.map(payment => ({
+      ...(crumb.payments || []).map(payment => ({
         sessionId: crumb.sessionId,
         ...payment,
       })),

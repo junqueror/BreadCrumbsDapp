@@ -15,7 +15,7 @@ export type Data = {
   crumbs: CrumbDataType[]
 }
 
-export const path = api.basketsFixtures;
+export const path = api.crumbsFixtures;
 
 const currentDate = new Date();
 const getDateBeforeDays = (days: number): Date => new Date(new Date(currentDate

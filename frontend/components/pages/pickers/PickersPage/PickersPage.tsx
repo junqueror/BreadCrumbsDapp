@@ -25,7 +25,7 @@ const RING_PROGRESS_THICKNESS = 40;
 const PickersPage: NextPage = () => {
   const router = useRouter();
   const crumbsContext = useCrumbsContext();
-  const { accountCrumbs, isLoading: isGetCrumbsLoading, error: getCrumbsError } = crumbsContext;
+  const { accountCrumbs = [], isLoading: isGetCrumbsLoading, error: getCrumbsError } = crumbsContext;
   const { domain } = router.query;
 
   const {
@@ -40,17 +40,17 @@ const PickersPage: NextPage = () => {
   [fixtureCrumbs, accountCrumbs]);
 
   const ringResumeData = useMemo(() => {
-    const allPayments = allCrumbs
-      .reduce((payments: PaymentType[], crumb: CrumbType) => [...payments, ...crumb.payments], []);
-    const earns = allPayments.reduce((sum: number, payment: PaymentType) => (payment.paid
+    const allPayments: PaymentType[] = (allCrumbs || [])
+      .reduce((payments: PaymentType[], crumb: CrumbType) => [...payments, ...(crumb.payments || [])], []);
+    const earns: number = allPayments.reduce((sum: number, payment: PaymentType) => (payment.paid
       ? sum + payment.price
       : sum),
     0);
-    const unpaid = allPayments.reduce((sum: number, payment: PaymentType) => (!payment.paid
+    const unpaid: number = allPayments.reduce((sum: number, payment: PaymentType) => (!payment.paid
       ? sum + payment.price
       : sum),
     0);
-    const totalPayments = allPayments.reduce((sum: number, payment: PaymentType) => sum + payment.price,
+    const totalPayments: number = allPayments.reduce((sum: number, payment: PaymentType) => sum + payment.price,
       0);
 
     return [
