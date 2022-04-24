@@ -3,12 +3,12 @@ import { Contract } from 'web3-eth-contract';
 import { AbiItem } from 'web3-utils';
 
 import web3config from 'config/web3';
-import BasketType from 'types/basketType';
+import BasketType from 'types/BasketType';
 
-import Baskets from '../../backend/abis/Baskets.json';
-import Bread from '../../backend/abis/Bread.json';
+import Baskets from '../../../backend/abis/Baskets.json';
+import Bread from '../../../backend/abis/Bread.json';
 
-class BasketsService {
+class BasketsBlockchainService {
     static web3Options = { transactionConfirmationBlocks: 1 };
 
     static UndefinedAccountError = new Error('Account is not defined');
@@ -26,7 +26,7 @@ class BasketsService {
     };
 
     constructor(
-      web3: Web3 = new Web3(web3config.DEFAULT_PROVIDER, undefined, BasketsService.web3Options),
+      web3: Web3 = new Web3(web3config.DEFAULT_PROVIDER, undefined, BasketsBlockchainService.web3Options),
       chainId: number = Number(web3config.DEFAULT_CHAIN_ID),
       account: { address: string } = { address: ' ' },
     ) {
@@ -48,7 +48,7 @@ class BasketsService {
       amount: any,
       price: any,
     ) => {
-      if (!this.account?.address) throw (BasketsService.UndefinedAccountError);
+      if (!this.account?.address) throw (BasketsBlockchainService.UndefinedAccountError);
 
       return new Promise<BasketType>((resolve, reject) => this.breadContract.methods.approve(this.basketsContract.address, amount)
         .send({ from: this.account.address })
@@ -62,7 +62,7 @@ class BasketsService {
     };
 
     getBasket = (domain: string): Promise<BasketType> => {
-      if (!this.account?.address) throw (BasketsService.UndefinedAccountError);
+      if (!this.account?.address) throw (BasketsBlockchainService.UndefinedAccountError);
 
       return this.basketsContract.methods.getBasket(domain).call({ from: this.account.address });
     }
@@ -72,7 +72,7 @@ class BasketsService {
       amount: any,
       price: any,
     ) => new Promise<BasketType>((resolve, reject) => {
-      if (!this.account?.address) throw (BasketsService.UndefinedAccountError);
+      if (!this.account?.address) throw (BasketsBlockchainService.UndefinedAccountError);
 
       return this.breadContract.methods.approve(this.basketsContract.address, amount)
         .send({ from: this.account.address })
@@ -87,7 +87,7 @@ class BasketsService {
     deleteBasket = (
       domain: string,
     ) => {
-      if (!this.account?.address) throw (BasketsService.UndefinedAccountError);
+      if (!this.account?.address) throw (BasketsBlockchainService.UndefinedAccountError);
 
       return new Promise<boolean>((resolve, reject) => this.basketsContract.methods.deleteBasket(domain)
         .send({ from: this.account.address })
@@ -96,9 +96,9 @@ class BasketsService {
     };
 }
 
-export default new BasketsService();
-export const basketServiceOnServer = new BasketsService();
+export default BasketsBlockchainService;
+const basketsBlockchainService = new BasketsBlockchainService();
 
 export {
-  BasketsService,
+  basketsBlockchainService,
 };

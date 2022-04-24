@@ -1,7 +1,7 @@
 import { FC, useCallback } from 'react';
 
 import useAccountContext from 'contexts/account';
-import useBasketsService from 'hooks/services/useBasketsService';
+import useBasketsBlockchainService from 'hooks/services/useBasketsBlockchainService';
 import useBaskets from 'hooks/swr/useBaskets';
 import { BasketType } from 'types';
 import { toWei } from 'utils/web3';
@@ -10,7 +10,7 @@ import { BasketsContext } from './basketsContext';
 import BasketsContextType from './basketsContextType';
 
 const BasketsProvider: FC = ({ children }) => {
-  const basketsService = useBasketsService();
+  const BasketsBlockchainService = useBasketsBlockchainService();
   const { account } = useAccountContext();
   const {
     data, baskets, error, mutate,
@@ -42,7 +42,7 @@ const BasketsProvider: FC = ({ children }) => {
 
     try {
       // Revalidate data with a client request
-      const result = await basketsService.createBasket(domain, weiAmount, weiPrice);
+      const result = await BasketsBlockchainService.createBasket(domain, weiAmount, weiPrice);
 
       // Update data with a client request
       mutate();
@@ -53,7 +53,7 @@ const BasketsProvider: FC = ({ children }) => {
       mutate(baskets, false);
       throw (createError);
     }
-  }, [basketsService, account.address, mutate, baskets]);
+  }, [BasketsBlockchainService, account.address, mutate, baskets]);
 
   const contextValue: BasketsContextType = {
     baskets,

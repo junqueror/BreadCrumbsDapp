@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { FC, useState } from 'react';
+import { FC, ReactNode, useState } from 'react';
+import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { MantineProvider } from '@mantine/core';
@@ -19,8 +20,17 @@ import CrumbsProvider from 'contexts/crumbs/crumbsProvider';
 
 import 'styles/globals.css';
 
-const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
+export type NextPageWithLayout = NextPage & {
+  Layout?: FC<any>,
+}
+
+export type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+
+const App: FC<AppProps> = ({ Component, pageProps }: AppPropsWithLayout) => {
   const [SWRfallback, setSWRfallback] = useState({});
+  const Layout = Component.Layout || AppLayout;
 
   return (
     <Web3ReactProvider getLibrary={ getWeb3Library }>
@@ -55,12 +65,12 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
                 >
                   <NotificationsProvider>
                     <AuthRouter>
-                      <AppLayout>
+                      <Layout>
                         <Component
                           { ...pageProps }
                           onSetSWRfallback={ setSWRfallback }
                         />
-                      </AppLayout>
+                      </Layout>
                     </AuthRouter>
                   </NotificationsProvider>
                 </MantineProvider>

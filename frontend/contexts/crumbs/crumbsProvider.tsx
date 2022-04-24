@@ -1,7 +1,7 @@
 import { FC, useCallback, useMemo, useState } from 'react';
 
 import useAccountContext from 'contexts/account';
-import useCrumbsService from 'hooks/services/useCrumbsService';
+import useCrumbsBlockchainService from 'hooks/services/useCrumbsBlockchainService';
 import useCrumbs from 'hooks/swr/useCrumbs';
 import { CrumbType, PaymentType } from 'types';
 
@@ -9,7 +9,7 @@ import { CrumbsContext } from './crumbsContext';
 import CrumbsContextType from './crumbsContextType';
 
 const CrumbsProvider: FC = ({ children }) => {
-  const crumbsService = useCrumbsService();
+  const crumbsBlockchainService = useCrumbsBlockchainService();
   const { account } = useAccountContext();
   const [listDomain, setListDomain] = useState<string>('');
   const [sessionId, setSessionId] = useState<string>('');
@@ -49,7 +49,7 @@ const CrumbsProvider: FC = ({ children }) => {
 
     try {
       // Revalidate data with a client request
-      const result = await crumbsService.createCrumb(_sessionId, _domain, _account);
+      const result = await crumbsBlockchainService.createCrumb(_sessionId, _domain, _account);
 
       // Update data with a client request
       mutate();
@@ -60,7 +60,7 @@ const CrumbsProvider: FC = ({ children }) => {
       mutate(crumbs, false);
       throw (createError);
     }
-  }, [crumbsService, crumbsService.createCrumb, mutate, crumbs]);
+  }, [crumbsBlockchainService, crumbsBlockchainService.createCrumb, mutate, crumbs]);
 
   const contextValue: CrumbsContextType = {
     crumbs,

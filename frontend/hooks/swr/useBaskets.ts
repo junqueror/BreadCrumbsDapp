@@ -3,22 +3,22 @@ import useSWR, { SWRResponse } from 'swr';
 
 import { contracts } from 'config/routing';
 import useAccountContext from 'contexts/account/accountContext';
-import useBasketsService from 'hooks/services/useBasketsService';
+import useBasketsBlockchainService from 'hooks/services/useBasketsBlockchainService';
 import * as basketSite from 'pages/api/baskets/[domain]';
 import { BasketType } from 'types';
 import { fromWei } from 'utils/web3';
 
-const BASKET_REFRESH_INTERVAL = 60000;
+const BASKET_REFRESH_INTERVAL = 60000; // 60s
 
 const useBaskets = (suspense = false): SWRResponse & {
     baskets: BasketType[],
 } => {
   const { account } = useAccountContext();
-  const basketsService = useBasketsService();
+  const BasketsBlockchainService = useBasketsBlockchainService();
 
   const result: SWRResponse = useSWR(
     contracts.baskets.getAllBaskets,
-    basketsService.getBaskets,
+    BasketsBlockchainService.getBaskets,
     {
       suspense,
       refreshInterval: BASKET_REFRESH_INTERVAL,

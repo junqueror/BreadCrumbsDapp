@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import parse, { Metadata } from 'html-metadata-parser';
 
 import { api } from 'config/routing';
-import { domainToUrl } from 'utils/string';
+import { domainToUrl } from 'utils/url';
 
 export type SiteType = {
   domain: string,

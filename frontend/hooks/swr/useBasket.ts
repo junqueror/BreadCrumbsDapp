@@ -2,7 +2,7 @@ import useSWR, { SWRResponse } from 'swr';
 
 import { contracts } from 'config/routing';
 import useAccountContext from 'contexts/account';
-import useBasketsService from 'hooks/services/useBasketsService';
+import useBasketsBlockchainService from 'hooks/services/useBasketsBlockchainService';
 import * as basketSite from 'pages/api/baskets/[domain]';
 import { BasketType } from 'types';
 import { fromWei } from 'utils/web3';
@@ -11,8 +11,8 @@ const useBasket = (domain: string): SWRResponse & {
     basket: BasketType,
 } => {
   const { account } = useAccountContext();
-  const basketsService = useBasketsService();
-  const fetchBasket = (_: any, _address: string) => basketsService.getBasket(domain);
+  const BasketsBlockchainService = useBasketsBlockchainService();
+  const fetchBasket = (_: any, _address: string) => BasketsBlockchainService.getBasket(domain);
   const fetchBasketSite = () => basketSite.get(domain);
   const shouldFetch = account?.address && domain;
 

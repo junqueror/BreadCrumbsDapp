@@ -1,30 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { Link, PrismaClient } from '@prisma/client';
 
-import { api } from 'config/routing';
+import Link from 'database/Link';
+import LinkType from 'types/LinkType';
 
-import { formatLink, LinkType } from '../[account]/[domain]';
-
-export const path = api.shortLink;
+import { formatLink } from '../[account]/[domain]';
 
 export interface Data {
     link: LinkType,
 }
-
-const prisma = typeof window === 'undefined' ? new PrismaClient() : undefined;
-
-const _getLink = async (shortId: string): Promise<Link | null> => prisma.link.findFirst({
-  where: {
-    short_id: shortId,
-  },
-});
-
-export const getLink = async (shortId: string): Promise<LinkType> => {
-  const res = await fetch(api.shortLink(shortId));
-  const data: { link: LinkType } = await res.json();
-
-  return data.link || undefined;
-};
 
 const handler = async (
   req: NextApiRequest,
@@ -35,7 +18,7 @@ const handler = async (
   const shortId = Array.isArray(shortIds) ? shortIds[0] : shortIds;
 
   try {
-    const dbLink = await _getLink(shortId);
+    const dbLink = await Link.get(shortId);
 
     if (dbLink) {
       res.status(200).json({

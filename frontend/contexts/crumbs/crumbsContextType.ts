@@ -1,6 +1,6 @@
 import { KeyedMutator } from 'swr';
 
-import CrumbType from 'types/crumbType';
+import CrumbType from 'types/CrumbType';
 
 interface CrumbsContextType {
   crumbs: CrumbType[],

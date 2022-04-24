@@ -1,4 +1,4 @@
-import type PaymentType from './paymentType';
+import type PaymentType from './PaymentType';
 
 type CrumbType = {
     sessionId: string,

@@ -6,8 +6,8 @@ const paths = {
   bakers: '/bakers',
   basket: (basket: BasketType) => `bakers/baskets/${basket.domain}`,
   pickers: '/pickers',
-  crumb: (domain: string, account: string) => `pickers/crumbs/${domain}/${account}`,
-  shortLink: (shortId: string) => `pickers/crumbs/${shortId}`,
+  link: (domain: string, account: string) => `crumb/${domain}/${account}`,
+  shortLink: (shortId: string) => `c/${shortId}`,
 };
 
 export default paths;

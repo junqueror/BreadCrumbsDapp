@@ -1,7 +1,7 @@
 import useSWR, { SWRResponse } from 'swr';
 
 import { contracts } from 'config/routing';
-import useCrumbsService from 'hooks/services/useCrumbsService';
+import useCrumbsBlockchainService from 'hooks/services/useCrumbsBlockchainService';
 import { CrumbType } from 'types';
 import { bigNumberToDate } from 'utils/date';
 import { fromWei } from 'utils/web3';
@@ -11,8 +11,8 @@ const CRUMBS_REFRESH_INTERVAL = 60000;
 const useCrumbs = (domain: string): SWRResponse & {
     crumbs: CrumbType[],
 } => {
-  const crumbsService = useCrumbsService();
-  const fetchCrumbs = (_: any, _domain: string) => crumbsService.getCrumbs(_domain);
+  const CrumbsBlockchainService = useCrumbsBlockchainService();
+  const fetchCrumbs = (_: any, _domain: string) => CrumbsBlockchainService.getCrumbs(_domain);
 
   const result: SWRResponse = useSWR(
     [contracts.crumbs.getCrumbs, domain],

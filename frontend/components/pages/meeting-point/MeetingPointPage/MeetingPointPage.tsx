@@ -12,7 +12,7 @@ import { useScreenSize } from 'hooks';
 import useFunctionAtInterval from 'hooks/useFunctionAtInterval';
 import * as basketSite from 'pages/api/baskets/[domain]';
 import * as baketFixturesRequest from 'pages/api/baskets/fixtures';
-import { basketServiceOnServer } from 'services/basketsService';
+import { basketsBlockchainService } from 'services/blockchain/BasketsBloackchainService';
 import { BasketType } from 'types';
 
 import { BasketsSection } from '../sections';
@@ -22,7 +22,7 @@ import styles from './MeetingPointPage.module.scss';
 const MAX_SSR_BASKETS = 9;
 
 export const getServerSideProps = async (_context: any) => {
-  const baskets: BasketType[] = (await basketServiceOnServer.getBaskets() || [])
+  const baskets: BasketType[] = (await basketsBlockchainService.getBaskets() || [])
     .slice(0, MAX_SSR_BASKETS)
     .map((basket: BasketType): BasketType => ({
       ...basket,

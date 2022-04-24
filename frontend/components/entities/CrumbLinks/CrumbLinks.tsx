@@ -12,9 +12,9 @@ import { CopyIcon, ExternalLinkIcon } from '@radix-ui/react-icons';
 import classnames from 'classnames';
 
 import Link from 'components/elements/Link';
-import theme from 'config/theme';
 import useAccountContext from 'contexts/account';
-import { getLink, LinkType } from 'pages/api/links/[account]/[domain]';
+import { linkApiService } from 'services/api/LinkApiService';
+import LinkType from 'types/LinkType';
 
 import styles from './CrumbLinks.module.scss';
 
@@ -50,7 +50,7 @@ const CrumbLinks: FC<Props> = ({ domain, className, onCopyLink }) => {
   const copyShortUrlWithPath: MouseEventHandler = event => copy(event, link?.shortUrl ? shortUrlWithPath : undefined);
 
   const fetchLink = useCallback(async () => {
-    const _link = await getLink(account.address, domain);
+    const _link = await linkApiService.getLink(account.address, domain);
     if (_link) setLink(_link);
   }, [account.address, domain]);
 
@@ -72,9 +72,8 @@ const CrumbLinks: FC<Props> = ({ domain, className, onCopyLink }) => {
           <Group className={ styles.Links }>
             <ActionIcon onClick={ copyLongUrl }>
               <ThemeIcon
-                gradient={ theme.primaryGradient }
                 size="lg"
-                variant="gradient"
+                variant="light"
               >
                 <CopyIcon />
               </ThemeIcon>
@@ -82,9 +81,8 @@ const CrumbLinks: FC<Props> = ({ domain, className, onCopyLink }) => {
             { link?.longUrl && (
               <Link isBlank to={ link?.longUrl }>
                 <ThemeIcon
-                  gradient={ theme.primaryGradient }
                   size="lg"
-                  variant="gradient"
+                  variant="light"
                 >
                   <ExternalLinkIcon />
                 </ThemeIcon>
@@ -104,9 +102,8 @@ const CrumbLinks: FC<Props> = ({ domain, className, onCopyLink }) => {
           <Group className={ styles.Links }>
             <ActionIcon onClick={ copyShortUrl }>
               <ThemeIcon
-                gradient={ theme.primaryGradient }
                 size="lg"
-                variant="gradient"
+                variant="light"
               >
                 <CopyIcon />
               </ThemeIcon>
@@ -114,9 +111,8 @@ const CrumbLinks: FC<Props> = ({ domain, className, onCopyLink }) => {
             { link?.shortUrl && (
             <Link isBlank to={ link?.shortUrl }>
               <ThemeIcon
-                gradient={ theme.primaryGradient }
                 size="lg"
-                variant="gradient"
+                variant="light"
               >
                 <ExternalLinkIcon />
               </ThemeIcon>
@@ -137,17 +133,15 @@ const CrumbLinks: FC<Props> = ({ domain, className, onCopyLink }) => {
           <Group className={ styles.Links }>
             <ActionIcon onClick={ copyShortUrlWithPath }>
               <ThemeIcon
-                gradient={ theme.primaryGradient }
                 size="lg"
-                variant="gradient"
+                variant="light"
               >
                 <CopyIcon />
               </ThemeIcon>
             </ActionIcon>
             <ThemeIcon
-              gradient={ theme.primaryGradient }
               size="lg"
-              variant="gradient"
+              variant="light"
             >
               <Link isBlank to={ shortUrlWithPath }>
                 <ExternalLinkIcon />

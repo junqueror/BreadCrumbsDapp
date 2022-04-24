@@ -1,7 +1,7 @@
-import useBasketsService from './useBasketsService';
-import useCrumbsService from './useCrumbsService';
+import useBasketsBlockchainService from './useBasketsBlockchainService';
+import useCrumbsBlockchainService from './useCrumbsBlockchainService';
 
 export {
-  useBasketsService,
-  useCrumbsService,
+  useBasketsBlockchainService,
+  useCrumbsBlockchainService,
 };

@@ -1,6 +1,6 @@
 import { KeyedMutator } from 'swr';
 
-import BasketType from 'types/basketType';
+import BasketType from 'types/BasketType';
 
 interface BasketsContextType {
   baskets: BasketType[],

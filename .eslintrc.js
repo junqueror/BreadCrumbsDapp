@@ -119,7 +119,7 @@ module.exports = {
             ],
             [
               '^', // Absolute imports. Anything not matched in another group.
-              '^(pages|app|assets|types|services|contexts|components|utils|config|content|hooks|styles)'  // Internal packages, absolute path aliases.
+              '^(pages|app|assets|types|services|contexts|components|database|utils|config|content|hooks|styles)'  // Internal packages, absolute path aliases.
             ],
             ['^\\u0000'], // Side effect imports.
             ['^\\.\\.(?!/?$)', '^\\.\\./?$'], // Parent imports.
@@ -141,6 +141,7 @@ module.exports = {
             ['components', './frontend/components'], 
             ['config', './frontend/config'], 
             ['content', './frontend/content'], 
+            ['database', './frontend/database'], 
             ['utils', './frontend/utils'], 
             ['hooks', './frontend/hooks'], 
             ['styles', './frontend/styles'], 

@@ -43,7 +43,7 @@ const Crumb: FC<Props> = ({ data: crumb, originDomain, className, useAnimations 
   });
   const { account } = useAccountContext();
 
-  const crumbLink = useAnimations ? paths.meetingPoint : config.routing.paths.crumb(crumb?.domain, account?.address);
+  const crumbLink = useAnimations ? paths.meetingPoint : config.routing.paths.link(crumb?.domain, account?.address);
 
   return (
     <Link

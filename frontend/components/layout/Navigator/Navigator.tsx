@@ -19,7 +19,7 @@ const Navigator: FC<Props> = ({ className }) => {
   const { account } = useAccountContext();
 
   return (
-    <nav key="navLinks" className={ styles.Navigator }>
+    <div key="navLinks" className={ styles.Navigator }>
       <Group className={  className } position="right" spacing="xl">
         { navigatorRoutes.map(route => (
           <div key={ `nav-${route.path}` }>
@@ -34,7 +34,7 @@ const Navigator: FC<Props> = ({ className }) => {
           </div>
         ))}
       </Group>
-    </nav>
+    </div>
   );
 };
 

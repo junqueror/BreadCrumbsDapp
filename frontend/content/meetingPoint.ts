@@ -1,4 +1,4 @@
-import { BasketTypeEnum } from 'types/basketType';
+import { BasketTypeEnum } from 'types/BasketType';
 
 export type MeetingPointSection = {
     id: string,

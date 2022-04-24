@@ -1,5 +1,6 @@
 const api = {
   baskets: '/api/baskets',
+  crumbs: '/api/crumbs',
   basketsFixtures: '/api/baskets/fixtures',
   crumbsFixtures: '/api/crumbs/fixtures',
   basket: (domain: string) => `/api/baskets/${domain}`,

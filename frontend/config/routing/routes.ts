@@ -1,4 +1,4 @@
-import type RouteType from 'types/routeType';
+import type RouteType from 'types/RouteType';
 
 import paths from './paths';
 
@@ -34,7 +34,7 @@ const routes: {
     isPrivate: false,
   },
   crumb: {
-    path: paths.crumb,
+    path: paths.link,
     label: 'Crumbs',
     isPrivate: false,
   },
