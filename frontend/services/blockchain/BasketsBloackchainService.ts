@@ -3,7 +3,7 @@ import { Contract } from 'web3-eth-contract';
 import { AbiItem } from 'web3-utils';
 
 import web3config from 'config/web3';
-import BasketType from 'types/BasketType';
+import type BasketType from 'types/BasketType';
 
 import Baskets from '../../../backend/abis/Baskets.json';
 import Bread from '../../../backend/abis/Bread.json';

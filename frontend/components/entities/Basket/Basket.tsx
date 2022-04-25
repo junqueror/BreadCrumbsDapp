@@ -15,8 +15,8 @@ import theme from 'config/theme';
 import WEB3 from 'config/web3';
 import useAccountContext from 'contexts/account';
 import useCrumbs from 'hooks/swr/useCrumbs';
-import { CrumbType, PaymentType } from 'types';
-import BasketType, { BasketTypeEnum, ObjectiveEnum, PriceTypeEnum } from 'types/BasketType';
+import type { BasketType, CrumbType, PaymentType } from 'types';
+import { BasketTypeEnum, ObjectiveEnum, PriceTypeEnum } from 'types/BasketType';
 import { formatDate } from 'utils/date';
 import { percentage } from 'utils/number';
 

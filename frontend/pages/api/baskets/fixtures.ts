@@ -2,7 +2,8 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import config from 'config';
 import { api } from 'config/routing';
-import BasketType, { BasketTypeEnum, ObjectiveEnum, PriceTypeEnum } from 'types/BasketType';
+import type BasketType from 'types/BasketType';
+import { BasketTypeEnum, ObjectiveEnum, PriceTypeEnum } from 'types/BasketType';
 
 const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80';
 const BREADCRUMBS_IMAGE = '/static/images/home/page-background.jpg';
