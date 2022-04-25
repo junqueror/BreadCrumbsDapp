@@ -15,12 +15,14 @@ import theme from 'config/theme';
 import WEB3 from 'config/web3';
 import useAccountContext from 'contexts/account';
 import useCrumbs from 'hooks/swr/useCrumbs';
-import { BasketType, CrumbType, PaymentType } from 'types';
+import { CrumbType, PaymentType } from 'types';
+import BasketType, { BasketTypeEnum, ObjectiveEnum, PriceTypeEnum } from 'types/BasketType';
 import { formatDate } from 'utils/date';
 import { percentage } from 'utils/number';
 
 import styles from './Basket.module.scss';
 
+const DEFAULT_CURRENCY = 'BREAD';
 const MAX_PAID_PERC_WARNING = 95;
 const RING_PROGRESS_SIZE = 80;
 const RING_PROGRESS_THICKNESS = 14;
@@ -57,15 +59,32 @@ const Basket: FC<Props> = ({ data: basket, className }) => {
   const useBadges = isUpcoming || isFinished;
 
   const dataTableRows = useMemo(() => {
+    const fakeDate = new Date(new Date(currentDate.setHours(8)).setMinutes(0));
+
+    const defaultBasket = {
+      type: BasketTypeEnum.Affiliate,
+      objective: ObjectiveEnum.Domain,
+      priceType: PriceTypeEnum.FixedToken,
+      currency: DEFAULT_CURRENCY,
+      badget: basket.amount,
+      startDate: fakeDate,
+      endDate: new Date(new Date(fakeDate
+        .setDate(currentDate.getDate() + 60)).setHours(24)),
+    };
+
+    const basketData = { ...defaultBasket, ...basket };
+
+    // TODO: Remove default values for real baskets
+
     const elements = [
-      { label: 'Type', value: basket.type },
-      { label: 'Target', value: basket.domain },
-      { label: 'Objective', value: basket.objective },
-      { label: 'Launch date', value: formatDate(basket.startDate) },
-      { label: 'End date', value: formatDate(basket.endDate) },
-      { label: 'Currency', value: basket.currency === 'BREAD' ? <BreadBadge /> : basket.currency },
-      { label: 'Price type', value: basket.priceType },
-      { label: 'Budget', value: `${basket.budget} ${basket.currency}` },
+      { label: 'Type', value: basketData.type },
+      { label: 'Target', value: basketData.domain },
+      { label: 'Objective', value: basketData.objective },
+      { label: 'Launch date', value: formatDate(basketData.startDate) },
+      { label: 'End date', value: formatDate(basketData.endDate) },
+      { label: 'Currency', value: basketData.currency === DEFAULT_CURRENCY ? <BreadBadge /> : basketData.currency },
+      { label: 'Price type', value: basketData.priceType },
+      { label: 'Budget', value: `${basketData.budget} ${basketData.currency}` },
     ];
 
     return elements.map(element => (
@@ -74,6 +93,7 @@ const Basket: FC<Props> = ({ data: basket, className }) => {
         <td>{element.value}</td>
       </tr>
     ));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [basket]);
 
   const { paidPaymentsPerc, paidWarnning } = useMemo(() => {

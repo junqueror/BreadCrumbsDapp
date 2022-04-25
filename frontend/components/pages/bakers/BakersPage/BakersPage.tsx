@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import type { NextPage } from 'next';
 import {
-  Button, Drawer, Group, Space, Title,
+  Button, Drawer, Space, Title,
 } from '@mantine/core';
 import { useNotifications } from '@mantine/notifications';
 import classnames from 'classnames';
