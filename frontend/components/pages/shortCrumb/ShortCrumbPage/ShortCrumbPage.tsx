@@ -40,13 +40,9 @@ const ShortCrumbPage: NextPageWithLayout & { useLayout?: boolean } = () => {
       const _sessionId = await getSessionId();
       const _link = await getLink();
 
-      console.log('Creating crumb...');
-      debugger;
       const transactionStarted = await crumbsApiService.createCrumb(_sessionId, _link.domain, _link.account);
-      debugger;
       console.warn('Crumb transaction started', transactionStarted);
     } catch (error) {
-      debugger;
       console.warn('Crumb transation started', false);
     }
   }, [getSessionId, getLink]);
@@ -56,7 +52,7 @@ const ShortCrumbPage: NextPageWithLayout & { useLayout?: boolean } = () => {
   }, [shortId, buildCrumb]);
 
   useEffect(() => {
-    if (link?.url) console.log(redirectUrlFromShortPath(link, router.asPath));
+    if (link?.url) router.replace(redirectUrlFromShortPath(link, router.asPath));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [link]);
 

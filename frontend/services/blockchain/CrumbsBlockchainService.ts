@@ -69,9 +69,9 @@ class CrumbsBlockchainService {
             gas: this.web3.utils.toHex(gasEstimate),
           };
 
-          return this.web3.eth.accounts.signTransaction(options, this.deployerAccount?.privateKey);
+          return this.web3.eth.accounts.signTransaction(options, this.deployerAccount.privateKey);
         }).then((signedTx: any) => this.web3.eth.sendSignedTransaction(signedTx.rawTransaction)
-          .on('confirmation', () => resolve(true))
+          .on('transactionHash', () => resolve(true))
           .on('error', reject))
         .catch(reject));
     };
