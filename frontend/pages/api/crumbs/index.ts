@@ -56,15 +56,23 @@ const handler = async (
 
   const content: Content = req.body;
 
-  const result = await crumbsBlockchainService.createCrumb(
-    content.session_id,
-    content.domain,
-    content.account,
-  );
+  try {
+    const result = await crumbsBlockchainService.createCrumb(
+      content.session_id,
+      content.domain,
+      content.account,
+    );
 
-  res.status(200).json({
-    transactionStarted: result,
-  });
+    res.status(200).json({
+      transactionStarted: result,
+    });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      message: String(error),
+    });
+  }
 };
 
 export default handler;

@@ -1,7 +1,7 @@
-import { Link as PrismaLink, PrismaClient } from '@prisma/client';
+import { Link as PrismaLink } from '@prisma/client';
 import { nanoid } from 'nanoid';
 
-const prisma = typeof window === 'undefined' ? new PrismaClient() : undefined;
+import prisma from 'config/prisma';
 
 class Link {
     static get = async (shortId: string): Promise<PrismaLink | null> => (prisma

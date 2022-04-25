@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { Client, PrismaClient } from '@prisma/client';
+import { Client } from '@prisma/client';
 
+import prisma from 'config/prisma';
 import { api } from 'config/routing';
 
 export const path = api.clients;
@@ -12,8 +13,6 @@ export type ClientType = {
 export interface Data {
   client: ClientType,
 }
-
-const prisma = typeof window === 'undefined' ? new PrismaClient() : undefined;
 
 export const createClient = async (_client: ClientType): Promise<Data | { error: string }> => {
   const res = await fetch(path, {

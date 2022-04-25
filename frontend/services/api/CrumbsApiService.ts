@@ -1,5 +1,5 @@
 import { api } from 'config/routing';
-import { Content, CrumbDataType, Data } from 'pages/api/crumbs';
+import { Content, CrumbDataType, Data, Error } from 'pages/api/crumbs';
 
 class CrumbsApiService {
     static paths = {
@@ -21,6 +21,13 @@ class CrumbsApiService {
           },
           body: JSON.stringify(content),
         });
+
+      if (!res.ok) {
+        const error: Error = await res.json();
+        console.error(error.message);
+        return false;
+      }
+
       const data: Data = await res.json();
       const { transactionStarted }: { transactionStarted: boolean } = data;
 
