@@ -89,8 +89,8 @@ const Basket: FC<Props> = ({ data: basket, className }) => {
 
     return elements.map(element => (
       <tr key={ element.label }>
-        <td>{element.label}</td>
-        <td>{element.value}</td>
+        <td>{ element.label }</td>
+        <td>{ element.value }</td>
       </tr>
     ));
   // eslint-disable-next-line react-hooks/exhaustive-deps

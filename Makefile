@@ -22,7 +22,8 @@ BLOCKCHAIN_NETWORK = development
 else ifeq ($(ENV), development)
 BLOCKCHAIN_NETWORK = testnet
 else ifeq ($(ENV), production)
-BLOCKCHAIN_NETWORK = bsc
+# BLOCKCHAIN_NETWORK = bsc
+BLOCKCHAIN_NETWORK = testnet # TODO: Change to bsc
 else
 BLOCKCHAIN_NETWORK = development
 endif
