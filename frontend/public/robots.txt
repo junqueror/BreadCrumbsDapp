@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://bread-crumbs.tech
+Host: https://www.bread-crumbs.tech
 
 # Sitemaps
-Sitemap: https://bread-crumbs.tech/sitemap.xml
+Sitemap: https://www.bread-crumbs.tech/sitemap.xml

@@ -37,9 +37,6 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppPropsWithLayout) => {
 
   return (
     <>
-      <DefaultSeo
-        { ...defaultSeoConfig }
-      />
       <Web3ReactProvider getLibrary={ getWeb3Library }>
         <SWRConfig value={ { fallback: SWRfallback } }>
           <AccountProvider>
@@ -47,8 +44,9 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppPropsWithLayout) => {
               <BasketProvider>
                 <CrumbsProvider>
                   <Head>
-                    <title>{ site.NAME }</title>
-                    <meta content="Web3 application to track users traffic" name="description" />
+                    <DefaultSeo
+                      { ...defaultSeoConfig }
+                    />
                     <meta content="minimum-scale=1, initial-scale=1, width=device-width" name="viewport" />
                     <link href="/favicon.ico" rel="icon" />
                     <link

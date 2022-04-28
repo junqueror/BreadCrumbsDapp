@@ -17,8 +17,8 @@ const defaultSeoConfig: DefaultSeoProps = {
     images: [
       {
         url: IMAGE_URL,
-        width: 800,
-        height: 600,
+        width: 300,
+        height: 200,
         alt: 'Bread crumbs path',
         secureUrl: IMAGE_URL,
         type: 'image/jpg',
