@@ -2,7 +2,7 @@ import type { DefaultSeoProps } from 'next-seo';
 
 import site from 'config/site';
 
-const IMAGE_URL = `${site.BASE_URL}/static/images/home/page-background.jpg`;
+const IMAGE_URL = `${site.BASE_URL}/static/images/home/page-background-thumbnail.jpg`;
 
 const defaultSeoConfig: DefaultSeoProps = {
   title: site.TITLE,

@@ -21,7 +21,7 @@ const HomePage: NextPage = () => {
   return (
     <div className={ styles.HomePage }>
       <Image
-        alt="Space background"
+        alt="BreadCrumbs path background"
         className={ styles.BackgroundImage }
         layout="fill"
         objectFit="cover"

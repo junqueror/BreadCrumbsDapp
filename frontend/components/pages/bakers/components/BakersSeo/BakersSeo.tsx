@@ -23,13 +23,6 @@ const BakersSeo: FC<Props> = () => (
         url: PAGE_URL,
         title: PAGE_TITLE,
         description: PAGE_DESCRIPTION,
-        images: [
-          {
-            url: `${site.BASE_URL}/static/images/home/page-background.jpg`,
-            width: 800,
-            height: 600,
-            alt: 'Bread crumbs path',
-          }],
       } }
       title={ PAGE_TITLE }
     />
