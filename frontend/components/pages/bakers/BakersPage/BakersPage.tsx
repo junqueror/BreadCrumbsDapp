@@ -19,6 +19,8 @@ import { useFunctionAtInterval, useScreenSize } from 'hooks';
 import * as upcomingBasketsRequest from 'pages/api/baskets/fixtures';
 import { BasketType } from 'types';
 
+import { BakersSeo } from '../components';
+
 import styles from './BakersPage.module.scss';
 
 const BakersPage: NextPage = () => {
@@ -94,8 +96,9 @@ const BakersPage: NextPage = () => {
 
   return (
     <div className={ styles.BakersPage }>
+      <BakersSeo />
       { !!content.warning && (
-      <WarningMsg msg={ content.warning } />
+        <WarningMsg msg={ content.warning } />
       ) }
       <Space h="xl" />
       <Title order={ 1 }>{ content.title }</Title>

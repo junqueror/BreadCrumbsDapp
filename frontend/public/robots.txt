@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://bread-crumnbs.tech
+
+# Sitemaps
+Sitemap: https://bread-crumnbs.tech/sitemap.xml

@@ -17,6 +17,8 @@ import useCrumbsContext from 'contexts/crumbs/crumbsContext';
 import * as crumbsFixturesRequest from 'pages/api/crumbs/fixtures';
 import { CrumbType, PaymentType } from 'types';
 
+import { PickersSeo } from '../components';
+
 import styles from './PickersPage.module.scss';
 
 const RING_PROGRESS_SIZE = 400;
@@ -76,6 +78,7 @@ const PickersPage: NextPage = () => {
 
   return (
     <div className={ styles.PickersPage }>
+      <PickersSeo />
       { !!content.warning && (
         <WarningMsg msg={ content.warning } />
       ) }

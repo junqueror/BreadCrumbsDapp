@@ -5,9 +5,9 @@ import paths from './paths';
 const routes: {
     home: RouteType,
     meetingPoint: RouteType,
-    baskets: RouteType,
+    bakers: RouteType,
     basket: RouteType,
-    crumbs: RouteType,
+    pickers: RouteType,
     crumb: RouteType,
 } = {
   home: {
@@ -18,7 +18,7 @@ const routes: {
     path: paths.meetingPoint,
     label: 'Meeting point',
   },
-  baskets: {
+  bakers: {
     path: paths.bakers,
     label: 'Bakers',
     isPrivate: false,
@@ -28,7 +28,7 @@ const routes: {
     label: 'Basket',
     isPrivate: false,
   },
-  crumbs: {
+  pickers: {
     path: paths.pickers,
     label: 'Pickers',
     isPrivate: false,
@@ -42,8 +42,8 @@ const routes: {
 
 const navigatorRoutes = [
   routes.meetingPoint,
-  routes.baskets,
-  routes.crumbs,
+  routes.bakers,
+  routes.pickers,
 ];
 
 export default routes;

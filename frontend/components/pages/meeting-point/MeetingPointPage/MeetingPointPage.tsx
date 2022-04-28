@@ -15,6 +15,7 @@ import * as baketFixturesRequest from 'pages/api/baskets/fixtures';
 import { basketsBlockchainService } from 'services/blockchain/BasketsBloackchainService';
 import { BasketType } from 'types';
 
+import { MeetingPointSeo } from '../components';
 import { BasketsSection } from '../sections';
 
 import styles from './MeetingPointPage.module.scss';
@@ -89,6 +90,7 @@ const MeetingPointPage: NextPage<Props> = ({ fallback, onSetSWRfallback }) => {
 
   return (
     <div className={ styles.MeetingPointPage }>
+      <MeetingPointSeo />
       <SWRConfig value={ { fallback } }>
         { !!content.warning && (
           <WarningMsg msg={ content.warning } />
