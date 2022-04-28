@@ -5,8 +5,8 @@ import { routes } from 'config/routing';
 import site from 'config/site';
 
 const PAGE_URL = `${site.BASE_URL}${routes.bakers.path}`;
-const PAGE_TITLE = 'Backers area';
-const PAGE_DESCRIPTION = 'Check your campaigns, create new baskets to start promoting your products and spreading the word about your brand.';
+const PAGE_TITLE = 'Bakers area: dashboard for brands and advertisers';
+const PAGE_DESCRIPTION = 'Check your promotion progress and your marketing campaigns. Create new baskets to start promoting your products and spreading the word about your brand';
 
 type Props = {
 };

@@ -5,8 +5,8 @@ import { routes } from 'config/routing';
 import site from 'config/site';
 
 const PAGE_URL = `${site.BASE_URL}${routes.pickers.path}`;
-const PAGE_TITLE = 'Pickers area';
-const PAGE_DESCRIPTION = 'Check the crumbs you have collected, your earnings and the status of payments';
+const PAGE_TITLE = 'Pickers area: Dashboard for affilaites, referrals and publishers';
+const PAGE_DESCRIPTION = 'Check your sharing progress: crumbs collected, link profits and payments status';
 
 type Props = {
 };

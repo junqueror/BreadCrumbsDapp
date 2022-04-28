@@ -2,7 +2,7 @@
 
 module.exports = {
   sourceDir: 'build',
-  siteUrl: 'https://bread-crumnbs.tech',
+  siteUrl: 'https://bread-crumbs.tech',
   generateRobotsTxt: true,
   sitemapSize: 1000,
   changefreq: 'weekly',

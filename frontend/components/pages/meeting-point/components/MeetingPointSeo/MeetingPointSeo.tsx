@@ -5,8 +5,8 @@ import { routes } from 'config/routing';
 import site from 'config/site';
 
 const PAGE_URL = `${site.BASE_URL}${routes.meetingPoint.path}`;
-const PAGE_TITLE = 'The meeting point';
-const PAGE_DESCRIPTION = 'Best place to connect brands and advertisers with affiliates, publishers and referrals';
+const PAGE_TITLE = 'The meeting point: Discover new sharing campaigns and join the #shareToEarn movement';
+const PAGE_DESCRIPTION = 'Best place to connect brands and advertisers with affiliates, publishers and referrals. Compare campaigns, create your links and start sharing now';
 
 type Props = {
 };

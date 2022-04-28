@@ -9,7 +9,7 @@ const site = {
     : `${protocol}://${PUBLIC_FRONTEND_HOST}`,
   NAME: 'Bread Crumbs',
   TITLE: 'Bread Crumbs: the referral chain made simple, open and reliable',
-  DESCRIPTION: 'Breadcrumbs is a new affiliate/referral marketing service that tracks user events and actions over the blockchain. We create a decentralized economy by providing a meeting point for brands and publishers where they can directly negotiate their collaboration. You can check out the meeting point or subscribe to learn about new campaigns.',
+  DESCRIPTION: 'Breadcrumbs is a new decentralized economy built on the blockchain that provides a meeting point for brands and publishers where they can negotiate directly with each other about their collaboration',
 };
 
 export default site;
