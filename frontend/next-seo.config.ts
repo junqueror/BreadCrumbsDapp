@@ -2,7 +2,11 @@ import type { DefaultSeoProps } from 'next-seo';
 
 import site from 'config/site';
 
+const IMAGE_URL = `${site.BASE_URL}/static/images/home/page-background.jpg`;
+
 const defaultSeoConfig: DefaultSeoProps = {
+  title: site.TITLE,
+  description: site.DESCRIPTION,
   openGraph: {
     type: 'website',
     locale: 'es_ES',
@@ -12,10 +16,12 @@ const defaultSeoConfig: DefaultSeoProps = {
     description: site.DESCRIPTION,
     images: [
       {
-        url: `${site.BASE_URL}/static/images/home/page-background.jpg`,
+        url: IMAGE_URL,
         width: 800,
         height: 600,
         alt: 'Bread crumbs path',
+        secureUrl: IMAGE_URL,
+        type: 'image/jpg',
       },
     ],
   },
