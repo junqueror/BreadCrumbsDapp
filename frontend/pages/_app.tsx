@@ -37,32 +37,32 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppPropsWithLayout) => {
 
   return (
     <>
+      <DefaultSeo
+        { ...defaultSeoConfig }
+      />
+      <Head>
+        <meta content="minimum-scale=1, initial-scale=1, width=device-width" name="viewport" />
+        <link href="/favicon.ico" rel="icon" />
+        <link
+          as="font"
+          crossOrigin=""
+          href="/static/fonts/Blessed/Blessed-Light.ttf"
+          rel="preload"
+          type="font/ttf"
+        />
+        <link
+          as="image"
+          href="/static/images/home/page-background.jpg"
+          imagesrcset="/_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=640&q=75 640w, /_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=750&q=75 750w, /_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=828&q=75 828w, /_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=3840&q=75 3840w"
+          rel="preload"
+        />
+      </Head>
       <Web3ReactProvider getLibrary={ getWeb3Library }>
         <SWRConfig value={ { fallback: SWRfallback } }>
           <AccountProvider>
             <BasketsProvider>
               <BasketProvider>
                 <CrumbsProvider>
-                  <Head>
-                    <DefaultSeo
-                      { ...defaultSeoConfig }
-                    />
-                    <meta content="minimum-scale=1, initial-scale=1, width=device-width" name="viewport" />
-                    <link href="/favicon.ico" rel="icon" />
-                    <link
-                      as="font"
-                      crossOrigin=""
-                      href="/static/fonts/Blessed/Blessed-Light.ttf"
-                      rel="preload"
-                      type="font/ttf"
-                    />
-                    <link
-                      as="image"
-                      href="/static/images/home/page-background.jpg"
-                      imagesrcset="/_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=640&q=75 640w, /_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=750&q=75 750w, /_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=828&q=75 828w, /_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fstatic%2Fimages%2Fhome%2Fpage-background.jpg&w=3840&q=75 3840w"
-                      rel="preload"
-                    />
-                  </Head>
                   <MantineProvider
                     theme={ theme.mantine }
                     withGlobalStyles
