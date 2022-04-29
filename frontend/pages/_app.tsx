@@ -42,6 +42,7 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppPropsWithLayout) => {
       />
       <Head>
         <meta content="minimum-scale=1, initial-scale=1, width=device-width" name="viewport" />
+        <meta content={ theme.primaryColor } name="theme-color" />
         <link href="/favicon.ico" rel="icon" />
         <link
           as="font"
