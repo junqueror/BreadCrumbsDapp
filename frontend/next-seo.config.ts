@@ -2,7 +2,7 @@ import type { DefaultSeoProps } from 'next-seo';
 
 import site from 'config/site';
 
-const IMAGE_URL = `${site.BASE_URL}/static/images/home/page-background-thumbnail.jpg`;
+const IMAGE_URL = `${site.BASE_URL}/static/images/home/page-background-thumbnail.png`;
 
 const defaultSeoConfig: DefaultSeoProps = {
   title: site.TITLE,
@@ -17,11 +17,11 @@ const defaultSeoConfig: DefaultSeoProps = {
     images: [
       {
         url: IMAGE_URL,
-        width: 300,
-        height: 200,
+        width: 600,
+        height: 400,
         alt: 'Bread crumbs path',
         secureUrl: IMAGE_URL,
-        type: 'image/jpg',
+        type: 'image/png',
       },
     ],
   },
